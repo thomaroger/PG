@@ -1,0 +1,8 @@
+/.project
+/vendor
+/composer.lock
+.settings
+composer.phar
+/public
+/build/coverage/
+
