@@ -65,7 +65,7 @@ return array(
         'guards' => array(
             'BjyAuthorize\Guard\Controller' => array(
                 //Front Area
-                array('controller' => 'PlaygroundCMS\Controller\Index',           'roles' => array('guest', 'user')),
+                array('controller' => 'PlaygroundCMS\Controller\Front\Page',           'roles' => array('guest', 'user')),
             ),
         ),
     ),
