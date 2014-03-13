@@ -1,6 +1,8 @@
 <h2><?php echo $this->block->getName(); ?></h2>
 <div>
     <ul>
-        <li>Test</li>
+        <?php foreach ($this->results as $result) : ?>
+             <li><?php echo $result->getName(); ?></li>
+        <?php endforeach; ?>
     </ul>
 </div>
