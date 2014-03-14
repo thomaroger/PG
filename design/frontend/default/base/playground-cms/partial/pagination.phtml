@@ -3,7 +3,7 @@
     <ul class="pagination">
         <!-- First page link -->
         <li<?php echo (isset($this->first)) ? '' : ' class="disabled"'; ?>>
-            <a href="<?php echo $uri.'?page='.$this->first?>">&lt;&lt; <?php echo ('First'); ?></a>
+            <a href="<?php echo $uri.'?page='.$this->first?>">&lt;&lt; <?php echo $this->cmsTranslate('First'); ?></a>
         </li>
 
         <!-- Previous page link -->
