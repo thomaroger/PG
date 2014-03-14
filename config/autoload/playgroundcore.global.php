@@ -108,7 +108,7 @@ $settings = array(
 
 $zenddevelopertools = array(
     'profiler' => array(
-        'enabled' => true,
+        'enabled' => false,
         'strict' => false,
         'flush_early' => false,
         'cache_dir' => 'data/cache',
@@ -116,7 +116,7 @@ $zenddevelopertools = array(
         'collectors' => array(),
     ),
     'toolbar' => array(
-        'enabled' => true,
+        'enabled' => false,
         'auto_hide' => false,
         'position' => 'bottom',
         'version_check' => false,
