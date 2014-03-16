@@ -1,5 +1,3 @@
-<?php $this->plugin('cmsTranslate')->setTranslatorTextDomain('citroen'); ?>
-
 <?php if ($this->pageCount && ($this->pageCount > 1)): ?>
 <div class="text-center">
     <ul class="pagination">
@@ -10,7 +8,7 @@
 
         <!-- Previous page link -->
         <li<?php echo (isset($this->previous)) ? '' : ' class="disabled"'; ?>>
-            <a href="<?php echo $uri.'?page='.$this->previous?>">&lt; <?php echo $this->cmsTranslate('Previous', 'playgroundcms'); ?></a>
+            <a href="<?php echo $uri.'?page='.$this->previous?>">&lt; <?php echo $this->cmsTranslate('Previous'); ?></a>
         </li>
 
         <!-- Numbered page links -->
@@ -22,16 +20,16 @@
 
         <!-- Next page link -->
         <li<?php echo (isset($this->next)) ? '' : ' class="disabled"'; ?>>
-            <a href="<?php echo $uri.'?page='.$this->next?>"><?php echo $this->cmsTranslate('Next', 'playgroundcms'); ?> &gt;</a>
+            <a href="<?php echo $uri.'?page='.$this->next?>"><?php echo $this->cmsTranslate('Next'); ?> &gt;</a>
         </li>
 
         <!-- Last page link -->
         <li<?php echo (isset($this->next)) ? '' : ' class="disabled"'; ?>>
-            <a href="<?php echo $uri.'?page='.$this->last?>"><?php echo $this->cmsTranslate('Last', 'playgroundcms'); ?> &gt;&gt;</a>
+            <a href="<?php echo $uri.'?page='.$this->last?>"><?php echo $this->cmsTranslate('Last'); ?> &gt;&gt;</a>
         </li>
     </ul>
     <ul class="pager">
-        <li class="disabled"><a href="#"><?php echo $this->cmsTranslate('Number of results : ', 'playgroundcms').$countResults ?> - <?php echo $this->cmsTranslate('Number of pages : ', 'playgroundcms').$this->pageCount ?></a></li>
+        <li class="disabled"><a href="#"><?php echo $this->cmsTranslate('Number of results : ').$countResults ?> - <?php echo $this->cmsTranslate('Number of pages : ').$this->pageCount ?></a></li>
     </ul>
 </div>
 <?php endif; ?>
