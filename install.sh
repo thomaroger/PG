@@ -4,6 +4,7 @@ if [ $1 ]
 then
     ENV="$1"
 fi
+
 git pull origin develop
 php composer.phar update
 php vendor/doctrine/doctrine-module/bin/doctrine-module.php orm:schema-tool:drop --force
