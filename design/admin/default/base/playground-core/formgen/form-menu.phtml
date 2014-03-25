@@ -1,0 +1,152 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('citroen');?>
+<div class="span5">
+    <div class="well sidebar-nav">
+        <ul class="nav nav-tabs" id="add_form_element">
+			<li><a href="#tab_customized_field" data-toggle="tab"><?php echo $this->translate('Add a Customized Field'); ?></a></li>
+			<!--li><a href="#tab_field" data-toggle="tab">Add a Field</a></li-->
+			<li><a href="#tab_form_prop" data-toggle="tab"><?php echo $this->translate('Form Properties');?></a></li>
+			<li><a href="#tab_field_prop" data-toggle="tab"><?php echo $this->translate('Field Properties'); ?></a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="tab_customized_field">
+		  		<table class="table table-hover">
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="single_line_text"><?php echo $this->translate('Single Line Text'); ?></div></td>
+		  			</tr>
+		  			<!--<tr>
+		  				<td><div class="btn btn-info btn-block" id="line_number">Number</div></td>
+		  			</tr> -->
+		  			<!--<tr>
+		  				<td><div class="btn btn-info btn-block" id="line_paragraph">Paragraph Text</div></td>
+		  			</tr>-->
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="line_checkbox"><?php echo $this->translate('Checkboxes'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="line_radio"><?php echo $this->translate('Multiple Choices'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="line_dropdown"><?php echo $this->translate('Drop Down'); ?></div></td>
+		  			</tr>
+		  			<!--<tr>
+		  				<td><div class="btn btn-info btn-block" id="line_password">Password</div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="line_password_verify">Password Verify</div></td>
+		  			</tr>-->
+                    <tr>
+		  				<td><div class="btn btn-info btn-block" id="line_email"><?php echo $this->translate('Email'); ?></div></td>
+		  			</tr>
+		  			<!--<tr>
+		  				<td><div class="btn btn-info btn-block" id="line_date">Date</div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="line_phone">Phone</div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="line_url">Web Site / Url</div></td>
+		  			</tr>-->
+		  		</table>
+		  		<!--<table class="table table-hover">
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="civility_field"><?php echo $this->translate('Civility'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="firstname_field"><?php echo $this->translate('Firstname'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="lastname_field"><?php echo $this->translate('Lastname'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="address_field"><?php echo $this->translate('Address'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="code_field"><?php echo $this->translate('Code'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="city_field"><?php echo $this->translate('City'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="country_field"><?php echo $this->translate('Country'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="mail_field"><?php echo $this->translate('Mail'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="car_field"><?php echo $this->translate('Car'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="dob_field"><?php echo $this->translate('Date of birth'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="optin_field"><?php echo $this->translate('Optin'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="conditions_field"><?php echo $this->translate('Generals conditions'); ?></div></td>
+		  			</tr>
+		  			<tr>
+		  				<td><div class="btn btn-info btn-block" id="dopi_field"><?php echo $this->translate('Date of purchase intent'); ?></div></td>
+		  			</tr>
+		  		</table>-->
+		  	</div>
+		  	<div class="tab-pane" id="tab_field_prop">
+		  		<div id="field_properties"></div>
+		  	</div>
+		  	<div class="tab-pane" id="tab_form_prop">
+		  		<h3><?php echo $this->translate('Form Properties'); ?></h3>
+                <form>
+                    <ul class="nav nav-list">
+                    	<div class="form-group">
+	                        <li>
+	                            <label><?php echo $this->translate('Form Title'); ?></label>
+	                            <input type="text" name="form_title" maxlength="255" class="form-control" placeholder="Untitled Form">
+	                        </li>
+                   		</div>
+                   		<div class="form-group">
+	                        <li>
+	                            <label><?php echo $this->translate('Description'); ?></label>
+	                            <input type="text" name="form_description" maxlength="255" class="form-control" placeholder="This is your form description.">
+	                        </li>
+	                    </div>
+	                    <div class="form-group">
+                        <li>
+                            <label ><?php echo $this->translate('Website'); ?></label> <br />
+			                <select name="form_website" class="form-control" >
+			                    <?php foreach ($this->websites as $website): ?>
+			                        <option value="<?php echo $website->getId() ?>"> <?php echo $website->getName(); ?>
+			                    <?php endforeach ?>
+			                </select>
+                        </li>
+                    </div>
+                        <div class="hidden">
+	                        <li>
+	                            <label><?php echo $this->translate('Form Namespace'); ?></label>
+	                            <input type="text" name="form_namespace" class="form-control"  maxlength="255" placeholder="ModuleName">
+	                        </li>
+	                        <li>
+	                            <label><?php echo $this->translate('Form Class Name'); ?></label>
+	                            <input type="text" name="form_class_name" class="form-control" maxlength="255" placeholder="NewForm">
+	                        </li>
+	                        <li>
+	                            <label><?php echo $this->translate('Model Name'); ?></label>
+	                            <input type="text" name="form_model" class="form-control" maxlength="255" placeholder="User">
+	                        </li>
+	                        <li>
+	                            <label><?php echo $this->translate('Class'); ?></label>
+	                            <input type="text" name="form_class" class="form-control" maxlength="255" placeholder="class1 class2..">
+	                        </li>
+	                        <li>
+	                            <label><?php echo $this->translate('Id'); ?></label>
+	                            <input type="text" name="form_id" class="form-control"  maxlength="255" placeholder="custom id">
+	                        </li>
+	                    </div>
+	                    <br />
+	                        <li>
+	                            <button class="btn btn-primary" id="add_form_properties"><?php echo $this->translate('Save'); ?></button>
+	                        </li>
+                    </ul>
+                </form>
+		  	</div>
+		</div>
+    </div>
+</div>

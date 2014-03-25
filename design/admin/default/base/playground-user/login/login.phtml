@@ -1,0 +1,12 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('playgroundcms');// Pour le texte ?>
+<?php
+$form = $this->loginForm;
+$form->prepare();
+?>
+
+<form class="form-horizontal" method="post" id="loginAdmin">
+   <?php echo $this->formElementErrors($form->get('identity')) ?>
+    <input type="email" class="form-control" id="identity" name="identity" placeholder="<?php echo  $this->translate($form->get('identity')->getAttribute('placeholder')); ?>">
+    <input type="password" class="form-control" id="credential" name="credential" placeholder="<?php echo  $this->translate($form->get('credential')->getAttribute('placeholder')); ?>">
+    <button type="submit" name="submit" class="btn btn-success pull-right"><?php echo $this->translate('Validate'); ?></button>
+</form>

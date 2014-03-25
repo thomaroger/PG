@@ -11,8 +11,8 @@ return array(
         'ZfcUser',
     	'BjyAuthorize',
     	'PlaygroundCore',
-        'PlaygroundUser',
         'PlaygroundDesign',
+        'PlaygroundUser',
         'PlaygroundCMS',
     ),
     'module_listener_options' => array(

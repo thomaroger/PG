@@ -1,0 +1,27 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('citroen');?>
+<?php $website = $this->form->getWebsite(); ?>
+<div class="container-fluid">
+    <div class="row">
+        
+        <div class="col-md-12">
+            <form action="<?php echo $this->url('admin/formgen/edit',array()) ?>" method="post" name="generate_form" id="generate_form" role="form">
+                <div class="form_title_head">
+                    <input type="hidden" name="formId" value="<?php echo $this->form->getId(); ?>">
+                    <input type="hidden" name="title" value="<?php echo $this->form->getTitle(); ?>">
+                    <input type="hidden" name="description" value="<?php echo $this->form->getDescription(); ?>">
+                    <input type="hidden" name="website" value="<?php echo !empty($website)? $website->getId() : ''; ?>">
+                    <textarea name="form_jsonified" id="form_jsonified" class="form-control" rows="25"><?php echo $this->form->getFormJsonified(); ?></textarea>
+                    <div class="clearfix">&nbsp;</div>
+                    <div>
+                        <input type="submit" class="btn btn-success" value="<?php echo $this->translate('Generate Form'); ?>" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<script>
+// basepath global var put by Zend
+var basepath='<?php echo $this->url('admin',array(), array('force_canonical' => true)) ?>';
+</script>

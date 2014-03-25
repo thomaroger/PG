@@ -1,0 +1,69 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('citroen'); ?>
+
+<h1 class="f-left"><?php echo $this->translate('Forms list'); ?></h1>
+
+<div>
+    <a href="<?php echo $this->url('admin/formgen/generate') ?>">
+        <button type="button" class="btn btn-success pull-right">
+            <?php echo $this->translate('Create a form'); ?>
+        </button>
+    </a>
+</div>
+<div class="row forms">
+    <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th><?php echo $this->translate('Title'); ?></th>
+                <th><?php echo $this->translate('Website'); ?></th>
+                <th><?php echo $this->translate('Created At'); ?></th>
+                <th><?php echo $this->translate('Status'); ?></th>
+                <th><?php echo $this->translate('Actions'); ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($forms as $form): ?>
+                <tr class="sortable" id="<?php echo $form->getId() ?>">
+                    <td>
+                        <?php echo $form->getTitle() ?>
+                    </td>
+                    <td>
+                        <?php if($form->getWebsite()) : ?>
+                            <?php echo $form->getWebsite()->getName(); ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php echo $form->getCreatedAt()->format('Y-m-d H:i:s') ?>
+                    </td>
+                    <td>
+                        <?php if($form->getActive()) : ?>
+                            <span class="label label-success"><?php echo $this->translate('Active'); ?></span>
+                        <?php else : ?>
+                            <span class="label label-danger"><?php echo $this->translate('Inactive'); ?></span>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if($form->getActive()) : ?>
+                        <a href="<?php echo $this->url('admin/formgen/activate', array('formId' => $form->getId())) ?>">
+                            <button type="button" class="btn btn-danger">
+                                <?php echo $this->translate('Desactivate it'); ?>
+                            </button>
+                        </a>
+                        <?php else : ?>
+                        <a href="<?php echo $this->url('admin/formgen/activate', array('formId' => $form->getId())) ?>">
+                            <button type="button" class="btn btn-success">
+                                <?php echo $this->translate('Activate it'); ?>
+                            </button>
+                        </a>
+                        <?php endif; ?>
+                      
+                        <a href="<?php echo $this->url('admin/formgen/edit', array('formId' => $form->getId())) ?>">
+                            <button type="button" class="btn btn-warning">
+                                <?php echo $this->translate('Edit'); ?>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

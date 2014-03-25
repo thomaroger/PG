@@ -1,0 +1,36 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('citroen');?>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <?php echo $this->partial('playground-core/formgen/form-menu', array('form'=>$this->form, 'websites' => $this->websites));?>
+        </div>
+        <div class="col-md-8">
+        	<form action="<?php echo $this->url('admin/formgen/generate',array()) ?>" method="post" name="generate_form" id="generate_form" role="form">
+                <div class="form_title_head">
+                    <input type="hidden" name="form_namespace_placeholder" value="">
+                    <input type="hidden" name="form_class_name_placeholder" value="">
+                    <input type="hidden" name="form_class_placeholder" value="">
+                    <input type="hidden" name="form_model_placeholder" value="">
+                    <input type="hidden" name="form_id_placeholder" value="">
+                    <input type="hidden" name="form_id_placeholder" value="">
+                    <h2 class="form_title_placeholder">Titre du formulaire</h2>
+                    <p class="form_description_placeholder">Description</p>
+                    <p class="form_website_placeholder" style="display:none;">Website Selected</p>
+                    <button type="button" class="btn btn-link pull-right edit_form_properties"><?php echo $this->translate('Edit'); ?></button>
+                    <div style="clear: both"></div>
+
+                </div>
+                <br>
+	    		<ul id="the_form"></ul>
+                <input type="hidden" name="form_jsonified" id="form_jsonified" value="">
+                <input type="hidden" name="form_template" id="form_template" value="">
+	    		<button class="btn btn-success" id="generate_form_button"><?php echo $this->translate('Generate Form'); ?></button>
+        	</form>
+        </div>
+        
+    </div>
+</div>
+<script>
+// basepath global var put by Zend
+var basepath='<?php echo $this->url('admin',array(), array('force_canonical' => true)) ?>';
+</script>

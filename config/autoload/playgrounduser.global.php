@@ -98,7 +98,7 @@ $playgrounduser = array(
             'config_file' => __DIR__.'/social.config.php',
         ),
 
-        /*
+        
         'admin' => array(
             // login route
             'route_login' => 'admin',
@@ -107,12 +107,12 @@ $playgrounduser = array(
             // privilege associated to admin access
             'privilege'   => 'dashboard',
             // controller & action if auth success
-            'controller' => 'adminstats',
+            'controller' => 'PlaygroundCMS\Controller\Back\Dashboard',
             'action' => 'index',
             // route if auth fail
             'route_login_fail' => 'admin'
         ),
-        */
+        
 
         'anonymous_tracking' => false,
 );
