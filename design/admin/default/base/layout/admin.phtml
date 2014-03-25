@@ -33,7 +33,7 @@ if(isset($children[0])){
                   <span class="sr-only">Toggle navigation</span>
                   <i class="glyphicon glyphicon-cog"></i>
                 </button>
-                <a class="navbar-brand" href="<?php echo $this->url('admin'); ?>">Back - PlaygroundCMS</a>
+                <a class="navbar-brand" href="<?php echo $this->url('admin'); ?>">Playground CMS</a>
               </div>
 
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,7 +63,7 @@ if(isset($children[0])){
                 <div class="container">
                     <a href="javascript:;" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
                       <span class="sr-only">Toggle navigation</span>
-                      <i class="glyphicon glyphicon-reorder"></i>
+                      <i class="glyphicon glyphicon-list"></i>
                     </a>
                     <div class="collapse subnav-collapse">
                         <ul class="mainnav">
@@ -77,13 +77,30 @@ if(isset($children[0])){
                             
                             <li class="dropdown <?php echo $this->nav=='cms'?'active':''?>">                   
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="glyphicon glyphicon-book"></i>
+                                    <i class="glyphicon glyphicon-cog"></i>
                                     <span>CMS</span>
                                     <b class="caret"></b>
                                 </a>        
                             
                                 <ul class="dropdown-menu">
-                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Gestion des pages</a></li>
+                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Bloc</a></li>
+                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Layout</a></li>
+                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Page</a></li>
+                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Template</a></li>
+                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Zone</a></li>
+                                </ul>               
+                            </li>
+                            <li class="dropdown <?php echo $this->nav=='content'?'active':''?>">                   
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    <span>Contenus</span>
+                                    <b class="caret"></b>
+                                </a>        
+                            
+                                <ul class="dropdown-menu">
+                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Article</a></li>
+                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Menu</a></li>
+                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Sondage</a></li>
                                 </ul>               
                             </li>
                         
