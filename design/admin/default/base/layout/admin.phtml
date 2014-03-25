@@ -47,7 +47,8 @@ if(isset($children[0])){
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="/" target="_blank"><?php echo $this->translate('Access to frontend'); ?></a></li>
-                            <li><a href="<?php echo $this->url('frontend/zfcuser/logout', array('channel' => $this->channel)) ?>?redirect=<?php echo $this->url('admin', array('channel' => $this->channel)) ?>" class="logout"><?php echo $this->translate('Logout'); ?></a></li>
+                            <?php $urlLogout =  trim($this->url('frontend/zfcuser/logout', array('channel' => $this->channel))."?redirect=".$this->url('admin', array('channel' => $this->channel)),'/'); ?>
+                            <li><a href="/<?php echo $urlLogout; ?>" class="logout"><?php echo $this->translate('Logout'); ?></a></li>
                             <li class="divider"></li>
                             <li><a href="#"><?php echo $this->translate('Help'); ?></a></li>
                         </ul>
