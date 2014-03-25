@@ -15,10 +15,10 @@
             <thead>
                 <tr>
                     <th>Title</th>
-                    <th>State</th>
                     <th>Status</th>
-                    <th>Date of publishing</th>
-                    <th>Date of end of publishing</th>
+                    <th>State</th>
+                    <th>Start date of publication</th>
+                    <th>End Date of publication</th>
                     <th>Urls</th>
                     <th>Layout</th>
                     <th>Created date</th>
@@ -31,7 +31,6 @@
                 <?php foreach ($this->pagesPaginator as $page) : ?>
                     <tr>
                         <td><?php echo $page->getTitle(); ?></td>
-                        <td><?php echo $page->getStatus(); ?></td>
                         <td>
                             <?php 
                                 $visible = $page->checkVisibility(); 
@@ -43,6 +42,7 @@
                                 <span class="label label-danger">Non Visible</span>
                             <?php endif;  ?>
                         </td>
+                        <td><?php echo $page->getStatus(); ?></td>
                         <td><?php echo $page->getStartDate()->format('d/m/Y H:i:s'); ?></td>
                         <td><?php echo $page->getEndDate()->format('d/m/Y H:i:s'); ?></td>
                         <td>
