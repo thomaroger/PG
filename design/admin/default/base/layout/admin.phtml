@@ -67,14 +67,14 @@ if(isset($children[0])){
                     <div class="collapse subnav-collapse">
                         <ul class="mainnav">
                         
-                            <li class="active">
+                            <li class="<?php echo $this->nav=='dashboard'?'active':''?>">
                                 <a href="<?php echo $this->url('admin'); ?>">
                                     <i class="glyphicon glyphicon-home"></i>
                                     <span>Dashboard</span>
                                 </a>                        
                             </li>
                             
-                            <li class="dropdown">                   
+                            <li class="dropdown <?php echo $this->nav=='cms'?'active':''?>">                   
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="glyphicon glyphicon-book"></i>
                                     <span>CMS</span>
