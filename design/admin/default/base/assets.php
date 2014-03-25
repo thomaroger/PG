@@ -40,6 +40,8 @@ return array(
                     'playground_css' => array(
                         'assets' => array(
                             'bootstrap.min.css'              => 'css/lib/bootstrap.min.css',
+                            'base-admin-3.css'               => 'css/lib/base-admin-3.css',
+                            'base-admin-3-responsive.css'    => 'css/lib/base-admin-3-responsive.css',
                             'bootstrap-switch.min.css'       => 'css/lib/bootstrap-switch.css',
                             'bootstrap-multiselect.css'      => 'css/lib/bootstrap-multiselect.css',
                             'datepicker.css'                 => 'css/lib/datepicker.css',

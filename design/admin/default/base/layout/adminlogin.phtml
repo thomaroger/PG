@@ -18,34 +18,37 @@ if(isset($children[0])){
     echo $this->plugin('HeadStyle');
     echo $this->plugin('HeadScript');
 ?>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
 </head>
 
 <body>
-	<div class="container">
-    	<?php if (isset($ourView->flashMessages) && count($ourView->flashMessages)) : ?>
-    	<ul class="flashMessages">
-    		<?php foreach ($ourView->flashMessages as $fMessage) : ?>
-    		<li><?php echo $fMessage; ?></li>
-    		<?php endforeach; ?>
-    	</ul>
-    	<?php endif; ?>
-
-    <div class="row">
-        <div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-lg-4 col-lg-offset-4">
-            <div class="panel panel-default">
-                
-                <div class="panel-heading">
-                    <h3 class="panel-title">Playground CMS - Back</h3>
-                </div>
-              
-                <div class="panel-body">
-                <?php echo $this->content; ?>
-                </div>
+	
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./index.html">Back - Playground CMS</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">                        
+                        <a href="/">
+                            <i class="glyphicon glyphicon-chevron-left"></i>&nbsp;&nbsp; 
+                            Back to Homepage
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
-
-	</div>
+    </nav>
+    
+    <?php echo $this->content; ?>
+     
 	<!-- /container -->
 	<?php echo $this->inlineScript() ?>
 </body>

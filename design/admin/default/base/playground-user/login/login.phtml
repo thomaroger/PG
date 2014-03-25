@@ -4,9 +4,23 @@ $form = $this->loginForm;
 $form->prepare();
 ?>
 
-<form class="form-horizontal" method="post" id="loginAdmin">
-   <?php echo $this->formElementErrors($form->get('identity')) ?>
-    <input type="email" class="form-control" id="identity" name="identity" placeholder="<?php echo  $this->translate($form->get('identity')->getAttribute('placeholder')); ?>" required>
-    <input type="password" class="form-control" id="credential" name="credential" placeholder="<?php echo  $this->translate($form->get('credential')->getAttribute('placeholder')); ?>" required>
-    <button type="submit" name="submit" class="btn btn-success pull-right"><?php echo $this->translate('Validate'); ?></button>
-</form>
+<div class="account-container stacked">
+    <div class="content clearfix">
+        <form class="form-horizontal" method="post" id="loginAdmin">
+            <h1>Sign In</h1>         
+            <div class="login-fields">
+                <div class="field">
+                    <label for="username">Username:</label>
+                    <input type="email" id="identity" name="identity" value="" placeholder="<?php echo  $this->translate($form->get('identity')->getAttribute('placeholder')); ?>" class="form-control input-lg username-field" required>
+                </div> <!-- /field -->
+                <div class="field">
+                    <label for="password">Password:</label>
+                    <input type="password" id="credential" name="credential" value="" placeholder="<?php echo  $this->translate($form->get('credential')->getAttribute('placeholder')); ?>" class="form-control input-lg password-field">
+                </div> <!-- /password -->
+            </div> <!-- /login-fields -->
+            <div class="login-actions">
+                <button class="login-action btn btn-primary"><?php echo $this->translate('Validate'); ?></button>
+            </div> <!-- .actions -->
+        </form>
+    </div> <!-- /content -->
+</div>

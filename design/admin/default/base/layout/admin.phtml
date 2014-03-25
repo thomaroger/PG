@@ -11,60 +11,102 @@ if(isset($children[0])){
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<?php echo $this->headTitle('Playground CMS - Admin')->setSeparator(' - ')->setAutoEscape(false) ?>
-
-<?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
-
-<!-- Le styles -->
-<?php /*echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))*/
-?>
-
-<!-- Scripts -->
-<?php /*echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))*/
-
-?>
-<?php
-	echo $this->plugin('HeadLink');
+<?php 
+    echo $this->headTitle('Playground CMS - Admin')->setSeparator(' - ')->setAutoEscape(false);
+    echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
+    echo $this->plugin('HeadLink');
     echo $this->plugin('HeadStyle');
     echo $this->plugin('HeadScript');
 ?>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+
 </head>
 <body>
-    <header class="navbar">
-        
-        <div class="container">
-            <nav class="navbar navbar-default" role="navigation">
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a href="<?php echo $this->url('admin') ?>"><?php echo $this->translate('Home'); ?></a></li>
-                    <?php echo $this->adminMenu()->setPartial(array('playground-core/menu.phtml', 'default')); ?>
-                </ul>
+    <div id="wrap">
+        <nav class="navbar navbar-inverse" role="navigation">
+
+            <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <i class="glyphicon glyphicon-cog"></i>
+                </button>
+                <a class="navbar-brand" href="<?php echo $this->url('admin'); ?>">Back - PlaygroundCMS</a>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->zfcUserIdentity()->getFirstname(); ?> <?php echo $this->zfcUserIdentity()->getLastname(); ?> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <?php if(strpos($this->zfcUserIdentity()->getEmail(), "adfab.fr") !== false) : ?>
-                        <?php endif; ?>
-                        <li><a href="/" target="_blank"><?php echo $this->translate('Access to frontend'); ?> <span class="glyphicon glyphicon-chevron-right"></span></a></li>
-                        <li><a href="<?php echo $this->url('frontend/zfcuser/logout', array('channel' => $this->channel)) ?>?redirect=<?php echo $this->url('admin', array('channel' => $this->channel)) ?>"
-                                class="logout"><?php echo $this->translate('logout'); ?> <span class="glyphicon glyphicon-log-out"></span></a></li>
+                  <li class="dropdown">        
+                        <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <?php echo $this->zfcUserIdentity()->getFirstname(); ?> <?php echo $this->zfcUserIdentity()->getLastname(); ?>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/" target="_blank"><?php echo $this->translate('Access to frontend'); ?></a></li>
+                            <li><a href="<?php echo $this->url('frontend/zfcuser/logout', array('channel' => $this->channel)) ?>?redirect=<?php echo $this->url('admin', array('channel' => $this->channel)) ?>" class="logout"><?php echo $this->translate('Logout'); ?></a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><?php echo $this->translate('Help'); ?></a></li>
                         </ul>
                     </li>
                 </ul>
-    		</nav>
-    	</div>
-    </header>
-	<div class="container">
-		<?php echo $this->navigation()
-		->breadcrumbs('admin_navigation')
-		->setMaxDepth(3)
-		->setPartial(array('playground-core/breadcrumbs.phtml', 'default'));
-		?>
-		<?php echo $this->content; ?>
+              </div>
+            </div>
+        </nav>
 
-		<footer>
-			<p><?php echo $this->translate('copyright'); ?></p>
-		</footer>
-	</div>
+        <div class="subnavbar">
+            <div class="subnavbar-inner">
+                <div class="container">
+                    <a href="javascript:;" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <i class="glyphicon glyphicon-reorder"></i>
+                    </a>
+                    <div class="collapse subnav-collapse">
+                        <ul class="mainnav">
+                        
+                            <li class="active">
+                                <a href="<?php echo $this->url('admin'); ?>">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                    <span>Dashboard</span>
+                                </a>                        
+                            </li>
+                            
+                            <li class="dropdown">                   
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="glyphicon glyphicon-book"></i>
+                                    <span>CMS</span>
+                                    <b class="caret"></b>
+                                </a>        
+                            
+                                <ul class="dropdown-menu">
+                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Gestion des pages</a></li>
+                                </ul>               
+                            </li>
+                        
+                        </ul>
+                    </div>
+
+                </div>
+            
+            </div> 
+
+        </div>
+    	
+   <?php echo $this->content; ?>
+</div>
+<div class=="clearfix">&nbsp;</div>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div id="footer-copyright" class="col-md-6">
+               © Playground CMS 2014
+            </div> <!-- /span6 -->
+        </div> <!-- /row -->
+    </div> <!-- /container -->
+</div>
 	<!-- /container -->
 	<?php echo $this->inlineScript() ?>
 </body>

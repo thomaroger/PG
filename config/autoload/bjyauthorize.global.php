@@ -41,11 +41,12 @@ return array(
             'BjyAuthorize\Guard\Controller' => array(
 
                 //Front Area
-                array('controller' => 'PlaygroundCMS\Controller\Front\Page',           'roles' => array('guest', 'user')),
+                array('controller' => 'PlaygroundCMS\Controller\Front\Page',     'roles' => array('guest', 'user')),
 
                 // Back Area
-                array('controller' => 'playgrounduseradmin_login',                     'roles' => array('guest', 'admin')),
-                array('controller' => 'PlaygroundCMS\Controller\Back\Dashboard',       'roles' => array('admin')),
+                array('controller' => 'playgrounduseradmin_login',               'roles' => array('guest', 'admin')),
+                array('controller' => 'PlaygroundCMS\Controller\Back\Dashboard', 'roles' => array('admin')),
+                array('controller' => 'PlaygroundCMS\Controller\Back\Page',      'roles' => array('admin')),
             ),
         ),
     ),
