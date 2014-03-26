@@ -40,19 +40,13 @@ return array(
                     'playground_css' => array(
                         'assets' => array(
                             'bootstrap.min.css'              => 'css/lib/bootstrap.min.css',
-                            'base-admin-3.css'               => 'css/lib/base-admin-3.css',
-                            'base-admin-3-responsive.css'    => 'css/lib/base-admin-3-responsive.css',
-                            'bootstrap-switch.min.css'       => 'css/lib/bootstrap-switch.css',
-                            'bootstrap-multiselect.css'      => 'css/lib/bootstrap-multiselect.css',
-                            'datepicker.css'                 => 'css/lib/datepicker.css',
-                            'isotope.css'                    => 'css/isotope.css',
+                            'light-blue.css'                 => 'css/lib/light-blue.css',
                             'style.css'                      => 'css/style.css',
                         ),
                         'options' => array(
                             'output' => 'zfcadmin/css/base'
                         ),
                     ),
-
                     
                     /**
                      * MAIN JS FILES
@@ -60,37 +54,13 @@ return array(
                     'playground_js' => array(
                         'assets' => array(
                             'jquery-1.10.2.min.js'          => 'js/lib/jquery-1.10.2.min.js',
-                            //'jquery-1.10.2.min.map'          => 'js/lib/jquery-1.10.2.min.map',
                             'bootstrap.min.js'              => 'js/lib/bootstrap.min.js',
-                            'bootstrap-switch.min.js'       => 'js/lib/bootstrap-switch.min.js',
-                            'bootstrap-multiselect.js'      => 'js/lib/bootstrap-multiselect.js',
-                            'bootstrap-datepicker.js'       => 'js/lib/bootstrap-datepicker.js',
-                            'isotope.min.js'                => 'js/lib/jquery.isotope.min.js',
                             'main.js'                       => 'js/main.js',
                         ),
                         'filters' => array(),
                         'options' => array(
                             'output' => 'zfcadmin/js/script_playground'
                         ),
-                    ),
-                    
-                    /**
-                     * CKEDITOR
-                     */
-                    'admin_ckeditor' => array(
-                        'assets' => array(
-                            'js/lib/ckeditor/*',
-                            'js/lib/ckeditor/**/*',
-                            'js/lib/ckeditor/**/**/*',
-                            'js/lib/ckeditor/**/**/**/*',
-                            'js/ckeditor-custom/*',
-                            'js/ckeditor-custom/**/*',
-                            'css/ckeditor-custom/*',
-                        ),
-                        'options' => array(
-                            'move_raw' => true,
-                            'output' => 'zfcadmin',
-                        )
                     ),
 				),
 			),
@@ -100,7 +70,6 @@ return array(
             'admin.*' => array(
                 '@playground_css',
                 '@playground_js',
-
             ),           
         ),
 	),
