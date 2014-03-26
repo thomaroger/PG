@@ -22,117 +22,88 @@ if(isset($children[0])){
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 
 </head>
-<body>
-    <div id="wrap">
-        <nav class="navbar navbar-inverse" role="navigation">
-
-            <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                  <span class="sr-only">Toggle navigation</span>
-                  <i class="glyphicon glyphicon-cog"></i>
-                </button>
-                <a class="navbar-brand" href="<?php echo $this->url('admin'); ?>">Playground CMS</a>
-              </div>
-
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="dropdown">        
-                        <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-user"></i>
-                            <?php echo $this->zfcUserIdentity()->getFirstname(); ?> <?php echo $this->zfcUserIdentity()->getLastname(); ?>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/" target="_blank"><?php echo $this->translate('Access to frontend'); ?></a></li>
-                            <?php $urlLogout =  trim($this->url('frontend/zfcuser/logout', array('channel' => $this->channel))."?redirect=".$this->url('admin', array('channel' => $this->channel)),'/'); ?>
-                            <li><a href="/<?php echo $urlLogout; ?>" class="logout"><?php echo $this->translate('Logout'); ?></a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><?php echo $this->translate('Help'); ?></a></li>
-                        </ul>
-                    </li>
+<body class="background-dark">
+    <div class="logo">
+        <h4><a href="<?php echo $this->url('admin'); ?>">Playground CMS</a></h4>
+    </div>
+    <nav id="sidebar" class="sidebar nav-collapse collapse">
+        <ul id="side-nav" class="side-nav">
+            <li class="active">
+                <a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+            </li>
+            <li class="panel active">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-cog"></i> <span class="name">CMS</span></a>
+                <ul id="forms-collapse" class="panel-collapse open in">
+                    <li class="active"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Bloc</a></li>
+                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Layout</a></li>
+                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Page</a></li>
+                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Template</a></li>
+                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Zone</a></li>
                 </ul>
-              </div>
+            </li>
+            <li class="panel">
+                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#side-nav" href="#stats-collapse"><i class="fa fa-book"></i> <span class="name">Content</span></a>
+                <ul id="stats-collapse" class="panel-collapse collapse ">
+                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Article</a></li>
+                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Menu</a></li>
+                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Sondage</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="wrap">
+        <header class="page-header">
+            <div class="navbar">
+                    <ul class="nav navbar-nav navbar-right pull-right">
+                        <li class="visible-phone-landscape">
+                            <a href="#" id="search-toggle">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="hidden-xs dropdown">
+                            <a href="#" title="Account" id="account" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-user"></i>
+                            </a>
+                            <ul id="account-menu" class="dropdown-menu account" role="menu">
+                                <li role="presentation" class="account-picture">
+                                    <img src="<?php echo "http://www.gravatar.com/avatar/".md5(strtolower(trim($this->zfcUserIdentity()->getEmail())));?>" alt="">
+                                    <?php echo $this->zfcUserIdentity()->getFirstname(); ?> <?php echo $this->zfcUserIdentity()->getLastname(); ?>
+                                </li>
+                                <li class="divider"></li>
+                                 <li role="presentation">
+                                    <a href="/" class="link">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Acces to frontend
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#" class="link">
+                                        <i class="fa fa-question"></i>
+                                        Aide
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="visible-xs">
+                            <a href="#" class="btn-navbar" data-toggle="collapse" data-target=".sidebar" title="">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </li>
+                        <?php $urlLogout =  trim($this->url('frontend/zfcuser/logout', array('channel' => $this->channel))."?redirect=".$this->url('admin', array('channel' => $this->channel)),'/'); ?>
+                        <li class="hidden-xs"><a href="<?php echo $urlLogout; ?>"><i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                    <form id="search-form" class="navbar-form pull-right" role="search">
+                        <input type="search" class="search-query" placeholder="Search...">
+                    </form>
             </div>
-        </nav>
-
-        <div class="subnavbar">
-            <div class="subnavbar-inner">
-                <div class="container">
-                    <a href="javascript:;" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
-                      <span class="sr-only">Toggle navigation</span>
-                      <i class="glyphicon glyphicon-list"></i>
-                    </a>
-                    <div class="collapse subnav-collapse">
-                        <ul class="mainnav">
-                        
-                            <li class="<?php echo $this->nav=='dashboard'?'active':''?>">
-                                <a href="<?php echo $this->url('admin'); ?>">
-                                    <i class="glyphicon glyphicon-home"></i>
-                                    <span>Dashboard</span>
-                                </a>                        
-                            </li>
-                            
-                            <li class="dropdown <?php echo $this->nav=='cms'?'active':''?>">                   
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="glyphicon glyphicon-cog"></i>
-                                    <span>CMS</span>
-                                    <b class="caret"></b>
-                                </a>        
-                            
-                                <ul class="dropdown-menu">
-                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Bloc</a></li>
-                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Layout</a></li>
-                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Page</a></li>
-                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Template</a></li>
-                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Zone</a></li>
-                                </ul>               
-                            </li>
-                            <li class="dropdown <?php echo $this->nav=='content'?'active':''?>">                   
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="glyphicon glyphicon-book"></i>
-                                    <span>Contenus</span>
-                                    <b class="caret"></b>
-                                </a>        
-                            
-                                <ul class="dropdown-menu">
-                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Article</a></li>
-                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Menu</a></li>
-                                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Sondage</a></li>
-                                </ul>               
-                            </li>
-                        
-                        </ul>
-                    </div>
-
-                </div>
-            
-            </div> 
-
+        </header>
+        <div class="content container">
+            <?php echo $this->content; ?>
         </div>
-    	
-   <?php echo $this->content; ?>
-</div>
-<div class=="clearfix">&nbsp;</div>
-<div class="footer">
-    <div class="container">
-        <div class="row">
-            <div id="footer-copyright" class="col-md-6">
-               © Playground CMS 2014
-            </div> <!-- /span6 -->
-        </div> <!-- /row -->
-    </div> <!-- /container -->
-</div>
-	<!-- /container -->
+    </div>
+
 	<?php echo $this->inlineScript() ?>
 </body>
 </html>
-
-
-<script>
-$(document).ready(function() {
-    $($($('.nav')[0]).children()[1]).remove();
-});
-</script>

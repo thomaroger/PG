@@ -53,14 +53,6 @@ return array(
                         ),
                     ),
 
-                    'playground_user_css' => array(
-                        'assets' => array(
-                            'user-style.css'                      => 'css/playground-user/style.css',
-                        ),
-                        'options' => array(
-                            'output' => 'zfcadmin/css/user'
-                        ),
-                    ),
                     
                     /**
                      * MAIN JS FILES
@@ -109,10 +101,7 @@ return array(
                 '@playground_css',
                 '@playground_js',
 
-            ),
-            'admin' => array(
-              '@playground_user_css',
-            ),            
+            ),           
         ),
 	),
 );
