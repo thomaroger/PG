@@ -28,17 +28,17 @@ if(isset($children[0])){
     </div>
     <nav id="sidebar" class="sidebar nav-collapse collapse">
         <ul id="side-nav" class="side-nav">
-            <li class="active">
-                <a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-home"></i> <span class="name">Dashboard</span></a>
+            <li class="<?php echo $this->nav =="dashboard"?'active':''; ?>">
+                <a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-dashboard"></i> <span class="name">Dashboard</span></a>
             </li>
-            <li class="panel active">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-cog"></i> <span class="name">CMS</span></a>
-                <ul id="forms-collapse" class="panel-collapse open in">
-                    <li class="active"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Bloc</a></li>
-                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Layout</a></li>
-                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Page</a></li>
-                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Template</a></li>
-                    <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Zone</a></li>
+            <li class="panel <?php echo $this->nav =="cms"?'active':''; ?>">
+                <a class="accordion-toggle <?php echo $this->nav =="cms"?'':'collapsed'; ?>" data-toggle="collapse" data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-cog"></i> <span class="name">CMS</span></a>
+                <ul id="forms-collapse" class="panel-collapse <?php echo $this->nav =="cms"?'open in':'collapsed'; ?>">
+                    <li class="<?php echo $this->subNav =="block"?'active':''; ?>"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Bloc</a></li>
+                    <li class="<?php echo $this->subNav =="layout"?'active':''; ?>"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Layout</a></li>
+                    <li class="<?php echo $this->subNav =="page"?'active':''; ?>"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Page</a></li>
+                    <li class="<?php echo $this->subNav =="template"?'active':''; ?>"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Template</a></li>
+                    <li class="<?php echo $this->subNav =="zone"?'active':''; ?>"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Zone</a></li>
                 </ul>
             </li>
             <li class="panel">

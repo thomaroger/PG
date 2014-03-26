@@ -1,17 +1,18 @@
-<div class="widget widget-plain pull-right margin-right30">
-    <div class="widget-content">   
-        <a href="javascript:;" class="btn btn-primary btn-support-ask">Add a page</a>   
-    </div>
-</div>
 
-<div class="widget stacked widget-table action-table">        
-    <div class="widget-header">
-        <i class="glyphicon glyphicon-th-list"></i>
-        <h3>Listes des pages (<?php echo $this->nbPage;?>)</h3>
+<section class="widget">
+    <header>
+        <h4>
+            <i class="fa fa-desktop"></i>
+            Listes des pages (<?php echo $this->nbPage;?>)
+        </h4>
+    </header>
+    <div class="pull-right margin-right30">
+        <button type="button" class="btn btn-success btn-lg" data-placement="top" data-original-title=".btn .btn-success .btn-lg">
+            Add a page
+        </button>
     </div>
-    
-    <div class="widget-content">
-        <table class="table table-striped table-bordered">
+    <div class="body">
+        <table class="table table-hover table-striped">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -22,9 +23,7 @@
                     <th>Urls</th>
                     <th>Layout</th>
                     <th>Created date</th>
-                    <th class="td-actions">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </th>
+                    <th class="td-actions">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,17 +59,19 @@
                         <td><?php echo $page->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
                         <td class="td-actions">
                             <a href="javascript:;" class="btn btn-xs btn-danger">
-                                <i class="btn-icon-only glyphicon glyphicon-remove"></i>                                       
+                                <i class="btn-icon-only fa fa-times"></i>                                       
                             </a>
                              <a href="javascript:;" class="btn btn-xs btn-success">
-                                <i class="btn-icon-only glyphicon glyphicon-pencil"></i>                                       
+                                <i class="btn-icon-only fa fa-pencil"></i>                                       
                             </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
-                </tbody>
-            </table>
-    </div>
-</div>
+            </tbody>
+        </table>
+    </div> 
+    <?php echo $this->paginationControl($this->pagesPaginator , 'Sliding', 'playground-cms/partial/pagination.phtml', array('uri' => $this->url('admin/playgroundcmsadmin/page'), "countResults" => $this->nbPage)); ?> 
+</section>
 
-<?php echo $this->paginationControl($this->pagesPaginator , 'Sliding', 'playground-cms/partial/pagination.phtml', array('uri' => $this->url('admin/playgroundcmsadmin/page'), "countResults" => $this->nbPage)); ?>
+
+

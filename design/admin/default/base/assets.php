@@ -54,6 +54,7 @@ return array(
                     'playground_js' => array(
                         'assets' => array(
                             'jquery-1.10.2.min.js'          => 'js/lib/jquery-1.10.2.min.js',
+                            'jquery-ui.1.10.4.min.js'       => 'js/lib/jquery-ui.1.10.4.min.js',
                             'bootstrap.min.js'              => 'js/lib/bootstrap.min.js',
                             'main.js'                       => 'js/main.js',
                         ),

@@ -25,3 +25,8 @@
 .margin-right30 {
     margin-right: 30px;
 }
+
+
+.widget.large, .widget.large .body {
+    height:  auto;
+}
