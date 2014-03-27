@@ -36,12 +36,27 @@
                             ?>
                             <?php 
                             if($visible) : ?>
-                                <span class="label label-success">Visible</span>
+                                <div class="feed-item">
+                                    <div class="icon">
+                                        <i class="fa fa-check color-green"></i>
+                                    </div>
+                                </div>
                             <?php else: ?>
-                                <span class="label label-danger">Non Visible</span>
+                                <div class="feed-item">
+                                    <div class="icon">
+                                        <i class="fa fa-times color-red"></i>
+                                    </div>
+                                </div>
                             <?php endif;  ?>
                         </td>
-                        <td><?php echo $page->getStatus(); ?></td>
+                        <td>
+                            <?php $labelType = "info" ?>
+                            <?php if($page->getStatus() == 1 ) $labelType = "success"; ?>
+                            <?php if($page->getStatus() == 2 ) $labelType = "warning"; ?>
+                            <?php if($page->getStatus() == 3 ) $labelType = "important"; ?>
+                            <span class="label label-<?php echo $labelType; ?>"><?php echo $page->getStatusName(); ?></span>
+                            
+                        </td>
                         <td><?php echo $page->getStartDate()->format('d/m/Y H:i:s'); ?></td>
                         <td><?php echo $page->getEndDate()->format('d/m/Y H:i:s'); ?></td>
                         <td>
