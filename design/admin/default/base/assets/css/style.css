@@ -26,6 +26,16 @@
     margin-right: 30px;
 }
 
+.color-white {
+    color : #FFFFFF;
+}
+
+.color-white:hover {
+    color : #FFFFFF;
+    text-decoration: none;
+}
+
+
 
 .widget.large, .widget.large .body {
     height:  auto;
