@@ -20,91 +20,132 @@
                 <section class="widget widget-tabs large">
                     <header>
                         <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#fr_FR" data-toggle="tab"> <img src="blank.gif" class="flag flag-fr" alt="fr_FR" /> fr_FR</a>
-                            </li>
-                            <li>
-                                <a href="#en_US" data-toggle="tab"> <img src="blank.gif" class="flag flag-us" alt="en_US" /> en_US</a>
-                            </li>
+                            <?php $cpt = 0; ?>
+                            <?php foreach ($this->locales as $locale) : ?>
+                                <li class="<?php echo $cpt==0?'active':'';?>">
+                                    <?php $locales = explode('_', $locale->getLocale()); ?>
+                                    <a href="#<?php echo $locale->getLocale(); ?>" data-toggle="tab"> <img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> <?php echo $locale->getName(); ?></a>
+                                </li>
+                                <?php $cpt ++; ?>
+                            <?php endforeach; ?>
                         </ul>
                     </header>
                     <div class="body tab-content">
-                        <div id="fr_FR" class="tab-pane active clearfix">
-                            <fieldset>
-                                <legend class="section"><img src="blank.gif" class="flag flag-fr" alt="fr_FR" /> informations fr_FR</legend>
-                                <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
-                                     <div class="control-group">
-                                        <label for="description" class="control-label">Page title</label>
-                                        <div class="controls form-group">
-                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated">
+                        <?php $cpt = 0; ?>
+                        <?php foreach ($this->locales as $locale) : ?>
+                            <?php $locales = explode('_', $locale->getLocale()); ?>
+                            <div id="<?php echo $locale->getLocale(); ?>" class="tab-pane clearfix <?php echo $cpt==0?'active':'';?>">
+                                <fieldset>
+                                    <legend class="section"><img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> informations <?php echo $locale->getName(); ?></legend>
+                                    <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                                         <div class="control-group">
+                                            <label for="description" class="control-label">Page title</label>
+                                            <div class="controls form-group">
+                                                <input type="text" id="first-name" name="page[title]" required="required" class="form-control parsley-validated">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label for="description" class="control-label">Page slug</label>
+                                            <div class="controls form-group">
+                                                <input type="text" id="first-name" name="page[slug]" required="required" class="form-control parsley-validated" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label for="description" class="control-label">Page title SEO</label>
+                                            <div class="controls form-group">
+                                                <input type="text" id="first-name" name="page[title_seo]" required="required" class="form-control parsley-validated">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label for="description" class="control-label">Page Keyword SEO</label>
+                                            <div class="controls form-group">
+                                                <textarea id="description" rows="2" name="page[keyword_seo]" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label for="description" class="control-label">Page Description SEO</label>
+                                            <div class="controls form-group">
+                                                <textarea id="description" rows="2" name="page[description_seo]" class="form-control"></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="control-group">
-                                        <label for="description" class="control-label">Page slug</label>
-                                        <div class="controls form-group">
-                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="description" class="control-label">Page title SEO</label>
-                                        <div class="controls form-group">
-                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated">
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="description" class="control-label">Page Keyword SEO</label>
-                                        <div class="controls form-group">
-                                            <textarea id="description" rows="2" name="text" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="description" class="control-label">Page Description SEO</label>
-                                        <div class="controls form-group">
-                                            <textarea id="description" rows="2" name="text" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div id="en_US" class="tab-pane">
-                            <fieldset>
-                                <legend class="section"><img src="blank.gif" class="flag flag-us" alt="en_US" /> informations en_US</legend>
-                                <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
-                                     <div class="control-group">
-                                        <label for="description" class="control-label">Page title</label>
-                                        <div class="controls form-group">
-                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated">
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="description" class="control-label">Page slug</label>
-                                        <div class="controls form-group">
-                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="description" class="control-label">Page title SEO</label>
-                                        <div class="controls form-group">
-                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated">
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="description" class="control-label">Page Keyword SEO</label>
-                                        <div class="controls form-group">
-                                            <textarea id="description" rows="2" name="text" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="description" class="control-label">Page Description SEO</label>
-                                        <div class="controls form-group">
-                                            <textarea id="description" rows="2" name="text" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
+                                </fieldset>
+                            </div>
+                            <?php $cpt ++; ?>
+                        <?php endforeach; ?> 
                     </div>
                 </section>
+            </div>
+        </section>
+        <section class="widget">
+            <header>
+                <h4>Platform informations</h4>
+            </header>
+            <div class="body">
+                <div id="page-options" class="form-horizontal form-condensed label-left">
+                    <fieldset>
+                        <legend class="section"><i class="fa fa-desktop"></i> Web</legend>
+                        <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                             <div class="control-group">
+                                <label for="text" class="control-label">Active ?</label>
+                                <div class="controls form-group">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="radio">
+                                        <input type="radio" class="icheck" value="1" name="page[web]">
+                                        Yes
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" class="icheck" value="2" name="page[web]">
+                                        No
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="description" class="control-label">Layout Mobile</label>
+                                <div class="controls form-group">
+                                    <select class="selectpicker show-tick"  name="page[weblayout]" data-live-search="true" data-size="6" data-width="100%">
+                                        <option data-content="">Choose the layout</option>
+                                        <?php foreach ($layouts as $layout) : ?>
+                                            <option><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
+                                        <?php endforeach; ?>
+                                  </select>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="section"><i class="fa fa-mobile"></i>  Mobile</legend>
+                        <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                              <div class="control-group">
+                                <label for="text" class="control-label">Active ?</label>
+                                <div class="controls form-group">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="radio">
+                                        <input type="radio" class="icheck" name="mobile">
+                                        Yes
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="mobile" class="icheck">
+                                        No
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="description" class="control-label">Layout Mobile</label>
+                                <div class="controls form-group">
+                                    <select class="selectpicker show-tick"  data-live-search="true"  data-size="6" data-width="100%">
+                                        <option data-content="">Choose the layout</option>
+                                        <?php foreach ($layouts as $layout) : ?>
+                                            <option><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
+                                        <?php endforeach; ?>z
+                                  </select>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
             </div>
         </section>
     </div>
@@ -116,11 +157,25 @@
             <div class="body">
                 <div id="page-options" class="form-horizontal form-condensed label-left">
                     <fieldset>
-                        <legend class="section">Publishing</legend>
+                        <legend class="section"><i class="fa fa-key"></i> Access</legend>
+                        <div class="control-group">
+                            <label for="description" class="control-label">Visibility</label>
+                            <div class="controls form-group">
+                               <select class="selectpicker show-tick"  data-live-search="true" data-size="6" data-width="100%">
+                                    <option data-content="">Choose the visibility</option>
+                                    <?php foreach ($credentials as $key => $value) : ?>
+                                        <option data-content="<span class='label label-<?php echo $key; ?>'><?php echo $value; ?></span>"><?php echo $value; ?></option>
+                                    <?php endforeach; ?>
+                              </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="section"><i class="fa fa-calendar"></i> Publishing</legend>
                         <div class="control-group">
                             <label for="article-status" class="control-label">Status</label>
                             <div class="controls form-group">
-                                <select class="selectpicker show-tick"  data-live-search="true" data-size="5">
+                                <select class="selectpicker show-tick"  data-live-search="true" data-size="5"  data-width="100%">
                                     <option data-content="">Choose the status</option>
                                     <?php foreach ($pagesStatuses as $key => $value) : ?>
                                     <?php $labelType = "info" ?>
@@ -150,76 +205,6 @@
                             <div class="controls form-group">
                                 <input type="text" id="end-publish-time" name="publish-time" class="form-control">
                                 <span class="help-block">End datetime of the page</span>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend class="section">Web</legend>
-                        <div class="control-group">
-                            <label for="title" class="control-label"> Web</label>
-                            <div class="controls form-group">
-                                <label class="radio">
-                                    <input type="radio" class="icheck" name="web">
-                                    Yes
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="web" class="icheck">
-                                    No
-                                </label>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label for="description" class="control-label">Layout Web</label>
-                            <div class="controls form-group">
-                                <select class="selectpicker show-tick"  data-live-search="true" data-size="6" data-width="50%">
-                                    <option data-content="">Choose the layout</option>
-                                    <?php foreach ($layouts as $layout) : ?>
-                                        <option><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
-                                    <?php endforeach; ?>
-                              </select>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend class="section"> Mobile</legend>
-                        <div class="control-group">
-                            <label for="text" class="control-label">Mobile</label>
-                            <div class="controls form-group">
-                                <div class="btn-group" data-toggle="buttons">
-                                    <label class="radio">
-                                    <input type="radio" class="icheck" name="mobile">
-                                    Yes
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="mobile" class="icheck">
-                                    No
-                                </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label for="description" class="control-label">Layout Mobile</label>
-                            <div class="controls form-group">
-                                <select class="selectpicker show-tick"  data-live-search="true" data-size="6" data-width="50%">
-                                    <option data-content="">Choose the layout</option>
-                                    <?php foreach ($layouts as $layout) : ?>
-                                        <option><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
-                                    <?php endforeach; ?>
-                              </select>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend class="section"> Access</legend>
-                        <div class="control-group">
-                            <label for="description" class="control-label">Visibility</label>
-                            <div class="controls form-group">
-                               <select class="selectpicker show-tick"  data-live-search="true" data-size="6" data-width="50%">
-                                    <option data-content="">Choose the visibility</option>
-                                    <?php foreach ($credentials as $key => $value) : ?>
-                                        <option data-content="<span class='label label-<?php echo $key; ?>'><?php echo $value; ?></span>"><?php echo $value; ?></option>
-                                    <?php endforeach; ?>
-                              </select>
                             </div>
                         </div>
                     </fieldset>
