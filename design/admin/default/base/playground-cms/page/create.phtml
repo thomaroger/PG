@@ -14,64 +14,7 @@
     <div class="col-md-8">
         <section class="widget">
             <header>
-                <h4>Generals informations</h4>
-            </header>
-            <div class="body">
-                <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
-                    <fieldset>
-                        <div class="control-group">
-                            <label for="title" class="control-label">Web</label>
-                            <div class="controls form-group">
-                                <label class="radio">
-                                    <input type="radio" class="icheck" name="web">
-                                    Yes
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="web" class="icheck">
-                                    No
-                                </label>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label for="text" class="control-label">Mobile</label>
-                            <div class="controls form-group">
-                                <div class="btn-group" data-toggle="buttons">
-                                    <label class="radio">
-                                    <input type="radio" class="icheck" name="mobile">
-                                    Yes
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="mobile" class="icheck">
-                                    No
-                                </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label for="description" class="control-label">Visibility</label>
-                            <div class="controls form-group">
-                               <select class="selectpicker show-tick"  data-live-search="true" data-size="6" data-width="50%">
-                                    <option data-content="">Choose the visibility</option>
-                                    <?php foreach ($credentials as $key => $value) : ?>
-                                        <option data-content="<span class='label label-<?php echo $key; ?>'><?php echo $value; ?></span>"><?php echo $value; ?></option>
-                                    <?php endforeach; ?>
-                              </select>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label for="description" class="control-label">Layout</label>
-                            <div class="controls form-group">
-                                <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated">
-                                <span class="help-block">playground-cms/page/index.phtml</span>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-        </section>
-        <section class="widget">
-            <header>
-                <h4>Localized informations</h4>
+                <h4>Content informations</h4>
             </header>
             <div class="body">
                 <section class="widget widget-tabs large">
@@ -207,6 +150,76 @@
                             <div class="controls form-group">
                                 <input type="text" id="end-publish-time" name="publish-time" class="form-control">
                                 <span class="help-block">End datetime of the page</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="section">Web</legend>
+                        <div class="control-group">
+                            <label for="title" class="control-label"> Web</label>
+                            <div class="controls form-group">
+                                <label class="radio">
+                                    <input type="radio" class="icheck" name="web">
+                                    Yes
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="web" class="icheck">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="description" class="control-label">Layout Web</label>
+                            <div class="controls form-group">
+                                <select class="selectpicker show-tick"  data-live-search="true" data-size="6" data-width="50%">
+                                    <option data-content="">Choose the layout</option>
+                                    <?php foreach ($layouts as $layout) : ?>
+                                        <option><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
+                                    <?php endforeach; ?>
+                              </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="section"> Mobile</legend>
+                        <div class="control-group">
+                            <label for="text" class="control-label">Mobile</label>
+                            <div class="controls form-group">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="radio">
+                                    <input type="radio" class="icheck" name="mobile">
+                                    Yes
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="mobile" class="icheck">
+                                    No
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="description" class="control-label">Layout Mobile</label>
+                            <div class="controls form-group">
+                                <select class="selectpicker show-tick"  data-live-search="true" data-size="6" data-width="50%">
+                                    <option data-content="">Choose the layout</option>
+                                    <?php foreach ($layouts as $layout) : ?>
+                                        <option><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
+                                    <?php endforeach; ?>
+                              </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="section"> Access</legend>
+                        <div class="control-group">
+                            <label for="description" class="control-label">Visibility</label>
+                            <div class="controls form-group">
+                               <select class="selectpicker show-tick"  data-live-search="true" data-size="6" data-width="50%">
+                                    <option data-content="">Choose the visibility</option>
+                                    <?php foreach ($credentials as $key => $value) : ?>
+                                        <option data-content="<span class='label label-<?php echo $key; ?>'><?php echo $value; ?></span>"><?php echo $value; ?></option>
+                                    <?php endforeach; ?>
+                              </select>
                             </div>
                         </div>
                     </fieldset>
