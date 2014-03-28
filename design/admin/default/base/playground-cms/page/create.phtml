@@ -10,6 +10,7 @@
         <h2 class="page-title"><i class="fa fa-desktop"></i> Create a new page</h2>
     </div>
 </div>
+<form method="POST">
 <div class="row">
     <div class="col-md-8">
         <section class="widget">
@@ -36,36 +37,36 @@
                             <?php $locales = explode('_', $locale->getLocale()); ?>
                             <div id="<?php echo $locale->getLocale(); ?>" class="tab-pane clearfix <?php echo $cpt==0?'active':'';?>">
                                 <fieldset>
-                                    <legend class="section"><img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> informations <?php echo $locale->getName(); ?></legend>
+                                    <legend class="section"><img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> <?php echo $locale->getName(); ?></legend>
                                     <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
                                          <div class="control-group">
                                             <label for="description" class="control-label">Page title</label>
                                             <div class="controls form-group">
-                                                <input type="text" id="first-name" name="page[title]" required="required" class="form-control parsley-validated">
+                                                <input type="text" id="first-name" name="page[<?php echo $locale->getLocale(); ?>][title]" class="form-control parsley-validated">
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label for="description" class="control-label">Page slug</label>
                                             <div class="controls form-group">
-                                                <input type="text" id="first-name" name="page[slug]" required="required" class="form-control parsley-validated" disabled>
+                                                <input type="text" id="first-name" name="page[<?php echo $locale->getLocale(); ?>][slug]" class="form-control parsley-validated" disabled>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label for="description" class="control-label">Page title SEO</label>
                                             <div class="controls form-group">
-                                                <input type="text" id="first-name" name="page[title_seo]" required="required" class="form-control parsley-validated">
+                                                <input type="text" id="first-name" name="page[<?php echo $locale->getLocale(); ?>][title_seo]" class="form-control parsley-validated">
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label for="description" class="control-label">Page Keyword SEO</label>
                                             <div class="controls form-group">
-                                                <textarea id="description" rows="2" name="page[keyword_seo]" class="form-control"></textarea>
+                                                <textarea id="description" rows="2" name="page[<?php echo $locale->getLocale(); ?>][keyword_seo]" class="form-control"></textarea>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label for="description" class="control-label">Page Description SEO</label>
                                             <div class="controls form-group">
-                                                <textarea id="description" rows="2" name="page[description_seo]" class="form-control"></textarea>
+                                                <textarea id="description" rows="2" name="page[<?php echo $locale->getLocale(); ?>][description_seo]" class="form-control"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -91,11 +92,11 @@
                                 <div class="controls form-group">
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="radio">
-                                        <input type="radio" class="icheck" value="1" name="page[web]">
+                                        <input type="radio" class="icheck" name="page[web][active]" value="1">
                                         Yes
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" class="icheck" value="2" name="page[web]">
+                                        <input type="radio" class="icheck" name="page[web][active]" value="0" checked>
                                         No
                                     </label>
                                     </div>
@@ -104,10 +105,10 @@
                             <div class="control-group">
                                 <label for="description" class="control-label">Layout Mobile</label>
                                 <div class="controls form-group">
-                                    <select class="selectpicker show-tick"  name="page[weblayout]" data-live-search="true" data-size="6" data-width="100%">
-                                        <option data-content="">Choose the layout</option>
+                                    <select class="selectpicker show-tick"  name="page[web][layout]" data-live-search="true" data-size="6" data-width="100%">
+                                        <option value="" data-content="">Choose the layout</option>
                                         <?php foreach ($layouts as $layout) : ?>
-                                            <option><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
+                                            <option value="<?php echo $layout->getFile(); ?>"><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
                                         <?php endforeach; ?>
                                   </select>
                                 </div>
@@ -122,11 +123,11 @@
                                 <div class="controls form-group">
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="radio">
-                                        <input type="radio" class="icheck" name="mobile">
+                                        <input type="radio" class="icheck" name="page[mobile][active]" value="1">
                                         Yes
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" name="mobile" class="icheck">
+                                        <input type="radio" class="icheck" name="page[mobile][active]" value="0" checked>
                                         No
                                     </label>
                                     </div>
@@ -135,10 +136,10 @@
                             <div class="control-group">
                                 <label for="description" class="control-label">Layout Mobile</label>
                                 <div class="controls form-group">
-                                    <select class="selectpicker show-tick"  data-live-search="true"  data-size="6" data-width="100%">
-                                        <option data-content="">Choose the layout</option>
+                                    <select class="selectpicker show-tick"  name="page[mobile][layout]" data-live-search="true"  data-size="6" data-width="100%">
+                                        <option value="" data-content="">Choose the layout</option>
                                         <?php foreach ($layouts as $layout) : ?>
-                                            <option><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
+                                            <option value="<?php echo $layout->getFile(); ?>"><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
                                         <?php endforeach; ?>z
                                   </select>
                                 </div>
@@ -161,10 +162,10 @@
                         <div class="control-group">
                             <label for="description" class="control-label">Visibility</label>
                             <div class="controls form-group">
-                               <select class="selectpicker show-tick"  data-live-search="true" data-size="6" data-width="100%">
-                                    <option data-content="">Choose the visibility</option>
+                               <select class="selectpicker show-tick" name="page[visibility]" data-live-search="true" data-size="6" data-width="100%">
+                                    <option value="" data-content="">Choose the visibility</option>
                                     <?php foreach ($credentials as $key => $value) : ?>
-                                        <option data-content="<span class='label label-<?php echo $key; ?>'><?php echo $value; ?></span>"><?php echo $value; ?></option>
+                                        <option value="<?php echo $value; ?>" data-content="<span class='label label-<?php echo $key; ?>'><?php echo $value; ?></span>"><?php echo $value; ?></option>
                                     <?php endforeach; ?>
                               </select>
                             </div>
@@ -175,14 +176,14 @@
                         <div class="control-group">
                             <label for="article-status" class="control-label">Status</label>
                             <div class="controls form-group">
-                                <select class="selectpicker show-tick"  data-live-search="true" data-size="5"  data-width="100%">
-                                    <option data-content="">Choose the status</option>
+                                <select class="selectpicker show-tick" name="page[status]" data-live-search="true" data-size="5" data-width="100%">
+                                    <option value="" data-content="">Choose the status</option>
                                     <?php foreach ($pagesStatuses as $key => $value) : ?>
                                     <?php $labelType = "info" ?>
                                     <?php if($key == 1 ) $labelType = "success"; ?>
                                     <?php if($key == 2 ) $labelType = "warning"; ?>
                                     <?php if($key == 3 ) $labelType = "important"; ?>
-                                        <option data-content="<span class='label label-<?php echo $labelType; ?>'><?php echo $value; ?></span>"><?php echo $value; ?></option>
+                                        <option value="<?php echo $key; ?>" data-content="<span class='label label-<?php echo $labelType; ?>'><?php echo $value; ?></span>"><?php echo $value; ?></option>
                                     <?php endforeach; ?>
                               </select>
                             </div>
@@ -190,20 +191,20 @@
                         <div class="control-group">
                             <label for="publish-date" class="control-label">Start Date</label>
                             <div class="controls form-group">
-                                <input type="text" id="publish-date" name="publish-date" class="form-control datepicker">
+                                <input type="text" id="publish-date" name="page[start_date][date]" class="form-control datepicker">
                             </div>
                             <div class="controls form-group">
-                                <input type="text" id="start-publish-time" name="publish-time" class="form-control">
+                                <input type="text" id="start-publish-time" name="page[start_date][time]" class="form-control">
                                 <span class="help-block">Start datetime of the page</span>
                             </div>
                         </div>
                         <div class="control-group">
                             <label for="publish-date" class="control-label">End Date</label>
                             <div class="controls form-group">
-                                <input type="text" id="publish-date" name="publish-date" class="form-control datepicker">
+                                <input type="text" id="publish-date" name="page[end_start][date]" class="form-control datepicker">
                             </div>
                             <div class="controls form-group">
-                                <input type="text" id="end-publish-time" name="publish-time" class="form-control">
+                                <input type="text" id="end-publish-time" name="page[end_start][time]" class="form-control">
                                 <span class="help-block">End datetime of the page</span>
                             </div>
                         </div>
@@ -222,3 +223,4 @@
         </section>
     </div>
 </div>
+</form>
