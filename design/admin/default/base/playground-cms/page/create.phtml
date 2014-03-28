@@ -40,33 +40,39 @@
                                     <legend class="section"><img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> <?php echo $locale->getName(); ?></legend>
                                     <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
                                          <div class="control-group">
-                                            <label for="description" class="control-label">Page title</label>
+                                            <label for="description" class="control-label">Title</label>
                                             <div class="controls form-group">
                                                 <input type="text" id="first-name" name="page[<?php echo $locale->getLocale(); ?>][title]" class="form-control parsley-validated">
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label for="description" class="control-label">Page slug</label>
-                                            <div class="controls form-group">
-                                                <input type="text" id="first-name" name="page[<?php echo $locale->getLocale(); ?>][slug]" class="form-control parsley-validated" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label for="description" class="control-label">Page title SEO</label>
+                                            <label for="description" class="control-label">Meta Title</label>
                                             <div class="controls form-group">
                                                 <input type="text" id="first-name" name="page[<?php echo $locale->getLocale(); ?>][title_seo]" class="form-control parsley-validated">
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label for="description" class="control-label">Page Keyword SEO</label>
+                                            <label for="description" class="control-label">Meta Keyword</label>
                                             <div class="controls form-group">
                                                 <textarea id="description" rows="2" name="page[<?php echo $locale->getLocale(); ?>][keyword_seo]" class="form-control"></textarea>
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label for="description" class="control-label">Page Description SEO</label>
+                                            <label for="description" class="control-label">Meta Description</label>
                                             <div class="controls form-group">
                                                 <textarea id="description" rows="2" name="page[<?php echo $locale->getLocale(); ?>][description_seo]" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label for="description" class="control-label">Slug</label>
+                                            <div class="controls form-group">
+                                                <input type="text" id="first-name" name="page[<?php echo $locale->getLocale(); ?>][slug]" class="form-control parsley-validated" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label for="description" class="control-label">URL</label>
+                                            <div class="controls form-group">
+                                                <input type="text" id="first-name" name="page[<?php echo $locale->getLocale(); ?>][url]" class="form-control parsley-validated" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -103,10 +109,10 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label for="description" class="control-label">Layout Mobile</label>
+                                <label for="description" class="control-label">Layout</label>
                                 <div class="controls form-group">
                                     <select class="selectpicker show-tick"  name="page[web][layout]" data-live-search="true" data-size="6" data-width="100%">
-                                        <option value="" data-content="">Choose the layout</option>
+                                        <option value="" data-content="">Choose the layout for the web</option>
                                         <?php foreach ($layouts as $layout) : ?>
                                             <option value="<?php echo $layout->getFile(); ?>"><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
                                         <?php endforeach; ?>
@@ -134,10 +140,10 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label for="description" class="control-label">Layout Mobile</label>
+                                <label for="description" class="control-label">Layout</label>
                                 <div class="controls form-group">
                                     <select class="selectpicker show-tick"  name="page[mobile][layout]" data-live-search="true"  data-size="6" data-width="100%">
-                                        <option value="" data-content="">Choose the layout</option>
+                                        <option value="" data-content="">Choose the layout for the mobile</option>
                                         <?php foreach ($layouts as $layout) : ?>
                                             <option value="<?php echo $layout->getFile(); ?>"><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
                                         <?php endforeach; ?>z
@@ -214,11 +220,11 @@
         </section>
         <section class="widget">
             <header>
-                <h4><i class="fa fa-plys"></i> Actions</h4>
+                <h4><i class="fa fa-plus"></i> Actions</h4>
             </header>
             <div class="body">
-                <button type="button" class="btn btn-danger">Reset</button>
                 <button type="submit" class="btn btn-success pull-right">Submit</button>
+                <div class="clearfix">&nbsp;</div>
             </div>
         </section>
     </div>
