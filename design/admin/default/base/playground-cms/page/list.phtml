@@ -1,4 +1,13 @@
-
+<div class="row">
+    <div class="col-md-12">
+        <section class="widget">
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li class="active">Pages</li>
+            </ol>
+        </section>
+    </div>
+</div>
 <section class="widget">
     <header>
         <h4>
@@ -7,9 +16,11 @@
         </h4>
     </header>
     <div class="pull-right margin-right30">
-        <button type="button" class="btn btn-success btn-lg" data-placement="top" data-original-title=".btn .btn-success .btn-lg">
-            Add a page
-        </button>
+        <a href="<?php echo $this->url("admin/playgroundcmsadmin/page_create");?>">
+            <button type="button" class="btn btn-success btn-lg" data-placement="top" data-original-title=".btn .btn-success .btn-lg">
+                Add a page
+            </button>
+        </a>
     </div>
     <div class="body">
         <table class="table table-hover table-striped">

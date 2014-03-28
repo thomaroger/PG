@@ -1,0 +1,226 @@
+<div class="row">
+    <div class="col-md-12">
+        <section class="widget">
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>"><i class="fa fa-desktop"></i> Page</a></li>
+                <li class="active">Create</li>
+            </ol>
+        </section>
+        <h2 class="page-title"><i class="fa fa-desktop"></i> Create a new page</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <section class="widget">
+            <header>
+                <h4>Generals informations</h4>
+            </header>
+            <div class="body">
+                <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                    <fieldset>
+                        <div class="control-group">
+                            <label for="title" class="control-label">Web</label>
+                            <div class="controls form-group">
+                                <label class="radio">
+                                    <input type="radio" class="icheck" name="web">
+                                    Yes
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="web" class="icheck">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="text" class="control-label">Mobile</label>
+                            <div class="controls form-group">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="radio">
+                                    <input type="radio" class="icheck" name="mobile">
+                                    Yes
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="mobile" class="icheck">
+                                    No
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="description" class="control-label">Visibility</label>
+                            <div class="controls form-group">
+                               <select class="selectpicker show-tick"  data-live-search="true" data-size="6" data-width="50%">
+                                    <option data-content="">Choose the visibility</option>
+                                    <?php foreach ($credentials as $key => $value) : ?>
+                                        <option data-content="<span class='label label-<?php echo $key; ?>'><?php echo $value; ?></span>"><?php echo $value; ?></option>
+                                    <?php endforeach; ?>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="description" class="control-label">Layout</label>
+                            <div class="controls form-group">
+                                <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated">
+                                <span class="help-block">playground-cms/page/index.phtml</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </section>
+        <section class="widget">
+            <header>
+                <h4>Localized informations</h4>
+            </header>
+            <div class="body">
+                <section class="widget widget-tabs large">
+                    <header>
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#fr_FR" data-toggle="tab"> <img src="blank.gif" class="flag flag-fr" alt="fr_FR" /> fr_FR</a>
+                            </li>
+                            <li>
+                                <a href="#en_US" data-toggle="tab"> <img src="blank.gif" class="flag flag-us" alt="en_US" /> en_US</a>
+                            </li>
+                        </ul>
+                    </header>
+                    <div class="body tab-content">
+                        <div id="fr_FR" class="tab-pane active clearfix">
+                            <fieldset>
+                                <legend class="section"><img src="blank.gif" class="flag flag-fr" alt="fr_FR" /> informations fr_FR</legend>
+                                <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                                     <div class="control-group">
+                                        <label for="description" class="control-label">Page title</label>
+                                        <div class="controls form-group">
+                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="description" class="control-label">Page slug</label>
+                                        <div class="controls form-group">
+                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="description" class="control-label">Page title SEO</label>
+                                        <div class="controls form-group">
+                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="description" class="control-label">Page Keyword SEO</label>
+                                        <div class="controls form-group">
+                                            <textarea id="description" rows="2" name="text" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="description" class="control-label">Page Description SEO</label>
+                                        <div class="controls form-group">
+                                            <textarea id="description" rows="2" name="text" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div id="en_US" class="tab-pane">
+                            <fieldset>
+                                <legend class="section"><img src="blank.gif" class="flag flag-us" alt="en_US" /> informations en_US</legend>
+                                <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                                     <div class="control-group">
+                                        <label for="description" class="control-label">Page title</label>
+                                        <div class="controls form-group">
+                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="description" class="control-label">Page slug</label>
+                                        <div class="controls form-group">
+                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="description" class="control-label">Page title SEO</label>
+                                        <div class="controls form-group">
+                                            <input type="text" id="first-name" name="first-name" required="required" class="form-control parsley-validated">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="description" class="control-label">Page Keyword SEO</label>
+                                        <div class="controls form-group">
+                                            <textarea id="description" rows="2" name="text" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="description" class="control-label">Page Description SEO</label>
+                                        <div class="controls form-group">
+                                            <textarea id="description" rows="2" name="text" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section class="widget">
+            <header>
+                <h4><i class="fa fa-cog"></i> Options</h4>
+            </header>
+            <div class="body">
+                <div id="page-options" class="form-horizontal form-condensed label-left">
+                    <fieldset>
+                        <legend class="section">Publishing</legend>
+                        <div class="control-group">
+                            <label for="article-status" class="control-label">Status</label>
+                            <div class="controls form-group">
+                                <select class="selectpicker show-tick"  data-live-search="true" data-size="5">
+                                    <option data-content="">Choose the status</option>
+                                    <?php foreach ($pagesStatuses as $key => $value) : ?>
+                                    <?php $labelType = "info" ?>
+                                    <?php if($key == 1 ) $labelType = "success"; ?>
+                                    <?php if($key == 2 ) $labelType = "warning"; ?>
+                                    <?php if($key == 3 ) $labelType = "important"; ?>
+                                        <option data-content="<span class='label label-<?php echo $labelType; ?>'><?php echo $value; ?></span>"><?php echo $value; ?></option>
+                                    <?php endforeach; ?>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="publish-date" class="control-label">Start Date</label>
+                            <div class="controls form-group">
+                                <input type="text" id="publish-date" name="publish-date" class="form-control datepicker">
+                            </div>
+                            <div class="controls form-group">
+                                <input type="text" id="start-publish-time" name="publish-time" class="form-control">
+                                <span class="help-block">Start datetime of the page</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="publish-date" class="control-label">End Date</label>
+                            <div class="controls form-group">
+                                <input type="text" id="publish-date" name="publish-date" class="form-control datepicker">
+                            </div>
+                            <div class="controls form-group">
+                                <input type="text" id="end-publish-time" name="publish-time" class="form-control">
+                                <span class="help-block">End datetime of the page</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </section>
+        <section class="widget">
+            <header>
+                <h4><i class="fa fa-plys"></i> Actions</h4>
+            </header>
+            <div class="body">
+                <button type="button" class="btn btn-danger">Reset</button>
+                <button type="submit" class="btn btn-success pull-right">Submit</button>
+            </div>
+        </section>
+    </div>
+</div>
