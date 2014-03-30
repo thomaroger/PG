@@ -105,8 +105,18 @@
                                     </div>
                                     <div class="modal-body">
                                         <h4><?php echo $page->getTitle(); ?></h4>
-                                        <p></p>
-                                        <p></p>
+                                        <h5>URL :</h5>
+                                        <p>
+                                            <?php foreach ($ressources as $key => $ressource) : ?>
+                                                <?php echo $ressource->getUrl()."<br />"; ?>
+                                            <?php endforeach; ?>
+                                        </p>
+                                        <h5>Layout :</h5>
+                                        <p>
+                                            <?php foreach ($layouts as $key => $value) : ?>
+                                                <?php echo "<strong>".$key."</strong> : ".$value."<br />"; ?>
+                                            <?php endforeach; ?>
+                                        </p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
