@@ -255,6 +255,7 @@
             e.stopPropagation();
             e.preventDefault();
             var target = $(e.target).closest('span, td, th');
+            this.picker.hide();
             if (target.length === 1) {
                 switch(target[0].nodeName.toLowerCase()) {
                     case 'th':

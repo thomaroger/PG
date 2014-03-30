@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-md-12">
+        <section class="widget">
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li class="active">Layouts</li>
+            </ol>
+        </section>
+    </div>
+</div>
+<section class="widget">
+    <header>
+        <h4>
+            <i class="fa fa-desktop"></i>
+            Listes des layouts (<?php echo $this->nbLayout;?>)
+        </h4>
+    </header>
+    <div class="pull-right margin-right30">
+        <a href="<?php echo $this->url("admin/playgroundcmsadmin/layout_create");?>">
+            <button type="button" class="btn btn-success btn-lg" data-placement="top" data-original-title=".btn .btn-success .btn-lg">
+                Add a Layout
+            </button>
+        </a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="divider"></div>
+    <div class="body">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>File</th>
+                    <th>Created date</th>
+                    <th class="td-actions">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->layoutsPaginator as $layout) : ?>
+                    <tr>
+                        <td>
+                            <?php $image = $layout->getImage(); ?>
+                            <?php if(!empty($image)) : ?>
+                                <img src="<?php echo $image; ?>" alt="" width="80px" height="60px">
+                            <?php else:  ?>
+                                <img src="http://placehold.it/80x60" alt="">
+                            <?php endif ?>
+                        </td>
+                        <td>
+                            <?php echo $layout->getName(); ?>
+                        </td>
+                        <td>
+                            <?php echo $layout->getFile(); ?>
+                        </td>
+                        <td><?php echo $layout->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
+                        <td class="td-actions">
+                            <a href="<?php echo $this->url('admin/playgroundcmsadmin/page_edit', array('id' => $layout->getId()));?>" class="btn btn-xs btn-success">
+                                <i class="btn-icon-only fa fa-pencil"></i>                                       
+                            </a>
+                            <a href="javascript:;" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#myModal_<?php echo $layout->getId(); ?>">
+                                <i class="btn-icon-only fa fa-times"></i>                                       
+                            </a>
+                        </td>
+                        <div id="myModal_<?php echo $layout->getId(); ?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">Confirm the deletion fo the layout ?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4><?php echo $layout->getName(); ?></h4>
+                                        <h5>File :</h5>
+                                        <p>
+                                            <?php echo $layout->getFile(); ?>
+                                        </p>
+                                        <h5>Description :</h5>
+                                        <p>
+                                            <?php echo $layout->getDescription(); ?>
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <a href="<?php echo $this->url('admin/playgroundcmsadmin/page_remove', array('id' => $layout->getId()));?>">
+                                            <button type="button" class="btn btn-danger">Remove</button>
+                                        </a>
+                                    </div>
+
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div> 
+    <?php $paginator =  $this->paginationControl($this->layoutsPaginator , 'Sliding', 'playground-cms/partial/pagination.phtml', array('uri' => $this->url('admin/playgroundcmsadmin/layout'), "countResults" => $this->nbLayout)); ?> 
+    <?php if(strlen($paginator) > 10) :?>
+            <div class="divider"></div>
+            <?php echo $paginator; ?>
+    <?php endif; ?>
+    <div class="clearfix"></div>
+    <div class="divider"></div>
+    <div class="pull-right margin-right30">
+        <a href="<?php echo $this->url("admin/playgroundcmsadmin/layout_create");?>">
+            <button type="button" class="btn btn-success btn-lg" data-placement="top" data-original-title=".btn .btn-success .btn-lg">
+                Add a Layout
+            </button>
+        </a>
+    </div>
+    <div class="clearfix"></div>
+</section>
+
+
+
