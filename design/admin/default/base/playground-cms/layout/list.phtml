@@ -11,7 +11,7 @@
 <section class="widget">
     <header>
         <h4>
-            <i class="fa fa-desktop"></i>
+            <i class="fa fa-windows"></i>
             Listes des layouts (<?php echo $this->nbLayout;?>)
         </h4>
     </header>
@@ -54,7 +54,7 @@
                         </td>
                         <td><?php echo $layout->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
                         <td class="td-actions">
-                            <a href="<?php echo $this->url('admin/playgroundcmsadmin/page_edit', array('id' => $layout->getId()));?>" class="btn btn-xs btn-success">
+                            <a href="<?php echo $this->url('admin/playgroundcmsadmin/layout_edit', array('id' => $layout->getId()));?>" class="btn btn-xs btn-success">
                                 <i class="btn-icon-only fa fa-pencil"></i>                                       
                             </a>
                             <a href="javascript:;" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#myModal_<?php echo $layout->getId(); ?>">
@@ -67,14 +67,11 @@
 
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title" id="myModalLabel">Confirm the deletion fo the layout ?</h4>
+                                        <h4 class="modal-title" id="myModalLabel">Confirm the deletion of the layout ?</h4>
                                     </div>
                                     <div class="modal-body">
                                         <h4><?php echo $layout->getName(); ?></h4>
-                                        <h5>File :</h5>
-                                        <p>
-                                            <?php echo $layout->getFile(); ?>
-                                        </p>
+                                        <h5>File : <?php echo $layout->getFile(); ?></h5>
                                         <h5>Description :</h5>
                                         <p>
                                             <?php echo $layout->getDescription(); ?>
@@ -82,7 +79,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <a href="<?php echo $this->url('admin/playgroundcmsadmin/page_remove', array('id' => $layout->getId()));?>">
+                                        <a href="<?php echo $this->url('admin/playgroundcmsadmin/layout_remove', array('id' => $layout->getId()));?>">
                                             <button type="button" class="btn btn-danger">Remove</button>
                                         </a>
                                     </div>
