@@ -42,9 +42,7 @@
                             <?php $image = $layout->getImage(); ?>
                             <?php if(!empty($image)) : ?>
                                 <img src="<?php echo $image; ?>" alt="" width="80px" height="60px">
-                            <?php else:  ?>
-                                <img src="http://placehold.it/80x60" alt="">
-                            <?php endif ?>
+                            <?php endif; ?>
                         </td>
                         <td>
                             <?php echo $layout->getName(); ?>
