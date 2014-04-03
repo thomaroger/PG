@@ -11,7 +11,7 @@
         <h2 class="page-title"><i class="fa fa-windows"></i> Create a new layout</h2>
     </div>
 </div>
-<form method="POST">
+<form method="POST" ENCTYPE="multipart/form-data">
 <?php if(!empty($return) && $return['status'] != 0) : ?>
     <div class="row">
         <div class="alert alert-danger">
@@ -73,7 +73,7 @@
                                 <span class="btn btn-sm btn-default fileinput-button">
                                     <i class="fa fa-plus"></i>
                                     <span>Add a media</span>
-                                    <input type="file" name="files[]" />
+                                    <input type="file" name="files" />
                                 </span>
                             </div>
                         </div>
