@@ -41,7 +41,7 @@
                         <td>
                             <?php $image = $layout->getImage(); ?>
                             <?php if(!empty($image)) : ?>
-                                <img src="<?php echo $image; ?>" alt="" width="80px" height="60px">
+                                <img src="<?php echo $image; ?>" alt="<?php echo $layout->getName(); ?>"  height="60px">
                             <?php endif; ?>
                         </td>
                         <td>

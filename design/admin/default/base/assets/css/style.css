@@ -40,3 +40,7 @@
 .widget.large, .widget.large .body {
     height:  auto;
 }
+
+.layout .thumbnail img {
+    width: 50%;
+}

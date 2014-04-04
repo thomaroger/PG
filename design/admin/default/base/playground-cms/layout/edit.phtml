@@ -13,6 +13,7 @@
     </div>
 </div>
 <form method="POST" ENCTYPE="multipart/form-data">
+    <input type="text" id="layoutId" name="layout[id]" class="form-control hide" value="<?php echo $layout->getId()?>" >
 <?php if(!empty($return) && $return['status'] != 0) : ?>
     <div class="row">
         <div class="alert alert-danger">
@@ -21,7 +22,7 @@
         </div>
     </div>
 <?php endif; ?>
-<div class="row">
+<div class="row layout">
     <div class="col-md-6">
         <section class="widget">
             <header>
@@ -70,8 +71,12 @@
                 <div id="page-options" class="form-horizontal form-condensed label-left">
                     
                     <div class="thumbnail">
-                        <img src="<?php echo $layout->getImage(); ?>" alt="<?php echo $layout->getName(); ?>">
+                         <?php $image = $layout->getImage(); ?>
+                        <?php if(!empty($image)) : ?>
+                            <img src="<?php echo $image; ?>" alt="<?php echo $layout->getName(); ?>">
+                        <?php endif; ?>
                         <div class="caption">
+
                             <p><?php echo $layout->getImage(); ?></p>
                             <p>
                                 <div class="control-group">
