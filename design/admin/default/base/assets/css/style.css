@@ -25,9 +25,18 @@
     color : #FFFFFF;
 }
 
+.color-white-underline {
+    color : #FFFFFF;
+}
+
 .color-white:hover {
     color : #FFFFFF;
     text-decoration: none;
+}
+
+.color-white-underline:hover {
+    color : #FFFFFF;
+    text-decoration: underline;
 }
 
 .divider {
