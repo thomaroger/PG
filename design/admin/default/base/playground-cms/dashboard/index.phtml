@@ -116,7 +116,7 @@
                                             </div>
                                             <div class="feed-item-body">
                                                 <div class="text">
-                                                    <a href="#"><?php echo $page->getTitle(); ?></a>.
+                                                    <a href="<?php echo $this->url('admin/playgroundcmsadmin/page_edit', array('id' => $page->getId()));?>"><?php echo $page->getTitle(); ?></a>
                                                 </div>
                                                 <div class="time pull-left">
                                                     Created at <?php echo $page->getCreatedAt()->format('d M Y, H:i'); ?>
