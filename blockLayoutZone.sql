@@ -1,0 +1,10 @@
+INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES (NULL, '2', '0', '', '', '1');
+INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES (NULL, '1', '0', '', '', '2');
+INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES (NULL, '3', '1', '', '', '2');
+INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES (NULL, '4', '0', '', '', '3');
+INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES (NULL, '4', '1', '', '', '3');
+INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES (NULL, '4', '2', '', '', '3');
+INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES (NULL, '5', '3', '', '', '3');
+INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES (NULL, '6', '4', '', '', '3');
+INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES (NULL, '7', '5', '', '', '3');
+INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES (NULL, '8', '6', '', '', '3');

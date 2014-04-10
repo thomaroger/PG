@@ -9,3 +9,4 @@ php vendor/doctrine/doctrine-module/bin/doctrine-module.php orm:schema-tool:drop
 php vendor/doctrine/doctrine-module/bin/doctrine-module.php orm:schema-tool:create
 php vendor/doctrine/doctrine-module/bin/doctrine-module.php data-fixture:import --append
 php vendor/doctrine/doctrine-module/bin/doctrine-module.php orm:schema-tool:update --force
+rm -rf data/cache/playgroundcms/*

@@ -132,9 +132,10 @@
                                 <label for="description" class="control-label">Layout</label>
                                 <div class="controls form-group">
                                     <select class="selectpicker show-tick"  name="page[web][layout]" data-live-search="true" data-size="6" data-width="100%">
+
                                         <option value="" data-content="">Choose the layout for the web</option>
                                         <?php foreach ($layouts as $layout) : ?>
-                                            <option value="<?php echo $layout->getFile(); ?>" <?php echo $layoutContext['web']==$layout->getFile()?'selected':'';?>><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
+                                            <option value="<?php echo $layout->getFile(); ?>" <?php echo !empty($layoutContext['web']) && ($layoutContext['web']==$layout->getFile())?'selected':'';?>><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
                                         <?php endforeach; ?>
                                   </select>
                                 </div>
@@ -165,7 +166,7 @@
                                     <select class="selectpicker show-tick"  name="page[mobile][layout]" data-live-search="true"  data-size="6" data-width="100%">
                                         <option value="" data-content="">Choose the layout for the mobile</option>
                                         <?php foreach ($layouts as $layout) : ?>
-                                            <option value="<?php echo $layout->getFile(); ?>" <?php echo $layoutContext['mobile']==$layout->getFile()?'selected':'';?>><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
+                                            <option value="<?php echo $layout->getFile(); ?>" <?php echo (!empty($layoutContext['mobile']) && ($layoutContext['mobile'])==$layout->getFile())?'selected':'';?>><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
                                         <?php endforeach; ?>z
                                   </select>
                                 </div>
