@@ -31,6 +31,9 @@ if(isset($children[0])){
             <li class="<?php echo $this->nav =="dashboard"?'active':''; ?>">
                 <a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-dashboard"></i> <span class="name">Dashboard</span></a>
             </li>
+            <li class="<?php echo $this->nav =="feeds"?'active':''; ?>">
+                <a href="<?php echo $this->url('admin/playgroundcmsadmin/feed'); ?>"><i class="fa fa-share"></i> <span class="name">Feeds</span></a>
+            </li>
             <li class="panel <?php echo $this->nav =="cms"?'active':''; ?>">
                 <a class="accordion-toggle <?php echo $this->nav =="cms"?'':'collapsed'; ?>" data-toggle="collapse" data-parent="#side-nav" href="#forms-collapse"><i class="fa fa-cog"></i> <span class="name">CMS</span></a>
                 <ul id="forms-collapse" class="panel-collapse <?php echo $this->nav =="cms"?'open in':'collapsed'; ?>">

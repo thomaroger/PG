@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-12">
+        <section class="widget">
+            <ol class="breadcrumb">
+                <li><a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li class="active">Feeds (<?php echo count($feeds); ?>)</li>
+            </ol>
+        </section>
+    </div>
+</div>
+
+<section class="widget large">
+    <div class="body">
+        <div class="" style="position: relative; overflow: hidden; width: auto; height: auto;"><div id="feed" class="feed" style="overflow: hidden; width: auto; height: auto;">
+            <div class="wrapper">
+                <div class="vertical-line"></div>
+                <?php foreach ($feeds as $feed) : ?>
+                    <?php if (get_class($feed) == 'PlaygroundUser\Entity\User') : ?>
+                        <?php $type = 'user'; ?>
+                        <?php $message = 'New user <a href="#">'.ucfirst($feed->getFirstname()).' '.strtoupper($feed->getLastname()).'</a>.'; ?>
+                    <?php endif; ?>
+                    <?php if (get_class($feed) == 'PlaygroundCMS\Entity\Page') : ?>
+                        <?php $type = 'desktop'; ?>
+                        <?php $message = 'New page <a href="'.$this->url('admin/playgroundcmsadmin/page_edit', array('id' => $feed->getId())).'">'.$feed->getTitle().'</a>.'; ?>
+                    <?php endif; ?>
+                    <?php if (get_class($feed) == 'PlaygroundCMS\Entity\Block') : ?>
+                        <?php $type = 'code'; ?>
+                        <?php $message = 'New block <a href="#">'.$feed->getName().'</a>.'; ?>
+                    <?php endif; ?>
+                    <?php if (get_class($feed) == 'PlaygroundCMS\Entity\Layout') : ?>
+                        <?php $type = 'windows'; ?>
+                        <?php $message = 'New Layout <a href="'.$this->url('admin/playgroundcmsadmin/layout_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a>.'; ?>
+                    <?php endif; ?>
+                    <?php if (get_class($feed) == 'PlaygroundCMS\Entity\Zone') : ?>
+                        <?php $type = 'th-large'; ?>
+                        <?php $message = 'New Zone <a href="'.$this->url('admin/playgroundcmsadmin/zone').'">'.$feed->getName().'</a>.'; ?>
+                    <?php endif; ?>
+                    <?php if (get_class($feed) == 'PlaygroundCMS\Entity\Template') : ?>
+                        <?php $type = 'align-justify'; ?>
+                        <?php $message = 'New Template <a href="'.$this->url('admin/playgroundcmsadmin/template_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a>.'; ?>
+                    <?php endif; ?>
+                    <section class="feed-item">
+                        <div class="icon pull-left">
+                            <i class="fa fa-<?php echo $type; ?>"></i>
+                        </div>
+                        <div class="feed-item-body">
+                            <div class="text">
+                                <?php echo $message; ?>
+                            </div>
+                            <div class="time pull-left">
+                                Created at <?php echo $feed->getCreatedAt()->format('d M Y, H:i'); ?>
+                            </div>
+                        </div>
+                    </section>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</section>
