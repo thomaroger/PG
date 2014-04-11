@@ -47,10 +47,9 @@
                         </td>
                         <td>
                             <?php 
-                                $visible = $page->checkVisibility(); 
+                            $visible = $page->checkVisibility(); 
+                            if($visible) : 
                             ?>
-                            <?php 
-                            if($visible) : ?>
                                 <div class="feed-item">
                                     <div class="icon">
                                         <i class="fa fa-check color-green"></i>

@@ -5,13 +5,15 @@
             <ol class="breadcrumb">
                 <li><a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                 <li><a href="<?php echo $this->url('admin/playgroundcmsadmin/template'); ?>"><i class="fa fa-align-justify"></i> Templates</a></li>
-                <li class="active">Create a new template</li>
+                <li class="active">Edit a template : <?php echo $template->getName(); ?></li>
             </ol>
         </section>
-        <h2 class="page-title"><i class="fa fa-align-justify"></i> Create a new template</h2>
+        <h2 class="page-title"><i class="fa fa-align-justify"></i> Edit a template : <?php echo $template->getName(); ?></h2>
     </div>
 </div>
 <form method="POST" ENCTYPE="multipart/form-data">
+    <input type="text" id="templateId" name="template[id]" class="form-control hide" value="<?php echo $template->getId()?>" >
+
 <?php if(!empty($return) && $return['status'] != 0) : ?>
     <div class="row">
         <div class="alert alert-danger">
@@ -33,13 +35,13 @@
                             <div class="control-group">
                                 <label for="description" class="control-label">Name <span class="required">*</span></label>
                                 <div class="controls form-group">
-                                    <input type="text" id="first-name" name="template[name]" class="form-control" value="<?php echo @$this->data['template']['name']; ?>" />
+                                    <input type="text" id="first-name" name="template[name]" class="form-control" value="<?php echo $template->getName(); ?>" />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label for="description" class="control-label">Description</label>
                                 <div class="controls form-group">
-                                    <textarea id="description" rows="3" name="template[description]" class="form-control"><?php echo @$this->data['template']['description'];?></textarea>
+                                    <textarea id="description" rows="3" name="template[description]" class="form-control"><?php echo $template->getDescription();?></textarea>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -48,7 +50,7 @@
                                     <select class="selectpicker show-tick" name="template[file]" data-live-search="true" data-size="6" data-width="100%">
                                         <option value="" data-content="">Choose the template</option>
                                         <?php foreach ($this->files as $file) : ?>
-                                            <option value="<?php echo $file ?>" <?php echo @$this->data['template']["file"]==$file?'selected':'';?>><?php echo $file; ?></option>
+                                            <option value="<?php echo $file ?>" <?php echo $template->getFile()==$file?'selected':'';?>><?php echo $file; ?></option>
                                         <?php endforeach; ?>
                                   </select>
                                   <span class="help-block">All .phtml templates in active frontend theme</span>
@@ -73,7 +75,7 @@
                                     <select class="selectpicker show-tick"  name="template[block_type]" data-live-search="true" data-size="6" data-width="100%">
                                         <option value="" data-content="">Choose the block type</option>
                                         <?php foreach ($this->blockstype as $blocktype) : ?>
-                                            <option value="<?php echo $blocktype ?>" <?php echo @$this->data['template']["block_type"]==$blocktype?'selected':'';?>><?php echo $blocktype; ?></option>
+                                            <option value="<?php echo $blocktype ?>" <?php echo $template->getBlockType()==$blocktype?'selected':'';?>><?php echo $blocktype; ?></option>
                                         <?php endforeach; ?>
                                   </select>
                                   <span class="help-block">Associate a template to a block type</span>
@@ -93,11 +95,11 @@
                                 <div class="controls form-group">
                                     <div class="btn-group" data-toggle="buttons">
                                         <label class="radio">
-                                        <input type="radio" class="icheck" name="template[system]" value="1" <?php echo @$this->data['template']["system"]=="1"?'checked':'';?>>
+                                        <input type="radio" class="icheck" name="template[system]" value="1" <?php echo $template->getIsSystem()=="1"?'checked':'';?>>
                                         Yes
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" class="icheck" name="template[system]" value="0" <?php echo empty($this->data['template']["system"])?'checked':'';?>>
+                                        <input type="radio" class="icheck" name="template[system]" value="0" <?php echo $template->getIsSystem()==0?'checked':'';?>>
                                         No
                                     </label>
                                     </div>
@@ -116,17 +118,27 @@
             </header>
             <div class="body">
                 <div id="page-options" class="form-horizontal form-condensed label-left">
-                    <fieldset>
-                        <div class="control-group">
-                            <div class="input-group">
-                                <span class="btn btn-sm btn-default fileinput-button">
-                                    <i class="fa fa-plus"></i>
-                                    <span>Add a media</span>
-                                    <input type="file" name="files" />
-                                </span>
-                            </div>
+                    <div class="thumbnail">
+                        <?php $image = $template->getImage(); ?>
+                        <?php if(!empty($image)) : ?>
+                            <img src="<?php echo $image; ?>" alt="<?php echo $template->getName(); ?>">
+                        <?php endif; ?>
+                        <div class="caption">
+
+                            <p><?php echo $template->getImage(); ?></p>
+                            <p>
+                                <div class="control-group">
+                                    <div class="input-group">
+                                        <span class="btn btn-sm btn-default fileinput-button">
+                                            <i class="fa fa-plus"></i>
+                                            <span>Add a media</span>
+                                            <input type="file" name="files" />
+                                        </span>
+                                    </div>
+                                </div>
+                            </p>
                         </div>
-                    </fieldset>
+                    </div>
                 </div>
             </div>
         </section>

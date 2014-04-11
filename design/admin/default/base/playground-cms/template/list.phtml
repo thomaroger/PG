@@ -33,17 +33,19 @@
                     <th>File</th>
                     <th>Entity</th>
                     <th>BlockType</th>
+                    <th>System</th>
                     <th>Created date</th>
                     <th class="td-actions">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($this->templatesPaginator as $template) : ?>
+                    <?php $templateSystem = $template->getIsSystem(); ?>
                     <tr>
                         <td>
                             <?php $image = $template->getImage(); ?>
                             <?php if(!empty($image)) : ?>
-                                <img src="<?php echo $image; ?>" alt="<?php echo $layout->getName(); ?>"  height="60px">
+                                <img src="<?php echo $image; ?>" alt="<?php echo $template->getName(); ?>"  height="60px">
                             <?php endif; ?>
                         </td>
                         <td>
@@ -53,46 +55,71 @@
                             <?php echo $template->getFile(); ?>
                         </td>
                         <td>
-                            <?php echo $template->getEntity(); ?>
+                            <?php echo  $template->getEntity(); ?>
                         </td>
                         <td>
-                            <?php echo $template->getBlockType(); ?>
+                            <?php echo  $template->getBlockType(); ?>
+                        </td>
+                         <td>
+                            <?php 
+                            $system = $template->getIsSystem(); 
+                            if($system) : 
+                            ?>
+                                <div class="feed-item">
+                                    <div class="icon">
+                                        <i class="fa fa-check color-green"></i>
+                                    </div>
+                                </div>
+                            <?php else: ?>
+                                <div class="feed-item">
+                                    <div class="icon">
+                                        <i class="fa fa-times color-red"></i>
+                                    </div>
+                                </div>
+                            <?php endif;  ?>
                         </td>
                         <td><?php echo $template->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
                         <td class="td-actions">
                             <a href="<?php echo $this->url('admin/playgroundcmsadmin/template_edit', array('id' => $template->getId()));?>" class="btn btn-xs btn-success">
                                 <i class="btn-icon-only fa fa-pencil"></i>                                       
                             </a>
-                            <a href="javascript:;" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#myModal_<?php echo $template->getId(); ?>">
-                                <i class="btn-icon-only fa fa-times"></i>                                       
-                            </a>
+                            <?php // Si un template n'est pas relié à une entité ou un bloc, alors c'est que c'est un template systeme
+                                  // Partial Pagination : playground-cms/partial/pagination.phtml 
+                            ?>
+                            <?php if(!$templateSystem): ?>
+                                <a href="javascript:;" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#myModal_<?php echo $template->getId(); ?>">
+                                    <i class="btn-icon-only fa fa-times"></i>                                       
+                                </a>
+                            <?php endif; ?>
                         </td>
-                        <div id="myModal_<?php echo $template->getId(); ?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
+                        <?php if(!$templateSystem) : ?>
+                            <div id="myModal_<?php echo $template->getId(); ?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
 
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title" id="myModalLabel">Confirm the deletion of the template ?</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h4><?php echo $template->getName(); ?></h4>
-                                        <h5>File : <?php echo $template->getFile(); ?></h5>
-                                        <h5>Description :</h5>
-                                        <p>
-                                            <?php echo $template->getDescription(); ?>
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <a href="<?php echo $this->url('admin/playgroundcmsadmin/template_remove', array('id' => $template->getId()));?>">
-                                            <button type="button" class="btn btn-danger">Remove</button>
-                                        </a>
-                                    </div>
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title" id="myModalLabel">Confirm the deletion of the template ?</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4><?php echo $template->getName(); ?></h4>
+                                            <h5>File : <?php echo $template->getFile(); ?></h5>
+                                            <h5>Description :</h5>
+                                            <p>
+                                                <?php echo $template->getDescription(); ?>
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <a href="<?php echo $this->url('admin/playgroundcmsadmin/template_remove', array('id' => $template->getId()));?>">
+                                                <button type="button" class="btn btn-danger">Remove</button>
+                                            </a>
+                                        </div>
 
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
