@@ -41,7 +41,8 @@ return array(
             'BjyAuthorize\Guard\Controller' => array(
 
                 //Front Area
-                array('controller' => 'PlaygroundCMS\Controller\Front\Page',     'roles' => array('guest', 'user')),
+                array('controller' => 'PlaygroundCMS\Controller\Front\Page',        'roles' => array('guest', 'user')),
+                array('controller' => 'PlaygroundCMS\Controller\Front\ExportBlock', 'roles' => array('guest', 'user')),
 
                 // Back Area
                 array('controller' => 'playgrounduseradmin_login',               'roles' => array('guest', 'admin')),

@@ -60,14 +60,16 @@
                 </div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6">
-                <div class="box">
-                    <div class="icon">
-                        <i class="fa fa-code"></i>
+                <a href="<?php echo $this->url('admin/playgroundcmsadmin/block'); ?>" class="color-white">
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa fa-code"></i>
+                        </div>
+                        <div class="description">
+                            <strong><?php echo count($this->blocks); ?></strong> blocks
+                        </div>
                     </div>
-                    <div class="description">
-                        <strong><?php echo count($this->blocks); ?></strong> blocks
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
             <div class="col-md-8">

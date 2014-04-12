@@ -55,11 +55,13 @@
                             $isExportable = $block->getIsExportable(); 
                             if($isExportable) : 
                             ?>
-                                <div class="feed-item">
-                                    <div class="icon">
-                                        <i class="fa fa-check color-green"></i>
+                                <a href="<?php echo $block->getUrlForExport();?>" target="_blank">
+                                    <div class="feed-item">
+                                        <div class="icon">
+                                            <i class="fa fa-check color-green"></i>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             <?php else: ?>
                                 <div class="feed-item">
                                     <div class="icon">
@@ -71,7 +73,7 @@
                         <td>
                         <?php 
                             $isGallery = $block->getIsGallery(); 
-                            if($isExportable) : 
+                            if($isGallery) : 
                             ?>
                                 <div class="feed-item">
                                     <div class="icon">
