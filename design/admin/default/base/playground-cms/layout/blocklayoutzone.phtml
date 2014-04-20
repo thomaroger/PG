@@ -1,5 +1,6 @@
 <?php $return = $this->return; ?>
 <?php $layout = $this->layout; ?>
+<?php $zones = $this->zones; ?>
 <div class="row">
     <div class="col-md-12">
         <section class="widget">
@@ -22,7 +23,54 @@
         </div>
     </div>
 <?php endif; ?>
-<div class="row layout">
 
+<div class="row layout">
+    <div class="col-md-12">
+        <section class="widget">
+            <header>
+                <h5>
+                    <i class="fa fa-code"></i>
+                    Associate block to a zone for the layout
+                </h5>
+            </header>
+            <div class="body">
+                <div class="tabbable tabs-right">
+                    <ul id="myTabright" class="nav nav-tabs">
+                        <?php $cpt = 0; ?>
+                        <?php foreach ($zones as $zone) : ?>
+                            <li class="<?php echo $cpt==0?'active':'' ?>"><a href="#zone-<?php echo $zone['zone']->getId()?>" data-toggle="tab"><?php echo $zone['zone']->getName(); ?></a></li>
+                        <?php $cpt++; ?>        
+                        <?php endforeach; ?>
+                    </ul>
+                    <div id="myTabContentright" class="tab-content">
+                        <?php $cpt = 0; ?>
+                        <?php foreach ($zones as $zone) : ?>
+                            <div class="tab-pane <?php echo $cpt==0?'active':'fade' ?>" id="zone-<?php echo $zone['zone']->getId()?>">
+                                <?php $blocks = $zone['blocks']; ?>
+                                <ol class="list-group list-group-outer sortable ui-sortable">
+                                <?php foreach ($blocks as $block) : ?>
+                                    <li class="list-group-item" id="block-<?php echo $block->getId();?>" >
+                                        <i class="fa fa-sort"></i>
+                                        <a class="close" data-dismiss="alert" href="#" aria-hidden="true">
+                                            <i class="btn-icon-only fa fa-times"></i>
+                                        </a>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <a class="close" data-dismiss="alert" href="#" aria-hidden="true">
+                                            <i class="btn-icon-only fa fa-pencil"></i>  
+                                        </a>
+                                        &nbsp;&nbsp;&nbsp; <?php echo $block->getId(); ?> &nbsp;&nbsp;&nbsp;
+                                        <?php echo $block->getName(); ?>
+                                    </li>
+                                <?php $cpt++; ?>        
+                                <?php endforeach; ?>
+                                </ol>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
 </div>
 </form>

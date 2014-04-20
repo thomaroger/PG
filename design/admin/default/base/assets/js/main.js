@@ -7,4 +7,13 @@ jQuery(function($){
         checkboxClass: 'icheckbox_square-grey',
         radioClass: 'iradio_square-grey'
     });
+    $(".sortable").sortable({
+        placeholder: 'list-group-item list-group-item-placeholder',
+        forcePlaceholderSize: true,
+        update : function(event, ui){
+            var item = $(ui.item);
+            /*console.log(item.attr("id"));
+            console.log(item.index())*/
+        }
+    });
 });
