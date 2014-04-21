@@ -12,8 +12,8 @@ jQuery(function($){
         forcePlaceholderSize: true,
         update : function(event, ui){
             var item = $(ui.item);
-            /*console.log(item.attr("id"));
-            console.log(item.index())*/
+            console.log(item.attr("id"));
+            console.log(item.index())
         }
     });
 });

@@ -48,8 +48,8 @@
                             <div class="tab-pane <?php echo $cpt==0?'active':'fade' ?>" id="zone-<?php echo $zone['zone']->getId()?>">
                                 <?php $blocks = $zone['blocks']; ?>
                                 <ol class="list-group list-group-outer sortable ui-sortable">
-                                <?php foreach ($blocks as $block) : ?>
-                                    <li class="list-group-item" id="block-<?php echo $block->getId();?>" >
+                                <?php foreach ($blocks as $key => $block) : ?>
+                                    <li class="list-group-item" id="block-<?php echo $key;?>" >
                                         <i class="fa fa-sort"></i>
                                         <a class="close" data-dismiss="alert" href="#" aria-hidden="true">
                                             <i class="btn-icon-only fa fa-times"></i>
