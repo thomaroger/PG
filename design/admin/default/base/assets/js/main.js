@@ -16,4 +16,11 @@ jQuery(function($){
             console.log(item.index())
         }
     });
+    $('#tabZone li a').each(function(index, elt){
+        $(elt).click(function(){
+            $('#layoutZone').attr('value', $(elt).attr('data-zone-id'));
+        })
+    });
+
+    $('#layoutZone').attr('value', $($('#tabZone li a')[0]).attr('data-zone-id'));
 });
