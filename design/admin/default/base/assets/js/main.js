@@ -12,8 +12,8 @@ jQuery(function($){
         forcePlaceholderSize: true,
         update : function(event, ui){
             var item = $(ui.item);
-            console.log(item.attr("id"));
-            console.log(item.index())
+            var url = '/admin/playgroundcms/blocklayoutzone/update/'+$('#layoutId').attr('value')+'/'+item.attr("data-block-layout-zone")+'/'+item.index();
+            $.get(url);
         }
     });
     $('#tabZone li a').each(function(index, elt){

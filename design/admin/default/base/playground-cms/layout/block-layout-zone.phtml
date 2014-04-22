@@ -26,7 +26,7 @@
     <div class="col-md-12">
         <form method="POST">
             <input type="hidden" name="layout[zone]" id="layoutZone" />
-            <input type="text" id="layoutId" name="layout[id]" class="form-control hide" value="<?php echo $layout->getId()?>" >
+            <input type="text" id="layoutId" name="layout[id]" id="layoutId" class="form-control hide" value="<?php echo $layout->getId()?>" >
             <section class="widget">
                 <header>
                     <h5>
@@ -90,7 +90,7 @@
                                 <?php $blocks = $zone['blocks']; ?>
                                 <ol class="list-group list-group-outer sortable ui-sortable">
                                 <?php foreach ($blocks as $key => $block) : ?>
-                                    <li class="list-group-item" id="block-<?php echo $key;?>" >
+                                    <li class="list-group-item" data-block-layout-zone="<?php echo $key; ?>" >
                                         <i class="fa fa-sort"></i>                                        
                                         &nbsp;&nbsp;&nbsp; <?php echo $block->getId(); ?> &nbsp;&nbsp;&nbsp;
                                         <?php echo $block->getName(); ?>
@@ -100,7 +100,7 @@
                                                 <i class="btn-icon-only fa fa-pencil"></i>                                       
                                             </a>
 
-                                            <a href="<?php echo $this->url('admin/playgroundcmsadmin/blocklayoutzone_remove', array('id' => $layout->getId(), 'blocklayoutId' => $key)); ?>" class="btn btn-xs btn-danger">
+                                            <a href="<?php echo $this->url('admin/playgroundcmsadmin/blocklayoutzone_remove', array('id' => $layout->getId(), 'blocklayoutZoneId' => $key)); ?>" class="btn btn-xs btn-danger">
                                                 <i class="btn-icon-only fa fa-times"></i>                                       
                                             </a>
                                         </div>
