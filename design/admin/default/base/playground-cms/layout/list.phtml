@@ -10,6 +10,37 @@
 </div>
 <section class="widget">
     <header>
+        <h4><i class="fa fa-search"></i> Filters</h4>
+    </header>
+    <div class="clearfix"></div>
+    <div class="body">
+        <div class="col-md-6">
+            <div class="control-group">
+                <label for="description" class="control-label">Title</label>
+                <div class="controls form-group">
+                    <input type="text" id="first-name" name="filters[title]" class="form-control" value="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="control-group">
+                <label for="description" class="control-label">File</label>
+                <div class="controls form-group">
+                    <select class="selectpicker show-tick" data-live-search="true" name="filters[file]" data-size="6" data-width="100%">
+                        <option value="" data-content="">Choose a file</option>
+                        <?php foreach ($this->files as $file) : ?>
+                            <option value="<?php echo $file ?>"><?php echo $file; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </diV>
+    <div class="clearfix"></div>
+</section>
+
+<section class="widget">
+    <header>
         <h4>
             <i class="fa fa-windows"></i>
             Layouts list (<?php echo $this->nbLayout;?>)
