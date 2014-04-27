@@ -7,6 +7,7 @@ jQuery(function($){
         checkboxClass: 'icheckbox_square-grey',
         radioClass: 'iradio_square-grey'
     });
+
     $(".sortable").sortable({
         placeholder: 'list-group-item list-group-item-placeholder',
         forcePlaceholderSize: true,
@@ -16,6 +17,7 @@ jQuery(function($){
             $.get(url);
         }
     });
+    
     $('#tabZone li a').each(function(index, elt){
         $(elt).click(function(){
             $('#layoutZone').attr('value', $(elt).attr('data-zone-id'));
