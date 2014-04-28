@@ -8,6 +8,63 @@
         </section>
     </div>
 </div>
+
+<section class="widget">
+    <header>
+        <h4><i class="fa fa-search"></i> Filters</h4>
+    </header>
+    <div class="clearfix"></div>
+    <div class="body">
+        <div class="col-md-3">
+            <div class="control-group">
+                <label for="description" class="control-label">Title</label>
+                <div class="controls form-group">
+                    <input type="text" id="first-name" name="filters[title]" class="form-control" value="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="control-group">
+                <label for="description" class="control-label">Layout</label>
+                <div class="controls form-group">
+                    <select class="selectpicker show-tick" data-live-search="true" name="filters[layout]" data-size="6" data-width="100%">
+                       <option value="" data-content="">Choose a file</option>
+                        <?php foreach ($this->files as $file) : ?>
+                            <option value="<?php echo $file ?>"><?php echo $file; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="control-group">
+                <label for="description" class="control-label">Type</label>
+                <div class="controls form-group">
+                    <select class="selectpicker show-tick" data-live-search="true" name="filters[blockType]" data-size="3" data-width="100%">
+                        <option value="" data-content="">Choose a type of block</option>
+                        <?php foreach ($this->blockTypes as $blockType) : ?>
+                            <option value="<?php echo $blockType ?>"><?php echo $blockType; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="control-group">
+                <label for="description" class="control-label">System</label>
+                <div class="controls form-group">
+                    <select class="selectpicker show-tick" name="page[gallery]" data-live-search="true" data-size="6" data-width="100%">
+                        <option value="2" data-content="<span class='label label-default'>Yes / No</span>">Yes / No</option>
+                        <option value="1" data-content="<span class='label label-success'>Yes</span>">Yes</option>
+                        <option value="0" data-content="<span class='label label-danger'>No</span>">No</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </diV>
+    <div class="clearfix"></div>
+</section>
+
 <section class="widget">
     <header>
         <h4>
