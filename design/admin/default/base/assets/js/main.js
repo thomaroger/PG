@@ -25,4 +25,10 @@ jQuery(function($){
     });
 
     $('#layoutZone').attr('value', $($('#tabZone li a')[0]).attr('data-zone-id'));
+
+    $('.blockType').change(function(){
+        var block =  $(this).val().split("\\");
+        var blockName = block[block.length - 1];
+        window.location.href = "/admin/playgroundcms/block/create/"+blockName;
+    });
 });
