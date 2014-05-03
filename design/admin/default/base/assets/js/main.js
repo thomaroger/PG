@@ -1,6 +1,6 @@
 jQuery(function($){
     $('.selectpicker').selectpicker();
-    //$('.textarea').wysihtml5();
+    $('.textarea').wysihtml5();
     $('.datepicker').datepicker({autoclose: true})
     $("#start-publish-time").mask("99:99:99");
     $("#end-publish-time").mask("99:99:99");
