@@ -162,7 +162,7 @@
                             <a href="#" class="btn btn-xs btn-success">
                                 <i class="btn-icon-only fa fa-pencil"></i>                                       
                             </a>
-                            <a href="javascript:;" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#myModal_<?php echo $block->getId(); ?>">
+                            <a href="javascript:;" class="btn btn-xs btn-danger" <?php echo $nbUseBlocks[$block->getId()] > 0 ?'disabled="disabled"':'' ?> data-toggle="modal" data-target="#myModal_<?php echo $block->getId(); ?>">
                                 <i class="btn-icon-only fa fa-times"></i>                                       
                             </a>
                         </td>
