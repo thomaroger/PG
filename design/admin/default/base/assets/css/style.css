@@ -53,3 +53,24 @@
 .layout .thumbnail img {
     width: 50%;
 }
+
+div.modal-content-block{
+    -webkit-backface-visibility: hidden;
+    -webkit-background-clip: border-box, border-box;
+    -webkit-background-origin: padding-box, padding-box;
+    -webkit-background-size: auto, auto;
+    background-attachment: scroll, scroll;
+    background-clip: border-box, border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: -webkit-radial-gradient(10% 0px, ellipse farthest-side, rgba(102, 105, 104, 0.901961), rgba(93, 112, 119, 0.890196), rgba(160, 174, 150, 0.901961)), url(http://dev.pgcms.fr/zfcadmin/img/bgnoise_lg_dark.png);
+    background-origin: padding-box, padding-box;
+}
+
+
+.modal-content-block h1, .modal-content-block h2, .modal-content-block h3, .modal-content-block h4, .modal-content-block h5, .modal-content-block h6 {
+    color: #fff; 
+}
+
+.modal-content-block section:last-child {
+   margin-bottom: 0px;
+}

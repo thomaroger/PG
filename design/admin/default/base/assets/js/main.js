@@ -32,4 +32,15 @@ jQuery(function($){
         var blockName = block[block.length - 1];
         window.location.href = "/admin/playgroundcms/block/create/"+blockName;
     });
+
+    $('.newBlock').change(function(){
+        var block =  $(this).val().split("\\");
+        var blockName = block[block.length - 1];
+        
+        $.get("/admin/playgroundcms/block/createwithoutlayout/"+blockName, function( data ) {
+          $("#contentForm").html(data);
+          $('#formBlock').modal();
+          $('#layoutZoneId').attr('value', $('#layoutZone').attr('value'));
+        })
+    });
 });
