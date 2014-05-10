@@ -1,1 +1,11 @@
-switch_locale.phtml
+<?php $this->plugin('cmstranslate')->setTranslatorTextDomain('playgroundcms'); ?>
+<ul class="nav nav-tabs">
+    <?php foreach($this->locales as $key => $locale ): ?>
+        <li>
+            <a href="<?php echo $locale['url']; ?>">
+                <img src="/lib/images/flag/<?php echo $locale['countryCode']; ?>.png" /> 
+                <?php echo $this->cmsTranslate($locale['name']); ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>

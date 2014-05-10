@@ -73,39 +73,41 @@
                 </div>
             </div>
         </section>
-
-        <section class="widget">
-            <header>
-                <h4> Block Configurations</h4>
-            </header>
-            <div class="body">
-                <div id="block-configuration" class="form-horizontal form-condensed label-left">
-                    <fieldset>
-                        <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
-                            <?php foreach ($form->getConfiguration() as $configuration) : ?>
-                                <div class="control-group">
-                                   <?php echo $this->formLabel($form->get($configuration)); ?>
-                                    <div class="controls form-group">
-                                        <?php if(get_class($form->get($configuration)) == 'Zend\Form\Element\Select') : ?>
-                                            <?php echo $this->formSelect($form->get($configuration)); ?>
-                                        <?php endif; ?>
-                                        <?php if(get_class($form->get($configuration)) == 'Zend\Form\Element\Textarea') : ?>
-                                            <?php echo $this->formTextArea($form->get($configuration)); ?>
-                                        <?php endif; ?>
-                                        <?php if(get_class($form->get($configuration)) == 'Zend\Form\Element\Text') : ?>
-                                            <?php echo $this->formInput($form->get($configuration)); ?>
-                                        <?php endif; ?>
-                                        <?php if(get_class($form->get($configuration)) == 'Zend\Form\Element\Radio') : ?>
-                                            <?php echo $this->formRadio($form->get($configuration)); ?>
-                                        <?php endif; ?>
+        <?php $configurations = $form->getConfiguration(); ?>
+        <?php if(!empty($configurations)) : ?>
+            <section class="widget">
+                <header>
+                    <h4> Block Configurations</h4>
+                </header>
+                <div class="body">
+                    <div id="block-configuration" class="form-horizontal form-condensed label-left">
+                        <fieldset>
+                            <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                                <?php foreach ($configurations as $configuration) : ?>
+                                    <div class="control-group">
+                                       <?php echo $this->formLabel($form->get($configuration)); ?>
+                                        <div class="controls form-group">
+                                            <?php if(get_class($form->get($configuration)) == 'Zend\Form\Element\Select') : ?>
+                                                <?php echo $this->formSelect($form->get($configuration)); ?>
+                                            <?php endif; ?>
+                                            <?php if(get_class($form->get($configuration)) == 'Zend\Form\Element\Textarea') : ?>
+                                                <?php echo $this->formTextArea($form->get($configuration)); ?>
+                                            <?php endif; ?>
+                                            <?php if(get_class($form->get($configuration)) == 'Zend\Form\Element\Text') : ?>
+                                                <?php echo $this->formInput($form->get($configuration)); ?>
+                                            <?php endif; ?>
+                                            <?php if(get_class($form->get($configuration)) == 'Zend\Form\Element\Radio') : ?>
+                                                <?php echo $this->formRadio($form->get($configuration)); ?>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </fieldset>
+                                <?php endforeach; ?>
+                            </div>
+                        </fieldset>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+    <?php endif; ?>
     </div>
     <div class="col-md-3">
         <section class="widget">
