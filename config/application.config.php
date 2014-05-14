@@ -14,6 +14,7 @@ return array(
         'PlaygroundDesign',
         'PlaygroundUser',
         'PlaygroundCMS',
+        'PlaygroundPublishing',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

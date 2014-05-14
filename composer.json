@@ -24,6 +24,7 @@
         "playground/user" : "dev-develop",
         "playground/design" : "dev-develop",
         "playground/cms2" : "dev-develop",
+        "playground/publishing" : "dev-develop",
         "playground/hybridauth" : "dev-master",
 		"doctrine/doctrine-orm-module" : "0.8.*@dev",
 		"doctrine/doctrine-module" : "0.8.*@dev",
