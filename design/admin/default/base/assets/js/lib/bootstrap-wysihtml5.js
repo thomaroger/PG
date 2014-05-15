@@ -395,7 +395,7 @@
 
     var defaultOptions = $.fn.wysihtml5.defaultOptions = {
         "font-styles": true,
-        "color": true,
+        "color": false,
         "emphasis": true,
         "lists": true,
         "html": true,
@@ -459,7 +459,7 @@
                 "pre": 1
             }
         },
-        stylesheets: ["<%= stylesheet_path('bootstrap-wysihtml5/wysiwyg-color.css') %>"], // (path_to_project/lib/css/wysiwyg-color.css)
+       
         locale: "en"
     };
 

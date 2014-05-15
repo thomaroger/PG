@@ -39,6 +39,15 @@
                         <?php $type = 'align-justify'; ?>
                         <?php $message = 'New Template <a href="'.$this->url('admin/playgroundcmsadmin/template_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a>.'; ?>
                     <?php endif; ?>
+                    <?php if (get_class($feed) == 'PlaygroundPublishing\Entity\Tag') : ?>
+                        <?php $type = 'tag'; ?>
+                        <?php $message = 'New Tag <a href="'.$this->url('admin/playgroundpublishingadmin/tag_edit', array('id' => $feed->getId())).'">'.$feed->getTitle().'</a>.'; ?>
+                    <?php endif; ?>
+                    <?php if (get_class($feed) == 'PlaygroundPublishing\Entity\Category') : ?>
+                        <?php $type = 'book'; ?>
+                        <?php $message = 'New category <a href="'.$this->url('admin/playgroundpublishingadmin/category_edit', array('id' => $feed->getId())).'">'.$feed->getTitle().'</a>.'; ?>
+                    <?php endif; ?>
+
                     <section class="feed-item">
                         <div class="icon pull-left">
                             <i class="fa fa-<?php echo $type; ?>"></i>
