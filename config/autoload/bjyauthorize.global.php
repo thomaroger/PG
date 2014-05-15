@@ -54,6 +54,10 @@ return array(
                 array('controller' => 'PlaygroundCMS\Controller\Back\Layout',    'roles' => array('admin')),
                 array('controller' => 'PlaygroundCMS\Controller\Back\Template',  'roles' => array('admin')),
                 array('controller' => 'PlaygroundCMS\Controller\Back\Zone',      'roles' => array('admin')),
+
+                array('controller' => 'PlaygroundPublishing\Controller\Back\Category',      'roles' => array('admin')),
+
+
             ),
         ),
     ),
