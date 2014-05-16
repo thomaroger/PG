@@ -45,8 +45,8 @@ if(isset($children[0])){
                 </ul>
             </li>
             <li class="panel <?php echo $this->nav =="content"?'active':''; ?>">
-                <a class="accordion-toggle collapsed <?php echo $this->nav =="content"?'':'collapsed'; ?>" data-toggle="collapse" data-parent="#side-nav" href="#stats-collapse"><i class="fa fa-book"></i> <span class="name">Content</span></a>
-                <ul id="stats-collapse" class="panel-collapse collapsed <?php echo $this->nav =="content"?'open in':'collapse'; ?>">
+                <a class="accordion-toggle <?php echo $this->nav =="content"?'':'collapsed'; ?>" data-toggle="collapse" data-parent="#side-nav" href="#content-collapse"><i class="fa fa-book"></i> <span class="name">Content</span></a>
+                <ul id="content-collapse" class="panel-collapse collapsed <?php echo $this->nav =="content"?'open in':'collapse'; ?>">
                     <li class="<?php echo $this->subNav =="article"?'active':''; ?>"><a href="<?php echo $this->url('admin/playgroundpublishingadmin/articles'); ?>">Article</a></li>
                     <li class="<?php echo $this->subNav =="category"?'active':''; ?>"><a href="<?php echo $this->url('admin/playgroundpublishingadmin/categories'); ?>">Category</a></li>
                     <li class="<?php echo $this->subNav =="menu"?'active':''; ?>"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page'); ?>">Menu</a></li>

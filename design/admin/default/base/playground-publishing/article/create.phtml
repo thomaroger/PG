@@ -181,6 +181,46 @@
     <div class="col-md-4">
         <section class="widget">
             <header>
+                <h4><i class="fa fa-link"></i> Association</h4>
+            </header>
+            <div class="body">
+                <div id="page-options" class="form-horizontal form-condensed label-left">
+                    <fieldset>
+                        <legend class="section"><i class="fa fa-tag"></i> Tag</legend>
+                        <div class="control-group">
+                            <label for="description" class="control-label">Tag</label>
+                            <div class="controls form-group">
+                                <?php $tagIds = @array_flip(@$this->data['article']["tags"]); ?>
+                                <select class="selectpicker show-tick" title='Choose the tags'  multiple name="article[tags][]" data-live-search="true" data-size="6" data-width="100%">
+                                    <?php foreach ($this->tags as $tag) : ?>
+                                        <option value="<?php echo $tag->getId(); ?>" <?php echo array_key_exists($tag->getId(), $tagIds)?'selected':'';?> ><?php echo $tag->getTitle(); ?></option>
+                                    <?php endforeach; ?>
+                              </select>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                     <fieldset>
+                        <legend class="section"><i class="fa fa-book"></i> Category</legend>
+                        <div class="control-group">
+                            <label for="description" class="control-label">Category</label>
+                            <div class="controls form-group">
+                                <?php $categoryIds = @array_flip(@$this->data['article']["categories"]); ?>
+                                <select class="selectpicker show-tick" title='Choose the categories'  multiple name="article[categories][]" data-live-search="true" data-size="6" data-width="100%">
+                                     <?php foreach ($this->categories as $category) : ?>
+                                        <option value="<?php echo $category->getId(); ?>" <?php echo array_key_exists($category->getId(), $categoryIds)?'selected':'';?> ><?php echo $category->getTitle(); ?></option>
+                                    <?php endforeach; ?>>
+                              </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="widget">
+            <header>
                 <h4><i class="fa fa-cog"></i> Options</h4>
             </header>
             <div class="body">
