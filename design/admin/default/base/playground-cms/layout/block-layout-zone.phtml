@@ -51,8 +51,8 @@
                                 <div class="controls form-group">
                                     <select class="selectpicker show-tick newBlock"  name="layout[blockType]" data-live-search="true" data-size="6" data-width="100%">
                                         <option value="" data-content="">Choose the type of the block</option>
-                                        <?php foreach ($this->blockTypes as $blockType) : ?>
-                                            <option value="<?php echo $blockType ?>"><?php echo $blockType; ?></option>
+                                        <?php foreach ($this->blockTypes as $key => $blockType) : ?>
+                                            <option value="<?php echo $key ?>"><?php echo $blockType; ?></option>
                                         <?php endforeach; ?>
                                   </select>
                                 </div>

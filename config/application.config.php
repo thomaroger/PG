@@ -13,8 +13,8 @@ return array(
     	'PlaygroundCore',
         'PlaygroundDesign',
         'PlaygroundUser',
-        'PlaygroundCMS',
         'PlaygroundPublishing',
+        'PlaygroundCMS',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

@@ -30,8 +30,7 @@ jQuery(function($){
     $('.blockType').change(function(){
         var block =  $(this).val().split("\\");
         var blockName = block[block.length - 1];
-        console.log(blockName);
-        //window.location.href = "/admin/playgroundcms/block/create/"+blockName;
+        window.location.href = "/admin/playgroundcms/block/create/"+blockName;
     });
 
     $('.newBlock').change(function(){

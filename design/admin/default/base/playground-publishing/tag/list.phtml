@@ -50,6 +50,7 @@
                     <th>Slug</th>
                     <th>Status</th>
                     <th>Created date</th>
+                    <th>Articles</th>
                     <th class="td-actions">Actions</th>
                 </tr>
             </thead>
@@ -80,6 +81,9 @@
                             <?php endif;  ?>
                         </td>
                         <td><?php echo $tag->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
+                        <td>
+                            <?php echo $tag->getArticles()->count(); ?> articles associated</td>
+                        </td>
                         <td class="td-actions">
                             <a href="<?php echo $this->url('admin/playgroundpublishingadmin/tag_edit', array('id' => $tag->getId()));?>" class="btn btn-xs btn-success">
                                 <i class="btn-icon-only fa fa-pencil"></i>                                       

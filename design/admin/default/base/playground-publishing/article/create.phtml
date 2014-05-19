@@ -193,7 +193,7 @@
                                 <?php $tagIds = @array_flip(@$this->data['article']["tags"]); ?>
                                 <select class="selectpicker show-tick" title='Choose the tags'  multiple name="article[tags][]" data-live-search="true" data-size="6" data-width="100%">
                                     <?php foreach ($this->tags as $tag) : ?>
-                                        <option value="<?php echo $tag->getId(); ?>" <?php echo array_key_exists($tag->getId(), $tagIds)?'selected':'';?> ><?php echo $tag->getTitle(); ?></option>
+                                        <option value="<?php echo $tag->getId(); ?>" <?php echo @array_key_exists($tag->getId(), $tagIds)?'selected':'';?> ><?php echo $tag->getTitle(); ?></option>
                                     <?php endforeach; ?>
                               </select>
                             </div>
@@ -208,7 +208,7 @@
                                 <?php $categoryIds = @array_flip(@$this->data['article']["categories"]); ?>
                                 <select class="selectpicker show-tick" title='Choose the categories'  multiple name="article[categories][]" data-live-search="true" data-size="6" data-width="100%">
                                      <?php foreach ($this->categories as $category) : ?>
-                                        <option value="<?php echo $category->getId(); ?>" <?php echo array_key_exists($category->getId(), $categoryIds)?'selected':'';?> ><?php echo $category->getTitle(); ?></option>
+                                        <option value="<?php echo $category->getId(); ?>" <?php echo @array_key_exists($category->getId(), $categoryIds)?'selected':'';?> ><?php echo $category->getTitle(); ?></option>
                                     <?php endforeach; ?>>
                               </select>
                             </div>

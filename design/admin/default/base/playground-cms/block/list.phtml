@@ -29,8 +29,8 @@
                 <div class="controls form-group">
                     <select class="selectpicker show-tick" data-live-search="true" name="filters[blockType]" data-size="3" data-width="100%">
                         <option value="" data-content="">Choose a type of block</option>
-                        <?php foreach ($this->blockTypes as $blockType) : ?>
-                            <option value="<?php echo $blockType ?>"><?php echo $blockType; ?></option>
+                        <?php foreach ($this->blockTypes as $key => $blockType) : ?>
+                            <option value="<?php echo $key ?>"><?php echo $blockType; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -78,8 +78,8 @@
             <div class="col-md-12">
                 <select class="selectpicker show-tick blockType" data-live-search="true" name="filters[blockType]" data-size="10" data-width="100%">
                     <option value="" data-content="">Choose a type of block to add</option>
-                    <?php foreach ($this->blockTypes as $blockType) : ?>
-                        <option value="<?php echo $blockType ?>"><?php echo $blockType; ?></option>
+                    <?php foreach ($this->blockTypes as $key => $blockType) : ?>
+                        <option value="<?php echo $key ?>"><?php echo $blockType; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -213,8 +213,8 @@
             <div class="col-md-12">
                 <select class="selectpicker show-tick blockType" data-live-search="true" name="filters[blockType]" data-size="3" data-width="100%">
                     <option value="" data-content="">Choose a type of block to add</option>
-                    <?php foreach ($this->blockTypes as $blockType) : ?>
-                        <option value="<?php echo $blockType ?>"><?php echo $blockType; ?></option>
+                    <?php foreach ($this->blockTypes as $key => $blockType) : ?>
+                        <option value="<?php echo $key ?>"><?php echo $blockType; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
