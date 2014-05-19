@@ -1,0 +1,25 @@
+<?php $article = $this->article; ?>
+<?php $translation = $article->getTranslations(); ?>
+
+<h1><?php echo $translation['title']; ?></h1>
+<h6><?php echo $article->getUpdatedAt()->format('d/m/Y H:i:s'); ?></h6>
+<?php echo $translation['content']; ?>
+
+<?php $tags = $article->getTags(); ?>
+<h6>
+    Tags : 
+    <?php foreach ($tags as $tag) : ?>
+        <?php $translation = $tag->getTranslations(); ?>
+        <?php echo $translation["title"]; ?>
+    <?php endforeach; ?>
+</h6>
+
+
+<?php $categories = $article->getCategories(); ?>
+<h6>
+    Categories : 
+    <?php foreach ($categories as $category) : ?>
+        <?php $translation = $category->getTranslations(); ?>
+        <?php echo $translation["title"]; ?>
+    <?php endforeach; ?>
+</h6>

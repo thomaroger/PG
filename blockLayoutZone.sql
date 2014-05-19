@@ -14,8 +14,8 @@ INSERT INTO `pgcms`.`cms_block_layout_zone` (`id`, `block_id`, `position`, `crea
 
 
 INSERT INTO `cms_ressource` (`id`, `url`, `model`, `record_id`, `locale`, `security_context`, `layout_context`, `created_at`, `updated_at`) VALUES
-(5, '/fr_fr/article/un-drone-de-fabrication-europeenne-pour-2020-2.html', 'PlaygroundPublishing\\Entity\\Article', 2, 'fr_FR', 'SECURITY_ANONYMOUS', '{"web":"playground-cms\\/layout\\/article.phtml"}', '2014-05-19 14:46:20', '2014-05-19 14:46:20'),
-(6, '/en_us/article/drone-of-european-manufacturing-for-2020-2.html', 'PlaygroundPublishing\\Entity\\Article', 2, 'en_US', 'SECURITY_ANONYMOUS', '{"web":"playground-cms\\/layout\\/article.phtml"}', '2014-05-19 14:46:20', '2014-05-19 14:46:20');
+(5, '/fr_fr/article/un-drone-de-fabrication-europeenne-pour-2020-2.html', 'PlaygroundPublishing\\Entity\\Article', 2, 'fr_FR', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/article.phtml"}', '2014-05-19 14:46:20', '2014-05-19 14:46:20'),
+(6, '/en_us/article/drone-of-european-manufacturing-for-2020-2.html', 'PlaygroundPublishing\\Entity\\Article', 2, 'en_US', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/article.phtml"}', '2014-05-19 14:46:20', '2014-05-19 14:46:20');
 
 --
 -- Contenu de la table `publishing_article`
