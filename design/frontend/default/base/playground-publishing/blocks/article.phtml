@@ -1,25 +1,26 @@
 <?php $article = $this->article; ?>
 <?php $translation = $article->getTranslations(); ?>
 
-<h1><?php echo $translation['title']; ?></h1>
-<h6><?php echo $article->getUpdatedAt()->format('d/m/Y H:i:s'); ?></h6>
-<?php echo $translation['content']; ?>
-
-<?php $tags = $article->getTags(); ?>
-<h6>
-    Tags : 
-    <?php foreach ($tags as $tag) : ?>
-        <?php $translation = $tag->getTranslations(); ?>
-        <?php echo $translation["title"]; ?>
-    <?php endforeach; ?>
-</h6>
-
-
 <?php $categories = $article->getCategories(); ?>
 <h6>
-    Categories : 
     <?php foreach ($categories as $category) : ?>
-        <?php $translation = $category->getTranslations(); ?>
-        <?php echo $translation["title"]; ?>
+        <?php $translationCategory = $category->getTranslations(); ?>
+        <span class="label label-primary"><?php echo $translationCategory["title"]; ?></span>
     <?php endforeach; ?>
 </h6>
+
+
+<h2><?php echo $translation['title']; ?></h2>
+<p><?php echo $article->getUpdatedAt()->format('d/m/Y H:i:s'); ?> by <?php echo $article->getAuthor(); ?></p>
+<?php $tags = $article->getTags(); ?>
+<p>
+    <?php foreach ($tags as $tag) : ?>
+        <?php $translationTag = $tag->getTranslations(); ?>
+        <span class="badge"><?php echo $translationTag["title"]; ?></span>
+    <?php endforeach; ?>
+</p>
+<?php echo $translation['content']; ?>
+
+
+
+
