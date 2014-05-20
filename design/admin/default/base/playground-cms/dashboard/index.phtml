@@ -23,7 +23,7 @@
                         <i class="fa fa-bold"></i>
                     </div>
                     <div class="description">
-                        <strong>xx</strong> Articles
+                        <strong><?php echo count($this->articles); ?></strong> Articles
                     </div>
                 </div>
             </div>
@@ -306,6 +306,10 @@
                                         <?php $type = 'book'; ?>
                                         <?php $message = 'New category <a href="'.$this->url('admin/playgroundpublishingadmin/category_edit', array('id' => $feed->getId())).'">'.$feed->getTitle().'</a>.'; ?>
                                     <?php endif; ?>
+                                    <?php if (get_class($feed) == 'PlaygroundPublishing\Entity\Article') : ?>
+                                        <?php $type = 'edit'; ?>
+                                        <?php $message = 'New article <a href="'.$this->url('admin/playgroundpublishingadmin/article_edit', array('id' => $feed->getId())).'">'.$feed->getTitle().'</a>.'; ?>
+                                    <?php endif; ?>
                                     <section class="feed-item">
                                         <div class="icon pull-left">
                                             <i class="fa fa-<?php echo $type; ?>"></i>
@@ -331,78 +335,30 @@
                             Articles
                         </h4>
                         <div class="actions">
-                            <button class="btn btn-transparent btn-xs">Show All <i class="fa fa-arrow-down"></i></button>
+                            <a href="<?php echo $this->url('admin/playgroundpublishingadmin/articles'); ?>"><button class="btn btn-transparent btn-xs">Show All <i class="fa fa-arrow-down"></i></button></a>
                         </div>
                     </header>
                     <div class="body">
                         <div class="" style="position: relative; overflow: hidden; width: auto; height: auto;"><div id="feed" class="feed" style="overflow: hidden; width: auto; height: auto;">
                             <div class="wrapper">
                                 <div class="vertical-line"></div>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-times color-red"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>.
+                                <?php foreach ($this->articles as $article) : ?>
+                                    <section class="feed-item">
+                                        <div class="icon pull-left">
+                                            <?php $color = "red";  ?>
+                                            <?php if($article->checkVisibility()) $color="green"; ?>
+                                            <i class="fa fa-check color-<?php echo $color; ?>"></i>
                                         </div>
-                                        <div class="time pull-left">
-                                            10 h
+                                        <div class="feed-item-body">
+                                            <div class="text">
+                                                <a href="<?php echo $this->url('admin/playgroundpublishingadmin/article_edit', array('id' => $article->getId())) ?>"><?php echo $article->getTitle(); ?></a>
+                                            </div>
+                                            <div class="time pull-left">
+                                                Created at <?php echo $article->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            </div>
                                         </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-times color-red"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>.
-                                        </div>
-                                        <div class="time pull-left">
-                                            14 h
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-times color-orange"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Yesterday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-times color-red"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>.
-                                        </div>
-                                        <div class="time pull-left">
-                                            Yesterday
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="feed-item">
-                                    <div class="icon pull-left">
-                                        <i class="fa fa-check color-green"></i>
-                                    </div>
-                                    <div class="feed-item-body">
-                                        <div class="text">
-                                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>.
-                                        </div>
-                                        <div class="time pull-left">
-                                            8 days ago
-                                        </div>
-                                    </div>
-                                </section>
+                                    </section>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
