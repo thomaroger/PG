@@ -48,6 +48,13 @@
                         <?php $cpt = 0; ?>
                         <?php foreach ($this->locales as $locale) : ?>
                             <?php $locales = explode('_', $locale->getLocale()); ?>
+                            <?php 
+                                foreach ($this->ressources as $ressourceLocale) :
+                                    if($ressourceLocale->getLocale() == $locale->getLocale()) :
+                                        $ressource = $ressourceLocale;
+                                    endif;
+                                endforeach;
+                            ?>
                             <div id="<?php echo $locale->getLocale(); ?>" class="tab-pane clearfix <?php echo $cpt==0?'active':'';?>">
                                 <fieldset>
                                     <legend class="section"><img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> <?php echo $locale->getName(); ?></legend>
@@ -65,9 +72,33 @@
                                             </div>
                                         </div>
                                         <div class="control-group">
+                                            <label for="description" class="control-label">Meta Title</label>
+                                            <div class="controls form-group">
+                                                <input type="text" id="first-name" name="category[<?php echo $locale->getLocale(); ?>][title_seo]" class="form-control" value="<?php echo @$translations[$locale->getLocale()]['titleMeta']; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label for="description" class="control-label">Meta Keyword</label>
+                                            <div class="controls form-group">
+                                                <textarea id="description" rows="2" name="category[<?php echo $locale->getLocale(); ?>][keyword_seo]" class="form-control"><?php echo @$translations[$locale->getLocale()]['keywordMeta']; ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label for="description" class="control-label">Meta Description</label>
+                                            <div class="controls form-group">
+                                                <textarea id="description" rows="2" name="category[<?php echo $locale->getLocale(); ?>][description_seo]" class="form-control"><?php echo @$translations[$locale->getLocale()]['descriptionMeta']; ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
                                             <label for="description" class="control-label">Slug</label>
                                             <div class="controls form-group">
-                                               <input type="text" id="first-name" name="category[<?php echo $locale->getLocale(); ?>][slug]" class="form-control" disabled value="<?php echo @$translations[$locale->getLocale()]['slug'];?>">
+                                                <input type="text" id="first-name" name="category[<?php echo $locale->getLocale(); ?>][slug]" class="form-control" disabled value="<?php echo @$translations[$locale->getLocale()]['slug'];?>">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label for="description" class="control-label">URL</label>
+                                            <div class="controls form-group">
+                                                <input type="text" id="first-name" name="category[<?php echo $locale->getLocale(); ?>][url]" class="form-control" disabled value="<?php echo $ressource->getUrl();?>">
                                             </div>
                                         </div>
                                     </div>
@@ -79,6 +110,79 @@
                 </section>
             </div>
         </section>
+        <section class="widget">
+            <header>
+                <h4>Platform informations</h4>
+            </header>
+            <?php $layoutContext = json_decode($ressources[0]->getLayoutContext(), true); ?>
+            <div class="body">
+                <div id="page-options" class="form-horizontal form-condensed label-left">
+
+                    <fieldset>
+                        <legend class="section"><i class="fa fa-desktop"></i> Web</legend>
+                        <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                            <div class="control-group">
+                                <label for="text" class="control-label">Active ? <span class="required">*</span></label>
+                                <div class="controls form-group">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="radio">
+                                        <input type="radio" class="icheck" name="category[web][active]" value="1" <?php echo $category->getIsWeb()=="1"?'checked="checked"':'';?>>
+                                        Yes
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" class="icheck" name="category[web][active]" value="0" <?php echo $category->getIsWeb()=="0"?'checked="checked"':'';?>>
+                                        No
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="description" class="control-label">Layout</label>
+                                <div class="controls form-group">
+                                    <select class="selectpicker show-tick"  name="category[web][layout]" data-live-search="true" data-size="6" data-width="100%">
+                                        <option value="" data-content="">Choose the layout for the web</option>
+                                        <?php foreach ($layouts as $layout) : ?>
+                                            <option value="<?php echo $layout->getFile(); ?>" <?php echo !empty($layoutContext['web']) && ($layoutContext['web']==$layout->getFile())?'selected':'';?>><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
+                                        <?php endforeach; ?>
+                                  </select>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="section"><i class="fa fa-mobile"></i>  Mobile</legend>
+                        <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                              <div class="control-group">
+                                <label for="text" class="control-label">Active ? <span class="required">*</span></label>
+                                <div class="controls form-group">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="radio">
+                                        <input type="radio" class="icheck" name="category[mobile][active]" value="1" <?php echo $category->getIsMobile()=="1"?'checked="checked"':'';?>>
+                                        Yes
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" class="icheck" name="category[mobile][active]" value="0" <?php echo $category->getIsMobile()=="0"?'checked="checked"':'';?>>
+                                        No
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="description" class="control-label">Layout</label>
+                                <div class="controls form-group">
+                                    <select class="selectpicker show-tick"  name="category[mobile][layout]" data-live-search="true"  data-size="6" data-width="100%">
+                                        <option value="" data-content="">Choose the layout for the mobile</option>
+                                        <?php foreach ($layouts as $layout) : ?>
+                                            <option value="<?php echo $layout->getFile(); ?>" <?php echo (!empty($layoutContext['mobile']) && ($layoutContext['mobile'])==$layout->getFile())?'selected':'';?>><?php echo $layout->getName().' - '.$layout->getFile(); ?></option>
+                                        <?php endforeach; ?>z
+                                  </select>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </section>
     </div>
     <div class="col-md-4">
         <section class="widget">
@@ -87,6 +191,21 @@
             </header>
             <div class="body">
                 <div id="page-options" class="form-horizontal form-condensed label-left">
+                     <fieldset>
+                        <legend class="section"><i class="fa fa-key"></i> Access</legend>
+                        <div class="control-group">
+                            <label for="description" class="control-label">Visibility <span class="required">*</span></label>
+                            <div class="controls form-group">
+                               <select class="selectpicker show-tick" name="category[visibility]" data-live-search="true" data-size="6" data-width="100%">
+                                    <option value="" data-content="">Choose the visibility</option>
+                                    <?php foreach ($credentials as $key => $value) : ?>
+                                        <option value="<?php echo $value; ?>" data-content="<span class='label label-<?php echo $key; ?>'><?php echo $value; ?></span>" <?php echo $this->ressources[0]->getSecurityContext()==$value?'selected':'';?>><?php echo $value; ?></option>
+                                    <?php endforeach; ?>
+                              </select>
+                            </div>
+                        </div>
+                    </fieldset>
+
                     <fieldset>
                         <legend class="section"><i class="fa fa-calendar"></i> Publishing</legend>
                         <div class="control-group">

@@ -51,6 +51,7 @@
                     <th>Status</th>
                     <th>Created date</th>
                     <th>Articles</th>
+                    <th>Urls</th>
                     <th class="td-actions">Actions</th>
                 </tr>
             </thead>
@@ -80,10 +81,20 @@
                                 </div>
                             <?php endif;  ?>
                         </td>
+                        <td><?php echo $category->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
                         <td>
                             <?php echo $category->getArticles()->count(); ?> articles associated</td>
                         </td>
-                        <td><?php echo $category->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
+                        <td>
+                            <ul>
+                            <?php $ressources = $this->ressourcesCollection[$category->getId()]; ?>
+                            <?php foreach ($ressources as $key => $ressource) : ?>
+                                <li><a class="color-white" href="<?php echo $ressource->getUrl();?>" target="_blank">
+                                    <?php echo $ressource->getUrl();?> 
+                                </a> </li>
+                            <?php endforeach; ?>
+                            </ul>
+                        </td>
                         <td class="td-actions">
                             <a href="<?php echo $this->url('admin/playgroundpublishingadmin/category_edit', array('id' => $category->getId()));?>" class="btn btn-xs btn-success">
                                 <i class="btn-icon-only fa fa-pencil"></i>                                       

@@ -45,6 +45,8 @@ return array(
                 array('controller' => 'PlaygroundCMS\Controller\Front\ExportBlock',     'roles' => array('guest', 'user')),
 
                 array('controller' => 'PlaygroundPublishing\Controller\Front\Article', 'roles' => array('guest', 'user')),
+                array('controller' => 'PlaygroundPublishing\Controller\Front\Tag', 'roles' => array('guest', 'user')),
+                array('controller' => 'PlaygroundPublishing\Controller\Front\Category', 'roles' => array('guest', 'user')),
 
 
                 // Back Area
