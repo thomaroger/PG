@@ -16,7 +16,7 @@ $translation = $this->entity->getTranslations();
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico')); ?>
     </head>
     <body>    
-
+        <!-- Render Entity Page  -> PlaygroundCMS\Controller\PageController : <?php echo $this->entity->getId()." - ".$translation["title"]; ?> -->
         <?php $this->getZone('page_header'); ?>
         <div class="jumbotron">
             <div class="container">
