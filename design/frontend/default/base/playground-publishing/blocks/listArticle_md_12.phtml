@@ -12,7 +12,7 @@
             <?php foreach ($this->articles as $article) : ?>
                 <?php $article->setTranslatableLocale($this->ressource->getLocale()); ?>
                 <?php $this->em->refresh($article); ?>
-                <h3><a href="<?php echo $this->getUrl($article, $ressource->getLocale()); ?>"><?php echo $article->getTitle(); ?></a></h3>
+                <h3><a href="<?php echo $this->getUrl($article); ?>"><?php echo $article->getTitle(); ?></a></h3>
                  <?php $tags = $article->getTags(); ?>
                 <p>
                     <?php foreach ($tags as $tag) : ?>
