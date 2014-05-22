@@ -51,6 +51,7 @@
                     <th>Status</th>
                     <th>Created date</th>
                     <th>Articles</th>
+                    <th>Urls</th>
                     <th class="td-actions">Actions</th>
                 </tr>
             </thead>
@@ -83,6 +84,16 @@
                         <td><?php echo $tag->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
                         <td>
                             <?php echo $tag->getArticles()->count(); ?> articles associated</td>
+                        </td>
+                        <td>
+                            <ul>
+                            <?php $ressources = $this->ressourcesCollection[$tag->getId()]; ?>
+                            <?php foreach ($ressources as $key => $ressource) : ?>
+                                <li><a class="color-white" href="<?php echo $ressource->getUrl();?>" target="_blank">
+                                    <?php echo $ressource->getUrl();?> 
+                                </a> </li>
+                            <?php endforeach; ?>
+                            </ul>
                         </td>
                         <td class="td-actions">
                             <a href="<?php echo $this->url('admin/playgroundpublishingadmin/tag_edit', array('id' => $tag->getId()));?>" class="btn btn-xs btn-success">

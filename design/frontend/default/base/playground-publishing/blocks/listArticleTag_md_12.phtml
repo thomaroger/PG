@@ -1,9 +1,9 @@
 <div class="col-md-12">
-    <h2> Articles de la catégorie 
-        <?php foreach ($this->categories as $category) : ?>
-            <?php $category->setTranslatableLocale($this->ressource->getLocale()); ?>
-            <?php $this->em->refresh($category); ?>
-            <a href="<?php echo $this->getUrl($category); ?>"><span class="label label-primary"><?php echo $category->getTitle(); ?></span></a>
+    <h2> Articles du tag
+        <?php foreach ($this->tags as $tag) : ?>
+            <?php $tag->setTranslatableLocale($this->ressource->getLocale()); ?>
+            <?php $this->em->refresh($tag); ?>
+            <span class="badge"><?php echo $tag->getTitle(); ?></span>
         <?php endforeach; ?>
     </h2>
 
@@ -13,12 +13,12 @@
                 <?php $article->setTranslatableLocale($this->ressource->getLocale()); ?>
                 <?php $this->em->refresh($article); ?>
                 <h3><a href="<?php echo $this->getUrl($article); ?>"><?php echo $article->getTitle(); ?></a></h3>
-                 <?php $tags = $article->getTags(); ?>
+                 <?php $categories = $article->getCategories(); ?>
                 <p>
-                    <?php foreach ($tags as $tag) : ?>
-                        <?php $tag->setTranslatableLocale($this->ressource->getLocale()); ?>
-                        <?php $this->em->refresh($tag); ?>
-                        <a href="<?php echo $this->getUrl($tag); ?>"><span class="badge"><?php echo $tag->getTitle(); ?></span></a>
+                    <?php foreach ($categories as $category) : ?>
+                        <?php $category->setTranslatableLocale($this->ressource->getLocale()); ?>
+                        <?php $this->em->refresh($category); ?>
+                        <a href="<?php echo $this->getUrl($category); ?>"><span class="label label-primary"><?php echo $category->getTitle(); ?></span></a>
                     <?php endforeach; ?>
                 </p>
 

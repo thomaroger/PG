@@ -1,7 +1,7 @@
 RewriteEngine On
 RewriteBase /
 
-RedirectMatch permanent ^/$ /fr_fr/index-1.html
+RedirectMatch permanent ^/$ /fr_fr/sommaire-2.html
 
 RewriteCond %{REQUEST_FILENAME} -s [OR]
 RewriteCond %{REQUEST_FILENAME} -l [OR]
