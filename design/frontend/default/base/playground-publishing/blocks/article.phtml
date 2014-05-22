@@ -1,26 +1,28 @@
+<div class="col-md-12">
 <?php $article = $this->article; ?>
-<?php $translation = $article->getTranslations(); ?>
-
+<?php $article->setTranslatableLocale($this->ressource->getLocale()); ?>
+<?php $this->em->refresh($article); ?>
 <?php $categories = $article->getCategories(); ?>
 <h6>
     <?php foreach ($categories as $category) : ?>
-        <?php $translationCategory = $category->getTranslations(); ?>
-        <span class="label label-primary"><?php echo $translationCategory["title"]; ?></span>
+        <?php $category->setTranslatableLocale($this->ressource->getLocale()); ?>
+        <?php $this->em->refresh($category); ?>
+        <span class="label label-primary"><?php echo $category->getTitle(); ?></span>
     <?php endforeach; ?>
 </h6>
 
 
-<h2><?php echo $translation['title']; ?></h2>
+<h2><?php echo $article->getTitle(); ?></h2>
 <p><?php echo $article->getUpdatedAt()->format('d/m/Y H:i:s'); ?> by <?php echo $article->getAuthor(); ?></p>
 <?php $tags = $article->getTags(); ?>
 <p>
     <?php foreach ($tags as $tag) : ?>
-        <?php $translationTag = $tag->getTranslations(); ?>
-        <span class="badge"><?php echo $translationTag["title"]; ?></span>
+        <?php $tag->setTranslatableLocale($this->ressource->getLocale()); ?>
+        <?php $this->em->refresh($tag); ?>
+        <span class="badge"><?php echo $tag->getTitle(); ?></span>
     <?php endforeach; ?>
 </p>
-<?php echo $translation['content']; ?>
-
-
+<?php echo $article->getContent(); ?>
+</div>
 
 

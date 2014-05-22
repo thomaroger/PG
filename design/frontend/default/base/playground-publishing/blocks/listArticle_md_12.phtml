@@ -1,0 +1,33 @@
+<div class="col-md-12">
+    <h2> Articles de la catégorie 
+        <?php foreach ($this->categories as $category) : ?>
+            <?php $category->setTranslatableLocale($this->ressource->getLocale()); ?>
+            <?php $this->em->refresh($category); ?>
+            <span class="label label-primary"><?php echo $category->getTitle(); ?></span>
+        <?php endforeach; ?>
+    </h2>
+
+    <div>
+        <ul>
+            <?php foreach ($this->articles as $article) : ?>
+                <?php $article->setTranslatableLocale($this->ressource->getLocale()); ?>
+                <?php $this->em->refresh($article); ?>
+                <h3><a href="#"><?php echo $article->getTitle(); ?></a></h3>
+                <?php echo get_class($article); ?>
+                 <?php $tags = $article->getTags(); ?>
+                <p>
+                    <?php foreach ($tags as $tag) : ?>
+                        <?php $tag->setTranslatableLocale($this->ressource->getLocale()); ?>
+                        <?php $this->em->refresh($tag); ?>
+                        <span class="badge"><?php echo $tag->getTitle(); ?></span>
+                    <?php endforeach; ?>
+                </p>
+
+                 <p><?php echo $article->getAbstract(); ?></p>
+            <?php endforeach; ?>
+        </ul>
+        <?php if($this->block->getParam('pagination')) : ?>
+            <?php echo $this->paginationControl($this->articles , 'Sliding', 'playground-cms/partial/pagination.phtml', array('uri' => $this->uri, "countResults" => $this->countArticles)); ?>
+        <?php endif; ?>
+    </div>
+</div>
