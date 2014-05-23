@@ -63,19 +63,19 @@
                                         <div class="control-group">
                                             <label for="description" class="control-label">Meta Title</label>
                                             <div class="controls form-group">
-                                                <input type="text" id="first-name" name="category[<?php echo $locale->getLocale(); ?>][title_seo]" class="form-control" value="<?php echo @$this->data['article'][$locale->getLocale()]['title_seo'];?>">
+                                                <input type="text" id="first-name" name="category[<?php echo $locale->getLocale(); ?>][title_seo]" class="form-control" value="<?php echo @$this->data['category'][$locale->getLocale()]['title_seo'];?>">
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label for="description" class="control-label">Meta Keyword</label>
                                             <div class="controls form-group">
-                                                <textarea id="description" rows="2" name="category[<?php echo $locale->getLocale(); ?>][keyword_seo]" class="form-control"><?php echo @$this->data['article'][$locale->getLocale()]['keyword_seo'];?></textarea>
+                                                <textarea id="description" rows="2" name="category[<?php echo $locale->getLocale(); ?>][keyword_seo]" class="form-control"><?php echo @$this->data['category'][$locale->getLocale()]['keyword_seo'];?></textarea>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label for="description" class="control-label">Meta Description</label>
                                             <div class="controls form-group">
-                                                <textarea id="description" rows="2" name="category[<?php echo $locale->getLocale(); ?>][description_seo]" class="form-control"><?php echo @$this->data['article'][$locale->getLocale()]['description_seo'];?></textarea>
+                                                <textarea id="description" rows="2" name="category[<?php echo $locale->getLocale(); ?>][description_seo]" class="form-control"><?php echo @$this->data['category'][$locale->getLocale()]['description_seo'];?></textarea>
                                             </div>
                                         </div>
                                         <div class="control-group">
@@ -204,7 +204,7 @@
                                     <?php foreach ($categoryStatuses as $key => $value) : ?>
                                     <?php $labelType = "important" ?>
                                     <?php if($key == 1 ) $labelType = "success"; ?>
-                                        <option value="<?php echo $key; ?>" data-content="<span class='label label-<?php echo $labelType; ?>'><?php echo $value; ?></span>" <?php echo @$this->data['page']["status"]===$key?'selected':'';?>><?php echo $value; ?></option>
+                                        <option value="<?php echo $key; ?>" data-content="<span class='label label-<?php echo $labelType; ?>'><?php echo $value; ?></span>" <?php echo @$this->data['category']["status"]===$key?'selected':'';?>><?php echo $value; ?></option>
                                     <?php endforeach; ?>
                               </select>
                             </div>

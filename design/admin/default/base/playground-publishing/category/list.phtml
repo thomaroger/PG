@@ -50,8 +50,9 @@
                     <th>Slug</th>
                     <th>Status</th>
                     <th>Created date</th>
-                    <th>Articles</th>
                     <th>Urls</th>
+                    <th>Layouts</th>
+                    <th>Articles</th>
                     <th class="td-actions">Actions</th>
                 </tr>
             </thead>
@@ -83,9 +84,6 @@
                         </td>
                         <td><?php echo $category->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
                         <td>
-                            <?php echo $category->getArticles()->count(); ?> articles associated</td>
-                        </td>
-                        <td>
                             <ul>
                             <?php $ressources = $this->ressourcesCollection[$category->getId()]; ?>
                             <?php foreach ($ressources as $key => $ressource) : ?>
@@ -94,6 +92,15 @@
                                 </a> </li>
                             <?php endforeach; ?>
                             </ul>
+                        </td>
+                        <td>
+                            <?php $layouts = json_decode($ressources['fr_FR']->getLayoutContext(), true); ?>
+                            <?php foreach ($layouts as $key => $value) : ?>
+                                <?php echo $key." : ".$value."<br />"; ?>
+                            <?php endforeach; ?>
+                        </td>
+                        <td>
+                            <?php echo $category->getArticles()->count(); ?> articles associated</td>
                         </td>
                         <td class="td-actions">
                             <a href="<?php echo $this->url('admin/playgroundpublishingadmin/category_edit', array('id' => $category->getId()));?>" class="btn btn-xs btn-success">

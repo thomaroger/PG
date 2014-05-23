@@ -1,30 +1,31 @@
 <div class="col-md-12">
-    <h2> Articles de la catégorie 
+    <h2>
         <?php foreach ($this->categories as $category) : ?>
             <?php $category->setTranslatableLocale($this->ressource->getLocale()); ?>
             <?php $this->em->refresh($category); ?>
-            <a href="<?php echo $this->getUrl($category); ?>"><span class="label label-primary"><?php echo $category->getTitle(); ?></span></a>
+            <span class="label label-primary"><?php echo $category->getTitle(); ?></span>
         <?php endforeach; ?>
     </h2>
-
+    <br />
     <div>
-        <ul>
-            <?php foreach ($this->articles as $article) : ?>
-                <?php $article->setTranslatableLocale($this->ressource->getLocale()); ?>
-                <?php $this->em->refresh($article); ?>
-                <h3><a href="<?php echo $this->getUrl($article); ?>"><?php echo $article->getTitle(); ?></a></h3>
-                 <?php $tags = $article->getTags(); ?>
-                <p>
-                    <?php foreach ($tags as $tag) : ?>
-                        <?php $tag->setTranslatableLocale($this->ressource->getLocale()); ?>
-                        <?php $this->em->refresh($tag); ?>
-                        <a href="<?php echo $this->getUrl($tag); ?>"><span class="badge"><?php echo $tag->getTitle(); ?></span></a>
-                    <?php endforeach; ?>
-                </p>
+        <?php foreach ($this->articles as $article) : ?>
+            <?php $article->setTranslatableLocale($this->ressource->getLocale()); ?>
+            <?php $this->em->refresh($article); ?>
+            <h3><a href="<?php echo $this->getUrl($article); ?>"><?php echo $article->getTitle(); ?></a></h3>
+             <?php $tags = $article->getTags(); ?>
+            <p>
+                <?php foreach ($tags as $tag) : ?>
+                    <?php $tag->setTranslatableLocale($this->ressource->getLocale()); ?>
+                    <?php $this->em->refresh($tag); ?>
+                    <a href="<?php echo $this->getUrl($tag); ?>"><span class="badge"><?php echo $tag->getTitle(); ?></span></a>
+                <?php endforeach; ?>
+            </p>
 
-                 <p><?php echo $article->getAbstract(); ?></p>
-            <?php endforeach; ?>
-        </ul>
+             <p><?php echo $article->getAbstract(); ?></p>
+             <hr />
+        <?php endforeach; ?>
+    </div>
+    <div>
         <?php if($this->block->getParam('pagination')) : ?>
             <?php echo $this->paginationControl($this->articles , 'Sliding', 'playground-cms/partial/pagination.phtml', array('uri' => $this->uri, "countResults" => $this->countArticles)); ?>
         <?php endif; ?>
