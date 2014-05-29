@@ -12,7 +12,7 @@
                         <i class="fa fa-desktop"></i>
                     </div>
                     <div class="description">
-                        <strong><?php echo count($this->pages); ?></strong> pages
+                        <strong><?php echo count($this->pages); ?></strong> page<?php echo count($this->pages)>1?"s":""; ?>
                     </div>
                 </div>
                 </a>
@@ -23,7 +23,7 @@
                         <i class="fa fa-bold"></i>
                     </div>
                     <div class="description">
-                        <strong><?php echo count($this->articles); ?></strong> Articles
+                        <strong><?php echo count($this->articles); ?></strong> Article<?php echo count($this->articles)>1?"s":""; ?>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                         <i class="fa fa-users"></i>
                     </div>
                     <div class="description">
-                        <strong><?php echo count($this->users); ?></strong> users
+                        <strong><?php echo count($this->users); ?></strong> user<?php echo count($this->users)>1?"s":""; ?>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <i class="fa fa-comments"></i>
                     </div>
                     <div class="description">
-                        <strong>xx</strong> comments
+                        <strong><?php echo count($this->comments); ?></strong> comment<?php echo count($this->comments)>1?"s":""; ?>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                             <i class="fa fa-code"></i>
                         </div>
                         <div class="description">
-                            <strong><?php echo count($this->blocks); ?></strong> blocks
+                            <strong><?php echo count($this->blocks); ?></strong> block<?php echo count($this->blocks)>1?"s":""; ?>
                         </div>
                     </div>
                 </a>
@@ -157,102 +157,56 @@
                     <header>
                         <h4>
                             <i class="fa fa-comments"></i>
-                            Comments
+                            Comments (<?php echo count($this->comments); ?>)
                         </h4>
+                        <div class="actions">
+                            <a href="<?php echo $this->url('admin/playgroundpublishingadmin/comments'); ?>"><button class="btn btn-transparent btn-xs">Show All <i class="fa fa-arrow-down"></i></button></a>
+                        </div>
                     </header>
                     <div class="body">
                         <div id="chat" class="chat">
                             <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;"><div id="chat-messages" class="chat-messages" style="overflow: hidden; width: auto; height: auto;">
-                                <div class="chat-message">
-                                    <div class="sender pull-left">
+                                <?php $comments = array_reverse(array_slice($this->comments, -10, 10)); ?> 
+                                <?php $cpt = 0; ?>
+                                <?php foreach ($comments as $comment) : ?>
+                                    <?php  if($cpt%2 == 0) : ?>
+                                        <?php $sender = "pull-left"; ?>
+                                        <?php $message = ""; ?>
+                                        <?php $dir = "left"; ?>
+                                        <?php $dirExt = "right"; ?>
+                                    <?php else : ?>
+                                        <?php $sender = "pull-right"; ?>
+                                        <?php $message = "on-left"; ?>
+                                        <?php $dir = "right"; ?>
+                                        <?php $dirExt = "left"; ?>
+                                    <?php endif; ?>
+                                    <?php $state = "orange"; ?>
+                                    <?php if($comment->getStatus() == 1) : ?>
+                                        <?php $state = "green"; ?>
+                                    <?php endif; ?>
+                                    <?php if($comment->getStatus() == 2) : ?>
+                                        <?php $state = "red"; ?>
+                                    <?php endif; ?>
+                                    <div class="chat-message">
+                                    <div class="sender <?php echo $sender; ?>">
                                         <div class="icon">
-                                            <img src="<?php echo "http://www.gravatar.com/avatar/".md5(strtolower(trim($this->zfcUserIdentity()->getEmail())));?>" class="img-circle" alt="">
+                                            <img src="<?php echo "http://www.gravatar.com/avatar/".md5(strtolower(trim($comment->getEmail())));?>" class="img-circle" alt="">
                                         </div>
                                         <div class="time">
-                                            4 min
+                                            <?php echo $comment->getCreatedAt()->format("d/m H:i"); ?>
                                         </div>
                                     </div>
-                                    <div class="chat-message-body">
-                                        <span class="arrow"></span>
-                                        <div class="sender"><a href="#">Thomas ROGER</a></div>
+                                    <div class="chat-message-body <?php echo $message; ?>" style="border-<?php echo $dir; ?>: 2px solid <?php echo $state; ?>;">
+                                        <span class="arrow" style="border-<?php echo $dirExt; ?>: 5px solid <?php echo $state; ?>;"></span>
+                                        <div class="sender"><a href="#"><?php echo $comment->getName(); ?></a></div>
                                         <div class="text">
-                                            Hey Sam, how is it going? But I must explain to you how all this mistaken
-                                            idea of denouncing of a pleasure and praising pain was born
+                                            <?php echo $comment->getComment(); ?>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="chat-message">
-                                    <div class="sender pull-right">
-                                        <div class="icon">
-                                            <img src="<?php echo "http://www.gravatar.com/avatar/".md5(strtolower(trim($this->zfcUserIdentity()->getEmail())));?>" class="img-circle" alt="">
-                                        </div>
-                                        <div class="time">
-                                            3 min
-                                        </div>
-                                    </div>
-                                    <div class="chat-message-body on-left">
-                                        <span class="arrow"></span>
-                                        <div class="sender"><a href="#">Thomas ROGER</a></div>
-                                        <div class="text">
-                                            Pretty good. Doing my homework..  No one rejects, dislikes, or avoids
-                                            pleasure itself, because it is pleasure, but because
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="chat-message">
-                                    <div class="sender pull-left">
-                                        <div class="icon">
-                                            <img src="<?php echo "http://www.gravatar.com/avatar/".md5(strtolower(trim($this->zfcUserIdentity()->getEmail())));?>" class="img-circle" alt="">
-                                        </div>
-                                        <div class="time">
-                                            2 min
-                                        </div>
-                                    </div>
-                                    <div class="chat-message-body">
-                                        <span class="arrow"></span>
-                                        <div class="sender"><a href="#">Thomas ROGER</a></div>
-                                        <div class="text">
-                                            Any chance to go out? To take a trivial example, which of us ever undertakes
-                                            laborious physical exercise, except to obtain some advantage
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="chat-message">
-                                    <div class="sender pull-right">
-                                        <div class="icon">
-                                            <img src="<?php echo "http://www.gravatar.com/avatar/".md5(strtolower(trim($this->zfcUserIdentity()->getEmail())));?>" class="img-circle" alt="">
-                                        </div>
-                                        <div class="time">
-                                            2 min
-                                        </div>
-                                    </div>
-                                    <div class="chat-message-body on-left">
-                                        <span class="arrow"></span>
-                                        <div class="sender"><a href="#">Thomas ROGER</a></div>
-                                        <div class="text">
-                                            .. Maybe 40-50 mins. I don't know exactly. On the other hand, we denounce
-                                            with righteous indignation and dislike men who are so beguiled
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="chat-message">
-                                    <div class="sender pull-left">
-                                        <div class="icon">
-                                            <img src="<?php echo "http://www.gravatar.com/avatar/".md5(strtolower(trim($this->zfcUserIdentity()->getEmail())));?>" class="img-circle" alt="">
-                                        </div>
-                                        <div class="time">
-                                            1 min
-                                        </div>
-                                    </div>
-                                    <div class="chat-message-body">
-                                        <span class="arrow"></span>
-                                        <div class="sender"><a href="#">Thomas ROGER</a></div>
-                                        <div class="text">
-                                            Anyway sounds great! These cases are perfectly simple and easy to
-                                            distinguish.
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php $cpt ++; ?>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -332,7 +286,7 @@
                     <header>
                         <h4>
                             <i class="fa fa-bold"></i>
-                            Articles
+                            Articles (<?php echo count($this->articles); ?>)
                         </h4>
                         <div class="actions">
                             <a href="<?php echo $this->url('admin/playgroundpublishingadmin/articles'); ?>"><button class="btn btn-transparent btn-xs">Show All <i class="fa fa-arrow-down"></i></button></a>
@@ -342,7 +296,8 @@
                         <div class="" style="position: relative; overflow: hidden; width: auto; height: auto;"><div id="feed" class="feed" style="overflow: hidden; width: auto; height: auto;">
                             <div class="wrapper">
                                 <div class="vertical-line"></div>
-                                <?php foreach ($this->articles as $article) : ?>
+                                <?php $articles = array_reverse(array_slice($this->articles, -10, 10)); ?> 
+                                <?php foreach ($articles as $article) : ?>
                                     <section class="feed-item">
                                         <div class="icon pull-left">
                                             <?php $color = "red";  ?>

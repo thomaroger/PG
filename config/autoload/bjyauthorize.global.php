@@ -63,6 +63,7 @@ return array(
                 array('controller' => 'PlaygroundPublishing\Controller\Back\Category', 'roles' => array('admin')),
                 array('controller' => 'PlaygroundPublishing\Controller\Back\Tag',      'roles' => array('admin')),
                 array('controller' => 'PlaygroundPublishing\Controller\Back\Article',  'roles' => array('admin')),
+                array('controller' => 'PlaygroundPublishing\Controller\Back\Comment',  'roles' => array('admin')),
 
 
             ),
