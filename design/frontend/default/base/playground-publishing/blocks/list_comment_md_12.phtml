@@ -1,8 +1,8 @@
+<?php $this->plugin('cmstranslate')->setTranslatorTextDomain('playgroundcms'); ?>
 <div class="col-md-12">
-    <h2>Commentaires</h2>
-
-    <?php if(count($this->comments) > 0) : ?>
-        <?php foreach ($this->comments as $comment) : ?>
+    <h2> <?php echo $this->cmsTranslate('Comments'); ?></h2>
+    <?php if(count($this->commentsPaginator) > 0) : ?>
+        <?php foreach ($this->commentsPaginator as $comment) : ?>
             <div class="col-md-12">
                 <div class="author pull-right">
                     <div class="icon">
@@ -22,6 +22,11 @@
             <div class="clearfix">&nbsp;</div>
             <hr />
         <?php endforeach; ?>
+        <?php $paginator =  $this->paginationControl($this->commentsPaginator , 'Sliding', 'playground-cms/partial/pagination.phtml', array('uri' => $this->uri, "countResults" => $this->nbComments)); ?> 
+        <?php if(strlen($paginator) > 10) :?>
+                <div class="divider"></div>
+                <?php echo $paginator; ?>
+        <?php endif; ?>
     <?php else : ?>
         <div class="bs-callout bs-callout-danger">
             <h4>

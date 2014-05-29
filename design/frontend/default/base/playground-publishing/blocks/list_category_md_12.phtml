@@ -1,6 +1,6 @@
 <?php $this->plugin('cmstranslate')->setTranslatorTextDomain('playgroundcms'); ?>
 <div class="col-md-12">
-    <h3> Category </h3>
+    <h3> <?php echo $this->cmsTranslate('Categories'); ?> </h3>
     <div class="list-group">
         <?php if(count($this->results) > 0) : ?>
             <?php foreach ($this->results as $result) : ?>
