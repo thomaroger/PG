@@ -3,7 +3,7 @@
         <section class="widget">
             <ol class="breadcrumb">
                 <li><a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <li class="active">Articles</li>
+                <li class="active">Polls</li>
             </ol>
         </section>
     </div>
@@ -73,14 +73,14 @@
 <section class="widget">
     <header>
         <h4>
-            <i class="fa fa-edit"></i>
-            Articles list (<?php echo $this->nbArticles;?>)
+            <i class="fa fa-question"></i>
+            Polls list (<?php echo $this->nbPolls;?>)
         </h4>
     </header>
     <div class="pull-right margin-right30">
-        <a href="<?php echo $this->url("admin/playgroundpublishingadmin/article_create");?>">
+        <a href="<?php echo $this->url("admin/playgroundpublishingadmin/poll_create");?>">
             <button type="button" class="btn btn-success btn-lg" data-placement="top" data-original-title=".btn .btn-success .btn-lg">
-                Add an article
+                Add a poll
             </button>
         </a>
     </div>
@@ -102,14 +102,14 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($this->articlesPaginator as $article) : ?>
+                <?php foreach ($this->pollsPaginator as $poll) : ?>
                     <tr>
                         <td>
-                            <?php echo $article->getTitle(); ?>
+                            <?php echo $poll->getTitle(); ?>
                         </td>
                         <td>
                             <?php 
-                            $visible = $article->checkVisibility(); 
+                            $visible = $poll->checkVisibility(); 
                             if($visible) : 
                             ?>
                                 <div class="feed-item">
@@ -127,17 +127,17 @@
                         </td>
                         <td>
                             <?php $labelType = "info" ?>
-                            <?php if($article->getStatus() == 1 ) $labelType = "success"; ?>
-                            <?php if($article->getStatus() == 2 ) $labelType = "warning"; ?>
-                            <?php if($article->getStatus() == 3 ) $labelType = "important"; ?>
-                            <span class="label label-<?php echo $labelType; ?>"><?php echo $article->getStatusName(); ?></span>
+                            <?php if($poll->getStatus() == 1 ) $labelType = "success"; ?>
+                            <?php if($poll->getStatus() == 2 ) $labelType = "warning"; ?>
+                            <?php if($poll->getStatus() == 3 ) $labelType = "important"; ?>
+                            <span class="label label-<?php echo $labelType; ?>"><?php echo $poll->getStatusName(); ?></span>
                             
                         </td>
-                        <td><?php echo $article->getStartDate()->format('d/m/Y H:i:s'); ?></td>
-                        <td><?php echo $article->getEndDate()->format('d/m/Y H:i:s'); ?></td>
+                        <td><?php echo $poll->getStartDate()->format('d/m/Y H:i:s'); ?></td>
+                        <td><?php echo $poll->getEndDate()->format('d/m/Y H:i:s'); ?></td>
                         <td>
                             <ul>
-                            <?php $ressources = $this->ressourcesCollection[$article->getId()]; ?>
+                            <?php $ressources = $this->ressourcesCollection[$poll->getId()]; ?>
                             <?php foreach ($ressources as $key => $ressource) : ?>
                                 <li><a class="color-white" href="<?php echo $ressource->getUrl();?>" target="_blank">
                                     <?php echo $ressource->getUrl();?> 
@@ -151,25 +151,25 @@
                                 <?php echo $key." : ".$value."<br />"; ?>
                             <?php endforeach; ?>
                         </td>
-                        <td><?php echo $article->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
+                        <td><?php echo $poll->getCreatedAt()->format('d/m/Y H:i:s'); ?></td>
                         <td class="td-actions">
-                            <a href="<?php echo $this->url('admin/playgroundpublishingadmin/article_edit', array('id' => $article->getId()));?>" class="btn btn-xs btn-success">
+                            <a href="<?php echo $this->url('admin/playgroundpublishingadmin/poll_edit', array('id' => $poll->getId()));?>" class="btn btn-xs btn-success">
                                 <i class="btn-icon-only fa fa-pencil"></i>                                       
                             </a>
-                            <a href="javascript:;" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#myModal_<?php echo $article->getId(); ?>">
+                            <a href="javascript:;" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#myModal_<?php echo $poll->getId(); ?>">
                                 <i class="btn-icon-only fa fa-times"></i>                                       
                             </a>
                         </td>
-                        <div id="myModal_<?php echo $article->getId(); ?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                        <div id="myModal_<?php echo $poll->getId(); ?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h4 class="modal-title" id="myModalLabel">Confirm the deletion of the article ?</h4>
+                                        <h4 class="modal-title" id="myModalLabel">Confirm the deletion of the poll ?</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <h4><?php echo $article->getTitle(); ?></h4>
+                                        <h4><?php echo $poll->getTitle(); ?></h4>
                                         <h5>URL :</h5>
                                         <p>
                                             <?php foreach ($ressources as $key => $ressource) : ?>
@@ -185,7 +185,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <a href="<?php echo $this->url('admin/playgroundpublishingadmin/article_remove', array('id' => $article->getId()));?>">
+                                        <a href="<?php echo $this->url('admin/playgroundpublishingadmin/poll_remove', array('id' => $poll->getId()));?>">
                                             <button type="button" class="btn btn-danger">Remove</button>
                                         </a>
                                     </div>
@@ -198,7 +198,7 @@
             </tbody>
         </table>
     </div> 
-    <?php $paginator =  $this->paginationControl($this->articlesPaginator , 'Sliding', 'playground-cms/partial/pagination.phtml', array('uri' => $this->url('admin/playgroundpublishingadmin/articles'), "countResults" => $this->nbArticle)); ?> 
+    <?php $paginator =  $this->paginationControl($this->pollsPaginator , 'Sliding', 'playground-cms/partial/pagination.phtml', array('uri' => $this->url('admin/playgroundpublishingadmin/polls'), "countResults" => $this->nbPolls)); ?> 
     <?php if(strlen($paginator) > 10) :?>
             <div class="divider"></div>
             <?php echo $paginator; ?>
@@ -206,9 +206,9 @@
     <div class="clearfix"></div>
     <div class="divider"></div>
     <div class="pull-right margin-right30">
-        <a href="<?php echo $this->url("admin/playgroundpublishingadmin/article_create");?>">
+        <a href="<?php echo $this->url("admin/playgroundpublishingadmin/poll_create");?>">
             <button type="button" class="btn btn-success btn-lg" data-placement="top" data-original-title=".btn .btn-success .btn-lg">
-                Add an article
+                Add a pool
             </button>
         </a>
     </div>

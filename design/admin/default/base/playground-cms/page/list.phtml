@@ -40,7 +40,7 @@
             <div class="control-group">
                 <label for="description" class="control-label">State</label>
                 <div class="controls form-group">
-                    <select class="selectpicker show-tick" name="page[status]" data-live-search="true" data-size="6" data-width="100%">
+                    <select class="selectpicker show-tick" name="filters[status]" data-live-search="true" data-size="6" data-width="100%">
                         <option value="-1" data-content="" selected>Choose the status</option>
                         <?php foreach ($pagesStatuses as $key => $value) : ?>
                         <?php $labelType = "info" ?>
@@ -57,7 +57,7 @@
             <div class="control-group">
                 <label for="description" class="control-label">Visibility</label>
                 <div class="controls form-group">
-                    <select class="selectpicker show-tick" name="page[visibility]" data-live-search="true" data-size="6" data-width="100%">
+                    <select class="selectpicker show-tick" name="filters[visibility]" data-live-search="true" data-size="6" data-width="100%">
                          <option value="" data-content="">Choose the visibility</option>
                         <?php foreach ($credentials as $key => $value) : ?>
                             <option value="<?php echo $value; ?>" data-content="<span class='label label-<?php echo $key; ?>'><?php echo $value; ?></span>" <?php echo @$this->data['page']["visibility"]==$value?'selected':'';?>><?php echo $value; ?></option>
