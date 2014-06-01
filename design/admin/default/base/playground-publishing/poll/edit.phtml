@@ -110,6 +110,54 @@
                 </section>
             </div>
         </section>
+
+
+        <section class="widget">
+            <header>
+                <h4>Answers</h4>
+                <div class="actions">
+                    <a href="javascript:void(0)" id="addAnswer"><button class="btn btn-transparent btn-xs">Add an anwser<i class="fa fa-arrow-down"></i></button></a>
+                </div>
+            </header>
+            <div class="body">
+                <section class="widget widget-tabs large">
+                    <header>
+                        <ul class="nav nav-tabs">
+                            <?php $cpt = 0; ?>
+                            <?php foreach ($this->locales as $locale) : ?>
+                                <li class="<?php echo $cpt==0?'active':'';?>">
+                                    <?php $locales = explode('_', $locale->getLocale()); ?>
+                                    <a href="#<?php echo $locale->getLocale(); ?>" data-toggle="tab"> <img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> <?php echo $locale->getName(); ?></a>
+                                </li>
+                                <?php $cpt ++; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </header>
+                    <div class="body tab-content">
+                        <?php $cpt = 0; ?>
+                        <?php foreach ($this->locales as $locale) : ?>
+                            <?php $locales = explode('_', $locale->getLocale()); ?>
+                            <div id="<?php echo $locale->getLocale(); ?>" class="tab-pane clearfix <?php echo $cpt==0?'active':'';?>">
+                                <fieldset>
+                                    <legend class="section"><img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> <?php echo $locale->getName(); ?></legend>
+                                    <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                                        <div class="control-group" id="anwser1">
+                                            <label for="description" class="control-label">Answer <span class="required">*</span></label>
+                                            <div class="controls form-group">
+                                                <input type="text" id="first-name" name="poll[<?php echo $locale->getLocale(); ?>][answer][]" class="form-control" value="" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <?php $cpt ++; ?>
+                        <?php endforeach; ?> 
+                    </div>
+                </section>
+            </div>
+        </section>
+
+
         <section class="widget">
             <header>
                 <h4>Platform informations</h4>

@@ -1,4 +1,5 @@
 jQuery(function($){
+    anwserCount = 1;
     $('.selectpicker').selectpicker();
     $('.textareahtml').wysihtml5();
     $('.datepicker').datepicker({autoclose: true})
@@ -43,4 +44,9 @@ jQuery(function($){
           $('#layoutZoneId').attr('value', $('#layoutZone').attr('value'));
         })
     });
+
+    $('#addAnswer').click(function(){
+        var klon = $( '#anwser'+ anwserCount );
+        klon.clone().attr('id', 'id'+(++anwserCount) ).insertAfter( klon );
+    })
 });

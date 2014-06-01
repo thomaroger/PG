@@ -2,7 +2,7 @@
     <?php $poll = $this->poll; ?>
     <?php $poll->setTranslatableLocale($this->ressource->getLocale()); ?>
     <?php $this->em->refresh($poll); ?>
-    <?php echo $poll->getQuestion(); ?>
+    <h2><?php echo $poll->getQuestion(); ?></h2>
     <hr />
 </div>
 
