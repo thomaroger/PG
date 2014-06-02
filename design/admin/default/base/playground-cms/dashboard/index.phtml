@@ -34,7 +34,7 @@
                         <i class="fa fa-question"></i>
                     </div>
                     <div class="description">
-                        <strong>xx</strong> polls
+                        <strong><?php echo count($this->polls); ?></strong> poll<?php echo count($this->polls)>1?"s":""; ?>
                     </div>
                 </div>
             </div>
@@ -263,6 +263,10 @@
                                     <?php if (get_class($feed) == 'PlaygroundPublishing\Entity\Article') : ?>
                                         <?php $type = 'edit'; ?>
                                         <?php $message = 'New article <a href="'.$this->url('admin/playgroundpublishingadmin/article_edit', array('id' => $feed->getId())).'">'.$feed->getTitle().'</a>.'; ?>
+                                    <?php endif; ?>
+                                    <?php if (get_class($feed) == 'PlaygroundPublishing\Entity\Poll') : ?>
+                                        <?php $type = 'question'; ?>
+                                        <?php $message = 'New poll <a href="'.$this->url('admin/playgroundpublishingadmin/poll_edit', array('id' => $feed->getId())).'">'.$feed->getTitle().'</a>.'; ?>
                                     <?php endif; ?>
                                     <section class="feed-item">
                                         <div class="icon pull-left">
