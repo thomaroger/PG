@@ -102,6 +102,51 @@
         </section>
         <section class="widget">
             <header>
+                <h4>Answers</h4>
+                <div class="actions">
+                    <span class="btn btn-sm btn-default" id="addAnswer"> <i class="fa fa-plus"></i><span> Add an answer</span></span>
+                </div>
+            </header>
+            <div class="body">
+                <section class="widget widget-tabs large">
+                    <header>
+                        <ul class="nav nav-tabs">
+                            <?php $cpt = 0; ?>
+                            <?php foreach ($this->locales as $locale) : ?>
+                                <li class="<?php echo $cpt==0?'active':'';?>">
+                                    <?php $locales = explode('_', $locale->getLocale()); ?>
+                                    <a href="#answer<?php echo $locale->getLocale(); ?>" data-toggle="tab"> <img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> <?php echo $locale->getName(); ?></a>
+                                </li>
+                                <?php $cpt ++; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </header>
+                    <div class="body tab-content">
+                        <?php $cpt = 0; ?>
+                        <?php foreach ($this->locales as $locale) : ?>
+                            <?php $locales = explode('_', $locale->getLocale()); ?>
+                            <div id="answer<?php echo $locale->getLocale(); ?>" class="tab-pane clearfix <?php echo $cpt==0?'active':'';?>">
+                                <fieldset>
+                                    <legend class="section"><img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> <?php echo $locale->getName(); ?></legend>
+                                    <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                                        <div class="control-group answer1" style="display:none">
+                                            <label for="description" class="control-label">Answer <span class="required">*</span></label>
+                                            <div class="controls form-group">
+                                                <input type="text" id="first-name" name="poll[<?php echo $locale->getLocale(); ?>][answer][]" class="form-control" value="" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <?php $cpt ++; ?>
+                        <?php endforeach; ?> 
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="widget">
+            <header>
                 <h4>Platform informations</h4>
             </header>
             <div class="body">
@@ -212,7 +257,7 @@
                                     <?php if($key == 1 ) $labelType = "success"; ?>
                                     <?php if($key == 2 ) $labelType = "warning"; ?>
                                     <?php if($key == 3 ) $labelType = "important"; ?>
-                                        <option value="<?php echo $key; ?>" data-content="<span class='label label-<?php echo $labelType; ?>'><?php echo $value; ?></span>" <?php echo @$this->data['poll']["status"]===$key?'selected':'';?>><?php echo $value; ?></option>
+                                        <option value="<?php echo $key; ?>" data-content="<span class='label label-<?php echo $labelType; ?>'><?php echo $value; ?></span>" <?php echo @$this->data['poll']["status"]==$key?'selected':'';?>><?php echo $value; ?></option>
                                     <?php endforeach; ?>
                               </select>
                             </div>

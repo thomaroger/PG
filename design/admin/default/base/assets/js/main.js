@@ -46,7 +46,10 @@ jQuery(function($){
     });
 
     $('#addAnswer').click(function(){
-        var klon = $( '#anwser'+ anwserCount );
-        klon.clone().attr('id', 'id'+(++anwserCount) ).insertAfter( klon );
+        var klon = $('#answerfr_FR .answer1');
+        klon.clone().attr('class', 'control-group answer'+(++anwserCount)).show().insertAfter(klon);
+
+        var klon = $('#answeren_US .answer1');
+        klon.clone().attr('class', 'control-group answer'+(++anwserCount)).show().insertAfter(klon);
     })
 });
