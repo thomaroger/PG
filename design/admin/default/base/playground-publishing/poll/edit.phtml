@@ -141,6 +141,17 @@
                                 <fieldset>
                                     <legend class="section"><img src="blank.gif" class="flag flag-<?php echo strtolower($locales[1]);?>" alt="<?php echo $locale->getLocale(); ?>" /> <?php echo $locale->getName(); ?></legend>
                                     <div class="form-horizontal" method="post" novalidate="novalidate" data-validate="parsley">
+                                        
+                                        <?php foreach ($answers as $answer) : ?>
+                                            <?php $answerTranslations = $answer->getTranslations(); ?>
+                                            <div class="control-group" style="">
+                                                <label for="description" class="control-label">Answer <span class="required">*</span></label>
+                                                <div class="controls form-group">
+                                                    <input type="text" id="first-name" name="poll[<?php echo $locale->getLocale(); ?>][answer][<?php echo $answer->getId();?>]" class="form-control" value="<?php echo @$answerTranslations[$locale->getLocale()]['answer'];?>" >
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+
                                         <div class="control-group answer1" style="display:none">
                                             <label for="description" class="control-label">Answer <span class="required">*</span></label>
                                             <div class="controls form-group">
