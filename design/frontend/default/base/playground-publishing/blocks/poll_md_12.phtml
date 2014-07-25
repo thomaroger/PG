@@ -1,16 +1,31 @@
+<?php $this->plugin('cmstranslate')->setTranslatorTextDomain('playgroundcms'); ?>
+
 <div class="col-md-12">
-    <?php $poll = $this->poll; ?>
-    <?php $poll->setTranslatableLocale($this->ressource->getLocale()); ?>
-    <?php $this->em->refresh($poll); ?>
-    <h2><?php echo $poll->getQuestion(); ?></h2>
-    <hr />
-    <?php foreach ($answers as $answer) : ?>
-        <?php $answer->setTranslatableLocale($this->ressource->getLocale());?>
-        <?php $this->em->refresh($answer); ?>
-        <div class="list-group">
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading"><?php echo $answer->getAnswer(); ?></h4>
-            </a>
+    <form method="POST">
+        <?php $poll = $this->poll; ?>
+        <?php $poll->setTranslatableLocale($this->ressource->getLocale()); ?>
+        <?php $this->em->refresh($poll); ?>
+        <h2><?php echo $poll->getQuestion(); ?></h2>
+        <hr />
+        <?php foreach ($answers as $answer) : ?>
+            <?php $answer->setTranslatableLocale($this->ressource->getLocale());?>
+            <?php $this->em->refresh($answer); ?>
+            <div class="list-group">
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                        <label class="poll-label">
+                            <input type="radio" name="poll" value="<?php echo $answer->getId(); ?>" />
+                            <?php echo $answer->getAnswer(); ?>
+                        </label>
+                    </h4>
+                </a>
+            </div>
+        <?php endforeach; ?>
+
+        <div class="form-group">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-success pull-right"><?php echo $this->cmsTranslate('Vote'); ?> </button>
+            </div>
         </div>
-    <?php endforeach; ?>
+    </form>
 </div>
