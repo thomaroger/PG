@@ -105,7 +105,9 @@
                 <?php foreach ($this->pollsPaginator as $poll) : ?>
                     <tr>
                         <td>
-                            <?php echo $poll->getTitle(); ?>
+                            <a href="javascript:;" data-toggle="modal" data-target="#myModalResult_<?php echo $poll->getId(); ?>">
+                                <?php echo $poll->getTitle(); ?>
+                            </a>
                         </td>
                         <td>
                             <?php 
@@ -139,9 +141,11 @@
                             <ul>
                             <?php $ressources = $this->ressourcesCollection[$poll->getId()]; ?>
                             <?php foreach ($ressources as $key => $ressource) : ?>
-                                <li><a class="color-white" href="<?php echo $ressource->getUrl();?>" target="_blank">
-                                    <?php echo $ressource->getUrl();?> 
-                                </a> </li>
+                                <li>
+                                    <a class="color-white" href="<?php echo $ressource->getUrl();?>" target="_blank">
+                                        <?php echo $ressource->getUrl();?> 
+                                    </a> 
+                                </li>
                             <?php endforeach; ?>
                             </ul>
                         </td>
@@ -188,6 +192,62 @@
                                         <a href="<?php echo $this->url('admin/playgroundpublishingadmin/poll_remove', array('id' => $poll->getId()));?>">
                                             <button type="button" class="btn btn-danger">Remove</button>
                                         </a>
+                                    </div>
+
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+
+                        <div id="myModalResult_<?php echo $poll->getId(); ?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">Result of the poll</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4><?php echo $poll->getQuestion(); ?></h4>
+                                        <?php $answers = $poll->getAnswers(); ?>
+                                        <?php $nbVote = 0; ?>
+                                        <?php $maxVote = 0; ?>
+                                        <?php foreach ($answers as $answer) : ?>
+                                            <?php $nbVote += $answer->getCount(); ?>
+                                            <?php if ($answer->getCount() > $maxVote) : ?>
+                                                <?php $maxVote = $answer->getCount(); ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                        <div class="col-md-12">
+                                            <div class="progress">
+                                                <?php foreach ($answers as $answer) : ?>
+                                                    <?php $className = "progress-bar-danger"; ?>
+                                                    <?php if($answer->getCount() == $maxVote) : ?>
+                                                        <?php $className = "progress-bar-success"; ?>
+                                                    <?php endif; ?>
+                                                    <div class="progress-bar <?php echo $className; ?>" role="progressbar" aria-valuenow="<?php echo round(($answer->getCount()/$nbVote)*100); ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo round(($answer->getCount()/$nbVote)*100); ?>%;">
+                                                        <?php echo $answer->getAnswer(); ?> : <?php echo round(($answer->getCount()/$nbVote)*100); ?>%
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                            <ul class="list-group">
+                                                <?php foreach ($answers as $answer) : ?>
+                                                <?php $className = "list-group-item-danger"; ?>
+                                                <?php if($answer->getCount() == $maxVote) : ?>
+                                                    <?php $className = "list-group-item-success"; ?>
+                                                <?php endif; ?>
+                                                    <li class="list-group-item <?php echo $className; ?>">
+                                                        <h4 class="list-group-item-heading">
+                                                            <?php echo $answer->getAnswer(); ?> : <?php echo round(($answer->getCount()/$nbVote)*100); ?>% (<?php echo $answer->getCount(); ?> <?php echo $this->cmsTranslate('votes'); ?>)
+                                                        </h4>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                            <p class="pull-right"> <?php echo $this->cmsTranslate('Nombre de votes'); ?> : <?php echo $nbVote; ?> <?php echo $this->cmsTranslate('votes'); ?> </p>
+                                        </div> 
+                                        <div class="clearfix">&nbsp;</div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     </div>
 
                                 </div><!-- /.modal-content -->
