@@ -8,6 +8,9 @@
             <?php $this->em->refresh($poll); ?>
             <h2><?php echo $poll->getQuestion(); ?></h2>
             <hr />
+            <div class="well well-sm">
+                <p><?php echo $poll->getUpdatedAt()->format('d/m/Y H:i:s'); ?> <?php echo $this->cmsTranslate('by'); ?> <?php echo $poll->getAuthor(); ?></p>
+            </div>
             <?php foreach ($answers as $answer) : ?>
                 <?php $answer->setTranslatableLocale($this->ressource->getLocale());?>
                 <?php $this->em->refresh($answer); ?>
@@ -23,7 +26,6 @@
                 </div>
             <?php endforeach; ?>
             <p class="pull-left"> <?php echo $this->cmsTranslate('Nombre de votes'); ?> : <?php echo $this->nbVote; ?> <?php echo $this->cmsTranslate('votes'); ?> </p>
-
             <div class="form-group">
                 <div class="col-md-12">
                   <button type="submit" class="btn btn-success pull-right"><?php echo $this->cmsTranslate('Vote'); ?> </button>
@@ -39,6 +41,14 @@
         <?php $this->em->refresh($poll); ?>
         <h2><?php echo $poll->getQuestion(); ?></h2>
         <hr />
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <span class="pull-right">
+                    <?php echo $this->cmsTranslate('until'); ?> <?php echo $poll->getEndDate()->format('d/m/Y'); ?>
+                </span>
+                <div class="clearfix">&nbsp;</div>
+            </div>
+        </div>
         <div class="progress">
             <?php foreach ($answers as $answer) : ?>
                 <?php $className = "progress-bar-danger"; ?>
