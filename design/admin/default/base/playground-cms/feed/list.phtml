@@ -14,7 +14,7 @@
         <div class="" style="position: relative; overflow: hidden; width: auto; height: auto;"><div id="feed" class="feed" style="overflow: hidden; width: auto; height: auto;">
             <div class="wrapper">
                 <div class="vertical-line"></div>
-                <?php foreach ($feeds as $feed) : ?>
+                <?php foreach ($feedsPaginator as $feed) : ?>
                     <?php if (get_class($feed) == 'PlaygroundUser\Entity\User') : ?>
                         <?php $type = 'user'; ?>
                         <?php $message = 'New user <a href="#">'.ucfirst($feed->getFirstname()).' '.strtoupper($feed->getLastname()).'</a>.'; ?>
@@ -72,4 +72,10 @@
             </div>
         </div>
     </div>
+    <div class="clearfix">&nbsp;</div>
+    <?php $paginator =  $this->paginationControl($this->feedsPaginator , 'Sliding', 'playground-cms/partial/pagination.phtml', array('uri' => $this->url('admin/playgroundcmsadmin/feed'), "countResults" => count($feeds))); ?> 
+    <?php if(strlen($paginator) > 10) :?>
+            <div class="divider"></div>
+            <?php echo $paginator; ?>
+    <?php endif; ?>
 </section>
