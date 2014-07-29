@@ -3,20 +3,38 @@
         <section class="widget">
             <ol class="breadcrumb">
                 <li><a href="<?php echo $this->url('admin'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <li class="active">Menus (<?php echo count($menus); ?>)</li>
+                <li class="active">Menus</li>
             </ol>
         </section>
     </div>
 </div>
 
-<section class="widget large">
-    <div class="body">
-        <div class="" style="position: relative; overflow: hidden; width: auto; height: auto;">
-            <div id="feed" class="feed" style="overflow: hidden; width: auto; height: auto;">
-            <div class="wrapper">
-                <div class="vertical-line"></div>
-                
-            </div>
-        </div>
+<section class="widget">
+    <header>
+        <h4>
+            <i class="fa fa-tree"></i>
+            Menus list (<?php echo count($this->menus);?>)
+        </h4>
+    </header>
+    <div class="pull-right margin-right30">
+        <a href="#">
+            <button type="button" class="btn btn-success btn-lg" data-placement="top" data-original-title=".btn .btn-success .btn-lg">
+                Add a menu
+            </button>
+        </a>
     </div>
+    <div class="clearfix"></div>
+    <div class="body">
+       
+    </div> 
+
+    <div class="clearfix"></div>
+    <div class="pull-right margin-right30">
+        <a href="#">
+            <button type="button" class="btn btn-success btn-lg" data-placement="top" data-original-title=".btn .btn-success .btn-lg">
+                Add a Menu
+            </button>
+        </a>
+    </div>
+    <div class="clearfix"></div>
 </section>
