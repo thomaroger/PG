@@ -56,6 +56,7 @@ return array(
                 array('controller' => 'PlaygroundCMS\Controller\Back\Dashboard', 'roles' => array('admin')),
                 array('controller' => 'PlaygroundCMS\Controller\Back\Block',     'roles' => array('admin')),
                 array('controller' => 'PlaygroundCMS\Controller\Back\Feed',      'roles' => array('admin')),
+                array('controller' => 'PlaygroundCMS\Controller\Back\Menu',      'roles' => array('admin')),
                 array('controller' => 'PlaygroundCMS\Controller\Back\Page',      'roles' => array('admin')),
                 array('controller' => 'PlaygroundCMS\Controller\Back\Layout',    'roles' => array('admin')),
                 array('controller' => 'PlaygroundCMS\Controller\Back\Template',  'roles' => array('admin')),
