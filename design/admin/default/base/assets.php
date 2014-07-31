@@ -58,6 +58,7 @@ return array(
                             'jquery-1.10.2.min.js'          => 'js/lib/jquery-1.10.2.min.js',
                             'jquery-ui.1.10.4.min.js'       => 'js/lib/jquery-ui.1.10.4.min.js',
                             'jquery-maskedinput.min.js'     => 'js/lib/jquery-maskedinput.min.js',
+                            'jquery.nestable.js'            => 'js/lib/jquery.nestable.js',
                             'bootstrap.min.js'              => 'js/lib/bootstrap.min.js',
                             'bootstrap-select.js'           => 'js/lib/bootstrap-select.js',
                             'bootstrap-datepicker.js'       => 'js/lib/bootstrap-datepicker.js',

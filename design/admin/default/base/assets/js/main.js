@@ -52,4 +52,8 @@ jQuery(function($){
         var klon = $('#answeren_US .answer1');
         klon.clone().attr('class', 'control-group answer'+(++anwserCount)).show().insertAfter(klon);
     })
+
+    $("#nestableMenu").nestable({
+        group: 1
+    });
 });

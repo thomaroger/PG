@@ -27,7 +27,9 @@
     <div class="divider"></div>
     
     <div class="body">
-       
+        <div class="dd" id="nestableMenu">
+            <?php echo $htmlTree; ?>
+        </div>
     </div> 
     
     <div class="divider"></div>
@@ -43,8 +45,6 @@
     <div class="clearfix"></div>
 </section>
 
-
-
 <div id="myModal_create" class="modal fade bs-example-modal-lg  in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content-block">
@@ -54,6 +54,14 @@
                 <h4 class="modal-title" id="myModalLabel">Add a new menu ?</h4>
             </div>
             <div class="modal-body">
+                <?php if(!empty($return) && $return['status'] != 0) : ?>
+                    <div class="row">
+                        <div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="fa fa-ban"></i> <strong><?php echo $return['message'];?>!</strong></h4>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <form method="post">
                     <div class="row">
                         <div class="col-md-12">
@@ -64,15 +72,15 @@
                                 <div class="body form-horizontal form-condensed label-left">
                                     <fieldset>
                                         <div class="control-group">
-                                            <label for="text" class="control-label">Active ? <span class="required">*</span></label>
+                                            <label for="text" class="control-label">Published ? <span class="required">*</span></label>
                                             <div class="controls form-group">
                                                 <div class="btn-group" data-toggle="buttons">
                                                     <label class="radio control-label">
-                                                    <input type="radio" class="icheck" name="menu[active]" value="1" <?php echo @$this->data['menu']['active']=="1"?'checked':'';?>>
+                                                    <input type="radio" class="icheck" name="menu[published]" value="1" <?php echo @$this->data['menu']['published']=="1"?'checked':'';?>>
                                                         Yes
                                                     </label>
                                                     <label class="radio control-label">
-                                                        <input type="radio" class="icheck" name="menu[active]" value="0" <?php echo empty($this->data['menu']['active'])?'checked':'';?>>
+                                                        <input type="radio" class="icheck" name="menu[published]" value="0" <?php echo empty($this->data['menu']['published'])?'checked':'';?>>
                                                         No
                                                     </label>
                                                 </div>
@@ -106,7 +114,7 @@
                                                     <div class="control-group">
                                                         <label for="name" class="control-label">Name <span class="required">*</span></label>
                                                         <div class="controls form-group">
-                                                            <input type="text" id="name" name="menu[<?php echo $locale->getLocale(); ?>][name]" class="form-control" value="<?php echo @$this->data['menu'][$locale->getLocale()]['page'];?>" >
+                                                            <input type="text" id="name" name="menu[<?php echo $locale->getLocale(); ?>][name]" class="form-control" value="<?php echo @$this->data['menu'][$locale->getLocale()]['name'];?>" >
                                                         </div>
                                                     </div>
 

@@ -74,3 +74,18 @@ div.modal-content-block{
 .modal-content-block section:last-child {
    margin-bottom: 0px;
 }
+
+.dd {
+    max-width: 100%;
+}
+
+.dd-handle {
+    height: 45px;
+    line-height: 30px;
+    width: 100%;
+}
+
+.dd-handle .feed-item {
+    padding-right : 10px;
+    padding-top: 2px;
+}
