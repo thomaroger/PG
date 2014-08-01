@@ -79,27 +79,32 @@ div.modal-content-block{
     max-width: 100%;
 }
 
-.dd-item, .dd-handle {
+.dd-handle {
     width: 100%; 
     height: 45px;
     line-height: 30px;
 }
 
-.dd-handle {
-    width: 90%; 
+.dd-item button {
+    margin : 0;
+    height: 45px;
+    font-size: 15px;
 }
 
-.dd-handle .feed-item {
-    padding-right : 10px;
-    padding-top: 2px;
-}
-
-.dd-actions {
+.dd-item .dd-actions {
     width: 10%;
-    margin-top :5px;
-    padding-top :6px;
+    margin-top :-50px;
+    padding-top : 10px;
     padding-right : 10px;
     height: 45px;
     text-align: right;
-    background: rgba(51,51,51,0.4);
+}
+
+
+.dd .dd-item button.fa-plus:before {
+    content: "\f067";
+}
+
+.dd .dd-item button.fa-minus:before {
+    content: "\f068";
 }
