@@ -4,7 +4,7 @@ return array(
 		'modules' => array(
 			'admin_default_base' => array(
 				'root_path' => array(
-					__DIR__ . '/../../../../design/admin/default/base/assets',
+					__DIR__ . '/../../../../design/admin/default/pgcms/assets',
 				),
 				'collections' => array(
 				    

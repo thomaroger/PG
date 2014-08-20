@@ -16,7 +16,7 @@ return array(
     'design' => array(
         'admin' => array(
             'package' => 'default',
-            'theme' => 'base',
+            'theme' => 'pgcms',
         ),
         'frontend' => array(
             'package' => 'default',
