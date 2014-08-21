@@ -1,3 +1,6 @@
+
+
+
 jQuery(function($){
     anwserCount = 1;
     $('.selectpicker').selectpicker();
@@ -53,9 +56,13 @@ jQuery(function($){
         klon.clone().attr('class', 'control-group answer'+(++anwserCount)).show().insertAfter(klon);
     })
 
-    $("#nestableMenu").nestable({
+    $('#nestableMenu').nestable({
         group: 1,
         expandBtnHTML : '<button data-action="expand" class="fa fa-plus">Expand></button>',
         collapseBtnHTML : '<button data-action="collapse" class="fa fa-minus">Collapse</button>',
+    })
+    .on('change', function(e){
+        var list   = e.length ? e : $(e.target);
+        $.post("/admin/playgroundcms/menu/position",{'data' : window.JSON.stringify(list.nestable('serialize'))});
     });
 });

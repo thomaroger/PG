@@ -16,6 +16,7 @@ if(isset($children[0])){
     echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
     echo $this->plugin('HeadLink');
     echo $this->plugin('HeadStyle');
+    echo $this->inlineScript();
     echo $this->plugin('HeadScript');
 ?>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
@@ -109,8 +110,5 @@ if(isset($children[0])){
             <?php echo $this->content; ?>
         </div>
     </div>
-
-	<?php echo $this->inlineScript() ?>
-
 </body>
 </html>

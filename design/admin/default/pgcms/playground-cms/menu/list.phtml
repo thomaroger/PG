@@ -63,6 +63,9 @@
                             <h4><i class="fa fa-ban"></i> <strong><?php echo $return['message'];?>!</strong></h4>
                         </div>
                     </div>
+                    <script>
+                    $('#myModal_create').modal('show');
+                    </script>
                 <?php endif; ?>
                 <form method="post">
                     <div class="row">
@@ -158,19 +161,6 @@
                             </section>
                         </div>
                     </div>
-                    <script>
-                    jQuery(function($){
-                      $('.selectpicker').selectpicker();
-                        $('.textareahtml').wysihtml5();
-                        $('.datepicker').datepicker({autoclose: true})
-                        $("#start-publish-time").mask("99:99:99");
-                        $("#end-publish-time").mask("99:99:99");
-                        $(".icheck").iCheck({
-                            checkboxClass: 'icheckbox_square-grey',
-                            radioClass: 'iradio_square-grey'
-                        });
-                    });
-                    </script>
                 </form>
             </div>
         </div><!-- /.modal-content -->
