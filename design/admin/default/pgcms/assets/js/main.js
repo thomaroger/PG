@@ -66,7 +66,13 @@ jQuery(function($){
         $('#nestableMenu').find(".dd-item").each(function(key, element){
             if($($($(element).parent()[0]).prev()).hasClass('dd-actions')) {
                 var id = "children-"+$(element).attr("data-id");
-            }else{
+            }else if ($($($(element).parent()[0]).prev()).hasClass('dd-item')) {
+                var id = "children-"+$(element).attr("data-id");
+                if($($($(element).parent()[0]).prev()).hasClass('isRoot')){
+                    var id = $(element).attr("data-id");
+                }
+
+            }else {
                 var id = $(element).attr("data-id");
             }
             array.push(id);
