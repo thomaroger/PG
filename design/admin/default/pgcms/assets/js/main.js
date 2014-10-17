@@ -62,7 +62,15 @@ jQuery(function($){
         collapseBtnHTML : '<button data-action="collapse" class="fa fa-minus">Collapse</button>',
     })
     .on('change', function(e){
-        var list   = e.length ? e : $(e.target);
-        $.post("/admin/playgroundcms/menu/position",{'data' : window.JSON.stringify(list.nestable('serialize'))});
+        var array = [ ];
+        $('#nestableMenu').find(".dd-item").each(function(key, element){
+            if($($($(element).parent()[0]).prev()).hasClass('dd-actions')) {
+                var id = "children-"+$(element).attr("data-id");
+            }else{
+                var id = $(element).attr("data-id");
+            }
+            array.push(id);
+        })
+        $.post("/admin/playgroundcms/menu/position",{'data' : window.JSON.stringify(array)});
     });
 });
