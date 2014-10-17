@@ -43,9 +43,13 @@
                                 <div class="panel-body">
                                     <h4>Layouts list that use this zone : </h4>
                                     <ul>
-                                        <?php foreach ($layouts[$zone->getId()] as $layout) : ?>
-                                           <li><a class="color-white-underline" href="<?php echo $this->url('admin/playgroundcmsadmin/layout_edit', array('id' => $layout->getId())); ?>"><?php echo $layout->getName(); ?></a></li>
-                                        <?php endforeach; ?>
+                                        <?php if(!empty($layouts[$zone->getId()])) : ?>
+                                            <?php foreach ($layouts[$zone->getId()] as $layout) : ?>
+                                               <li><a class="color-white-underline" href="<?php echo $this->url('admin/playgroundcmsadmin/layout_edit', array('id' => $layout->getId())); ?>"><?php echo $layout->getName(); ?></a></li>
+                                            <?php endforeach; ?>
+                                        <?php else:  ?>
+                                            <li>No layout for this zone</li>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
                             </div>
