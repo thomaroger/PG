@@ -64,14 +64,16 @@ jQuery(function($){
     .on('change', function(e){
         var array = [ ];
         $('#nestableMenu').find(".dd-item").each(function(key, element){
+            
             if($($($(element).parent()[0]).prev()).hasClass('dd-actions')) {
-                var id = "children-"+$(element).attr("data-id");
+                var parentId = $($(element).parent().parent()).attr("data-id");
+                var id = "children-"+parentId+"-"+$(element).attr("data-id");
             }else if ($($($(element).parent()[0]).prev()).hasClass('dd-item')) {
-                var id = "children-"+$(element).attr("data-id");
+                var parentId = $($(element).parent().prev()).attr("data-id");
+                var id = "children-"+parentId+"-"+$(element).attr("data-id");
                 if($($($(element).parent()[0]).prev()).hasClass('isRoot')){
                     var id = $(element).attr("data-id");
                 }
-
             }else {
                 var id = $(element).attr("data-id");
             }
@@ -79,4 +81,16 @@ jQuery(function($){
         })
         $.post("/admin/playgroundcms/menu/position",{'data' : window.JSON.stringify(array)});
     });
+
+    $('.subMenuCollapse').click(function(element){
+        $(this).next().show();
+        $(this).hide();
+        $(this).parent().next().hide();
+    })
+
+    $('.subMenuExpand').click(function(element){
+        $(this).prev().show();
+        $(this).hide();
+        $(this).parent().next().show();     
+    })
 });
