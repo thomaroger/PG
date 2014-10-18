@@ -58,8 +58,8 @@ jQuery(function($){
 
     $('#nestableMenu').nestable({
         group: 1,
-        expandBtnHTML : '<button data-action="expand" class="fa fa-plus">Expand></button>',
-        collapseBtnHTML : '<button data-action="collapse" class="fa fa-minus">Collapse</button>',
+        expandBtnHTML : '',
+        collapseBtnHTML : '',
     })
     .on('change', function(e){
         var array = [ ];
