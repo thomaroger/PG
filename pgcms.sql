@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 20 Octobre 2014 à 00:21
+-- Généré le: Lun 20 Octobre 2014 à 00:54
 -- Version du serveur: 5.6.13
 -- Version de PHP: 5.4.24
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `cms_block` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
 -- Contenu de la table `cms_block`
@@ -59,7 +59,8 @@ INSERT INTO `cms_block` (`id`, `name`, `type`, `configuration`, `is_exportable`,
 (12, 'Liste de categories', 'PlaygroundPublishing\\Blocks\\CategoryListController', '{"sort":{"field":"title","direction":"ASC"},"pagination":{"max_per_page":"","limit":""}}', 0, 1, 'liste-de-categories', '{"web":"playground-publishing\\/blocks\\/list_category_md_12.phtml","mobile":""}', '2014-05-23 12:16:12', '2014-05-23 12:22:23'),
 (13, 'Liste de commentaire lié à l''article courant', 'PlaygroundPublishing\\Blocks\\CommentListController', '{"status":"1"}', 0, 0, 'liste-de-commentaire-lie-a-larticle-courant', '{"web":"playground-publishing\\/blocks\\/list_comment_md_12.phtml","mobile":""}', '2014-05-23 14:17:49', '2014-05-23 16:25:33'),
 (14, 'Liste de sondages', 'PlaygroundPublishing\\Blocks\\PollListController', '{"sort":{"field":"updatedAt","direction":"DESC"},"pagination":{"max_per_page":"5","limit":"5"}}', 0, 0, 'liste-de-sondages', '{"web":"playground-publishing\\/blocks\\/list_poll_md_12.phtml","mobile":""}', '2014-06-01 22:16:10', '2014-06-01 22:16:10'),
-(15, 'Block Sondage detail', 'PlaygroundPublishing\\Blocks\\PollController', 'null', 0, 0, 'block-sondage-detail', '{"web":"playground-publishing\\/blocks\\/poll_md_12.phtml","mobile":""}', '2014-06-01 22:17:11', '2014-06-01 22:17:11');
+(15, 'Block Sondage detail', 'PlaygroundPublishing\\Blocks\\PollController', 'null', 0, 0, 'block-sondage-detail', '{"web":"playground-publishing\\/blocks\\/poll_md_12.phtml","mobile":""}', '2014-06-01 22:17:11', '2014-06-01 22:17:11'),
+(16, 'Block Menu Header', 'PlaygroundCMS\\Blocks\\MenuController', '{"menu":"2"}', 0, 1, 'block-menu-header', '{"web":"playground-cms\\/blocks\\/menu.phtml","mobile":"playground-cms\\/blocks\\/menu.phtml"}', '2014-10-20 00:49:10', '2014-10-20 00:49:10');
 
 -- --------------------------------------------------------
 
@@ -77,14 +78,13 @@ CREATE TABLE IF NOT EXISTS `cms_block_layout_zone` (
   PRIMARY KEY (`id`),
   KEY `IDX_25E53886E9ED820C` (`block_id`),
   KEY `IDX_25E53886D29AF672` (`layoutZone_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
 
 --
 -- Contenu de la table `cms_block_layout_zone`
 --
 
 INSERT INTO `cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`, `updated_at`, `layoutZone_id`) VALUES
-(1, 1, 99, '2014-05-22 20:03:45', '2014-05-22 20:03:45', 1),
 (3, 2, 99, '2014-05-22 20:05:08', '2014-05-22 20:05:08', 4),
 (4, 3, 99, '2014-05-22 20:07:04', '2014-05-22 20:07:04', 2),
 (5, 1, 99, '2014-05-23 10:08:33', '2014-05-23 10:08:33', 5),
@@ -112,7 +112,8 @@ INSERT INTO `cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`,
 (30, 11, 99, '2014-06-01 22:16:45', '2014-06-01 22:16:45', 23),
 (31, 12, 99, '2014-06-01 22:16:49', '2014-06-01 22:16:49', 23),
 (32, 2, 99, '2014-06-01 22:16:52', '2014-06-01 22:16:52', 24),
-(33, 15, 99, '2014-06-01 22:17:11', '2014-06-01 22:17:11', 22);
+(33, 15, 99, '2014-06-01 22:17:11', '2014-06-01 22:17:11', 22),
+(34, 16, 99, '2014-10-20 00:50:52', '2014-10-20 00:50:52', 1);
 
 -- --------------------------------------------------------
 
@@ -214,11 +215,11 @@ CREATE TABLE IF NOT EXISTS `cms_menu` (
 
 INSERT INTO `cms_menu` (`id`, `parent_id`, `lft`, `lvl`, `rgt`, `root`, `title`, `slug`, `url`, `status`, `created_at`, `updated_at`) VALUES
 (1, NULL, 1, 0, 12, 1, 'root', 'root', '/', 1, '2014-10-20 00:13:16', '2014-10-20 00:13:16'),
-(2, 1, 2, 1, 3, 1, 'Menu Header', 'menu-header', '/', 1, '2014-10-20 00:18:48', '2014-10-20 00:18:48'),
-(3, 1, 4, 1, 5, 1, 'Politic', 'politic', '/en_us/category/politic-1.html', 1, '2014-10-20 00:19:46', '2014-10-20 00:19:46'),
-(4, 1, 6, 1, 7, 1, 'Economic', 'economic', '/en_us/category/economic-4.html', 1, '2014-10-20 00:20:04', '2014-10-20 00:20:13'),
-(5, 1, 8, 1, 9, 1, 'Most Read Articles', 'most-read-articles', '/', 1, '2014-10-20 00:20:50', '2014-10-20 00:20:59'),
-(6, 1, 10, 1, 11, 1, 'Ninja Uk', 'ninja-uk', '/en_us/article/drama-of-solitude-a-yorkshire-devoured-by-a-person-4.html', 1, '2014-10-20 00:21:26', '2014-10-20 00:21:26');
+(2, 1, 2, 1, 11, 1, 'Menu Header', 'menu-header', '/', 1, '2014-10-20 00:18:48', '2014-10-20 00:24:23'),
+(3, 2, 3, 2, 4, 1, 'Politic', 'politic', '/en_us/category/politic-1.html', 1, '2014-10-20 00:19:46', '2014-10-20 00:24:23'),
+(4, 2, 5, 2, 6, 1, 'Economic', 'economic', '/en_us/category/economic-4.html', 1, '2014-10-20 00:20:04', '2014-10-20 00:24:24'),
+(5, 2, 7, 2, 10, 1, 'Most Read Articles', 'most-read-articles', '/', 1, '2014-10-20 00:20:50', '2014-10-20 00:24:24'),
+(6, 5, 8, 3, 9, 1, 'Ninja Uk', 'ninja-uk', '/en_us/article/drama-of-solitude-a-yorkshire-devoured-by-a-person-4.html', 1, '2014-10-20 00:21:26', '2014-10-20 00:24:24');
 
 -- --------------------------------------------------------
 
@@ -445,7 +446,7 @@ CREATE TABLE IF NOT EXISTS `cms_template` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Contenu de la table `cms_template`
@@ -463,7 +464,8 @@ INSERT INTO `cms_template` (`id`, `name`, `file`, `description`, `image`, `block
 (9, 'Template liste de categories', 'playground-publishing/blocks/list_category_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\CategoryListController', 0, '2014-05-23 12:15:26', '2014-05-23 12:15:26'),
 (10, 'Template liste de commentaire', 'playground-publishing/blocks/list_comment_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\CommentListController', 0, '2014-05-23 14:16:38', '2014-05-23 14:16:38'),
 (12, 'Template liste de sondages', 'playground-publishing/blocks/list_poll_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\PollListController', 0, '2014-06-01 22:15:16', '2014-06-01 22:15:16'),
-(13, 'template entity sondage', 'playground-publishing/blocks/poll_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\PollController', 0, '2014-06-01 22:15:37', '2014-06-01 22:15:37');
+(13, 'template entity sondage', 'playground-publishing/blocks/poll_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\PollController', 0, '2014-06-01 22:15:37', '2014-06-01 22:15:37'),
+(14, 'Block Menu template', 'playground-cms/blocks/menu.phtml', 'template for block menu', NULL, 'PlaygroundCMS\\Blocks\\MenuController', 0, '2014-10-20 00:47:24', '2014-10-20 00:47:24');
 
 -- --------------------------------------------------------
 
