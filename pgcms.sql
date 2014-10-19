@@ -1,13 +1,12 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.6
+-- version 4.0.4.2
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 23 Mai 2014 à 17:02
--- Version du serveur: 5.5.32-0ubuntu7
--- Version de PHP: 5.5.3-1ubuntu2
+-- Généré le: Lun 20 Octobre 2014 à 00:21
+-- Version du serveur: 5.6.13
+-- Version de PHP: 5.4.24
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -20,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `pgcms`
 --
+CREATE DATABASE IF NOT EXISTS `pgcms` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `pgcms`;
 
 -- --------------------------------------------------------
 
@@ -39,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `cms_block` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
 -- Contenu de la table `cms_block`
@@ -56,7 +57,9 @@ INSERT INTO `cms_block` (`id`, `name`, `type`, `configuration`, `is_exportable`,
 (10, 'Entity Article Détail', 'PlaygroundPublishing\\Blocks\\ArticleController', 'null', 0, 0, 'entity-article-detail', '{"web":"playground-publishing\\/blocks\\/article_md_12.phtml","mobile":""}', '2014-05-23 11:56:00', '2014-05-23 11:56:00'),
 (11, 'Liste de tags', 'PlaygroundPublishing\\Blocks\\TagListController', '{"sort":{"field":"title","direction":"ASC"},"pagination":{"max_per_page":"","limit":""}}', 0, 1, 'liste-de-tags', '{"web":"playground-publishing\\/blocks\\/list_tag_md_12.phtml","mobile":""}', '2014-05-23 12:14:39', '2014-05-23 12:16:22'),
 (12, 'Liste de categories', 'PlaygroundPublishing\\Blocks\\CategoryListController', '{"sort":{"field":"title","direction":"ASC"},"pagination":{"max_per_page":"","limit":""}}', 0, 1, 'liste-de-categories', '{"web":"playground-publishing\\/blocks\\/list_category_md_12.phtml","mobile":""}', '2014-05-23 12:16:12', '2014-05-23 12:22:23'),
-(13, 'Liste de commentaire lié à l''article courant', 'PlaygroundPublishing\\Blocks\\CommentListController', '{"status":"1"}', 0, 0, 'liste-de-commentaire-lie-a-larticle-courant', '{"web":"playground-publishing\\/blocks\\/list_comment_md_12.phtml","mobile":""}', '2014-05-23 14:17:49', '2014-05-23 16:25:33');
+(13, 'Liste de commentaire lié à l''article courant', 'PlaygroundPublishing\\Blocks\\CommentListController', '{"status":"1"}', 0, 0, 'liste-de-commentaire-lie-a-larticle-courant', '{"web":"playground-publishing\\/blocks\\/list_comment_md_12.phtml","mobile":""}', '2014-05-23 14:17:49', '2014-05-23 16:25:33'),
+(14, 'Liste de sondages', 'PlaygroundPublishing\\Blocks\\PollListController', '{"sort":{"field":"updatedAt","direction":"DESC"},"pagination":{"max_per_page":"5","limit":"5"}}', 0, 0, 'liste-de-sondages', '{"web":"playground-publishing\\/blocks\\/list_poll_md_12.phtml","mobile":""}', '2014-06-01 22:16:10', '2014-06-01 22:16:10'),
+(15, 'Block Sondage detail', 'PlaygroundPublishing\\Blocks\\PollController', 'null', 0, 0, 'block-sondage-detail', '{"web":"playground-publishing\\/blocks\\/poll_md_12.phtml","mobile":""}', '2014-06-01 22:17:11', '2014-06-01 22:17:11');
 
 -- --------------------------------------------------------
 
@@ -74,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `cms_block_layout_zone` (
   PRIMARY KEY (`id`),
   KEY `IDX_25E53886E9ED820C` (`block_id`),
   KEY `IDX_25E53886D29AF672` (`layoutZone_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
 
 --
 -- Contenu de la table `cms_block_layout_zone`
@@ -95,15 +98,21 @@ INSERT INTO `cms_block_layout_zone` (`id`, `block_id`, `position`, `created_at`,
 (14, 7, 4, '2014-05-23 10:59:01', '2014-05-23 11:56:06', 6),
 (15, 8, 3, '2014-05-23 10:59:42', '2014-05-23 11:56:06', 6),
 (17, 10, 0, '2014-05-23 11:56:00', '2014-05-23 11:56:06', 6),
-(18, 11, 99, '2014-05-23 12:14:39', '2014-05-23 12:14:39', 3),
-(19, 12, 99, '2014-05-23 12:16:12', '2014-05-23 12:16:12', 3),
+(18, 11, 100, '2014-05-23 12:14:39', '2014-06-01 22:16:21', 3),
+(19, 12, 100, '2014-05-23 12:16:12', '2014-06-01 22:16:21', 3),
 (20, 11, 99, '2014-05-23 12:22:06', '2014-05-23 12:22:06', 7),
 (21, 12, 99, '2014-05-23 12:22:36', '2014-05-23 12:22:36', 7),
 (22, 11, 99, '2014-05-23 12:23:21', '2014-05-23 12:23:21', 11),
 (23, 12, 99, '2014-05-23 12:23:25', '2014-05-23 12:23:25', 11),
 (24, 11, 99, '2014-05-23 12:23:35', '2014-05-23 12:23:35', 15),
 (25, 12, 99, '2014-05-23 12:23:40', '2014-05-23 12:23:40', 15),
-(26, 13, 99, '2014-05-23 14:17:49', '2014-05-23 14:17:49', 6);
+(26, 13, 99, '2014-05-23 14:17:49', '2014-05-23 14:17:49', 6),
+(28, 14, 0, '2014-06-01 22:16:10', '2014-06-01 22:16:21', 3),
+(29, 1, 99, '2014-06-01 22:16:38', '2014-06-01 22:16:38', 21),
+(30, 11, 99, '2014-06-01 22:16:45', '2014-06-01 22:16:45', 23),
+(31, 12, 99, '2014-06-01 22:16:49', '2014-06-01 22:16:49', 23),
+(32, 2, 99, '2014-06-01 22:16:52', '2014-06-01 22:16:52', 24),
+(33, 15, 99, '2014-06-01 22:17:11', '2014-06-01 22:17:11', 22);
 
 -- --------------------------------------------------------
 
@@ -120,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `cms_layout` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `cms_layout`
@@ -130,7 +139,8 @@ INSERT INTO `cms_layout` (`id`, `name`, `file`, `description`, `image`, `created
 (1, 'Index', 'playground-cms/layout/index_zone.phtml', 'Index', NULL, '2014-05-22 20:02:53', '2014-05-22 20:02:53'),
 (2, 'Article', 'playground-publishing/layout/article.phtml', '', NULL, '2014-05-23 10:06:38', '2014-05-23 10:06:38'),
 (3, 'Category', 'playground-publishing/layout/category.phtml', '', NULL, '2014-05-23 10:07:01', '2014-05-23 10:07:01'),
-(4, 'Tag', 'playground-publishing/layout/tag.phtml', '', NULL, '2014-05-23 10:07:10', '2014-05-23 10:07:10');
+(4, 'Tag', 'playground-publishing/layout/tag.phtml', '', NULL, '2014-05-23 10:07:10', '2014-05-23 10:07:10'),
+(6, 'Poll', 'playground-publishing/layout/poll.phtml', '', NULL, '2014-06-01 22:07:57', '2014-06-01 22:07:57');
 
 -- --------------------------------------------------------
 
@@ -147,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `cms_layout_zone` (
   PRIMARY KEY (`id`),
   KEY `IDX_D2495D4A8C22AA1A` (`layout_id`),
   KEY `IDX_D2495D4A9F2C3FAB` (`zone_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
 
 --
 -- Contenu de la table `cms_layout_zone`
@@ -169,7 +179,103 @@ INSERT INTO `cms_layout_zone` (`id`, `layout_id`, `zone_id`, `created_at`, `upda
 (13, 4, 5, '2014-05-23 10:07:10', '2014-05-23 10:07:10'),
 (14, 4, 6, '2014-05-23 10:07:10', '2014-05-23 10:07:10'),
 (15, 4, 7, '2014-05-23 10:07:10', '2014-05-23 10:07:10'),
-(16, 4, 8, '2014-05-23 10:07:10', '2014-05-23 10:07:10');
+(16, 4, 8, '2014-05-23 10:07:10', '2014-05-23 10:07:10'),
+(21, 6, 13, '2014-06-01 22:07:57', '2014-06-01 22:07:57'),
+(22, 6, 14, '2014-06-01 22:07:57', '2014-06-01 22:07:57'),
+(23, 6, 15, '2014-06-01 22:07:57', '2014-06-01 22:07:57'),
+(24, 6, 16, '2014-06-01 22:07:57', '2014-06-01 22:07:57');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cms_menu`
+--
+
+CREATE TABLE IF NOT EXISTS `cms_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `lft` int(11) NOT NULL,
+  `lvl` int(11) NOT NULL,
+  `rgt` int(11) NOT NULL,
+  `root` int(11) DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `url` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `status` smallint(6) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_BA9397EE727ACA70` (`parent_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Contenu de la table `cms_menu`
+--
+
+INSERT INTO `cms_menu` (`id`, `parent_id`, `lft`, `lvl`, `rgt`, `root`, `title`, `slug`, `url`, `status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 1, 0, 12, 1, 'root', 'root', '/', 1, '2014-10-20 00:13:16', '2014-10-20 00:13:16'),
+(2, 1, 2, 1, 3, 1, 'Menu Header', 'menu-header', '/', 1, '2014-10-20 00:18:48', '2014-10-20 00:18:48'),
+(3, 1, 4, 1, 5, 1, 'Politic', 'politic', '/en_us/category/politic-1.html', 1, '2014-10-20 00:19:46', '2014-10-20 00:19:46'),
+(4, 1, 6, 1, 7, 1, 'Economic', 'economic', '/en_us/category/economic-4.html', 1, '2014-10-20 00:20:04', '2014-10-20 00:20:13'),
+(5, 1, 8, 1, 9, 1, 'Most Read Articles', 'most-read-articles', '/', 1, '2014-10-20 00:20:50', '2014-10-20 00:20:59'),
+(6, 1, 10, 1, 11, 1, 'Ninja Uk', 'ninja-uk', '/en_us/article/drama-of-solitude-a-yorkshire-devoured-by-a-person-4.html', 1, '2014-10-20 00:21:26', '2014-10-20 00:21:26');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cms_menu_translations`
+--
+
+CREATE TABLE IF NOT EXISTS `cms_menu_translations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `locale` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `object_class` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `field` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `foreign_key` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `menu_translations_lookup_unique_idx` (`locale`,`object_class`,`field`,`foreign_key`),
+  KEY `menu_translations_lookup_idx` (`locale`,`object_class`,`foreign_key`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=115 ;
+
+--
+-- Contenu de la table `cms_menu_translations`
+--
+
+INSERT INTO `cms_menu_translations` (`id`, `locale`, `object_class`, `field`, `foreign_key`, `content`) VALUES
+(82, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'title', '1', 'root'),
+(83, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'slug', '1', 'root'),
+(84, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'url', '1', '/'),
+(85, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'title', '2', 'Menu Header'),
+(86, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'slug', '2', 'menu-header'),
+(87, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'url', '2', '/'),
+(88, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'title', '2', 'Menu Header'),
+(89, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'slug', '2', 'menu-header'),
+(90, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'url', '2', '/'),
+(91, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'title', '3', 'Politique'),
+(92, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'slug', '3', 'politique'),
+(93, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'url', '3', '/fr_fr/categorie/politique-1.html'),
+(94, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'title', '3', 'Politic'),
+(95, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'slug', '3', 'politic'),
+(96, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'url', '3', '/en_us/category/politic-1.html'),
+(97, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'title', '4', 'Economie'),
+(98, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'slug', '4', 'economie'),
+(99, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'url', '4', '/fr_fr/categorie/economie-4.html'),
+(100, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'title', '4', 'Economic'),
+(101, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'slug', '4', 'economic'),
+(102, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'url', '4', '/en_us/category/economic-4.html'),
+(103, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'title', '5', 'Articles les plus lus'),
+(104, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'slug', '5', 'articles-les-plus-lus'),
+(105, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'url', '5', '/'),
+(106, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'title', '5', 'Most Read Articles'),
+(107, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'slug', '5', 'most-read-articles'),
+(108, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'url', '5', '/'),
+(109, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'title', '6', 'Ninja Fr'),
+(110, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'slug', '6', 'ninja-fr'),
+(111, 'fr_FR', 'PlaygroundCMS\\Entity\\Menu', 'url', '6', '/fr_fr/article/drame-de-la-solitude-un-yorkshire-devore-par-une-personne-agee-4.html'),
+(112, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'title', '6', 'Ninja Uk'),
+(113, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'slug', '6', 'ninja-uk'),
+(114, 'en_US', 'PlaygroundCMS\\Entity\\Menu', 'url', '6', '/en_us/article/drama-of-solitude-a-yorkshire-devoured-by-a-person-4.html');
 
 -- --------------------------------------------------------
 
@@ -254,7 +360,7 @@ CREATE TABLE IF NOT EXISTS `cms_ressource` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `ressource_unique_idx` (`url`),
   KEY `ressource_index_idx` (`model`,`record_id`,`locale`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=58 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=62 ;
 
 --
 -- Contenu de la table `cms_ressource`
@@ -316,7 +422,11 @@ INSERT INTO `cms_ressource` (`id`, `url`, `model`, `record_id`, `locale`, `secur
 (54, '/fr_fr/tag/xavier-darcos-17.html', 'PlaygroundPublishing\\Entity\\Tag', 17, 'fr_FR', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/tag.phtml"}', '2014-05-23 10:28:58', '2014-05-23 10:28:58'),
 (55, '/en_us/tag/xavier-darcos-17.html', 'PlaygroundPublishing\\Entity\\Tag', 17, 'en_US', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/tag.phtml"}', '2014-05-23 10:28:58', '2014-05-23 10:28:58'),
 (56, '/fr_fr/tag/max-gallo-18.html', 'PlaygroundPublishing\\Entity\\Tag', 18, 'fr_FR', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/tag.phtml"}', '2014-05-23 10:29:19', '2014-05-23 10:29:19'),
-(57, '/en_us/tag/max-gallo-18.html', 'PlaygroundPublishing\\Entity\\Tag', 18, 'en_US', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/tag.phtml"}', '2014-05-23 10:29:19', '2014-05-23 10:29:19');
+(57, '/en_us/tag/max-gallo-18.html', 'PlaygroundPublishing\\Entity\\Tag', 18, 'en_US', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/tag.phtml"}', '2014-05-23 10:29:19', '2014-05-23 10:29:19'),
+(58, '/fr_fr/sondage/avez-vous-une-bonne-image-de-lump-1.html', 'PlaygroundPublishing\\Entity\\Poll', 1, 'fr_FR', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/poll.phtml"}', '2014-06-01 22:07:44', '2014-06-01 22:11:15'),
+(59, '/en_us/poll/do-you-have-a-good-image-of-the-ump-1.html', 'PlaygroundPublishing\\Entity\\Poll', 1, 'en_US', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/poll.phtml"}', '2014-06-01 22:07:44', '2014-06-01 22:11:15'),
+(60, '/fr_fr/sondage/pneus-neige-obligatoires-en-hiver-bien-ou-pas-bien-3.html', 'PlaygroundPublishing\\Entity\\Poll', 3, 'fr_FR', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/poll.phtml"}', '2014-07-24 23:28:24', '2014-07-24 23:28:24'),
+(61, '/en_us/poll/winter-snow-tires-required-good-or-bad-3.html', 'PlaygroundPublishing\\Entity\\Poll', 3, 'en_US', 'SECURITY_ANONYMOUS', '{"web":"playground-publishing\\/layout\\/poll.phtml"}', '2014-07-24 23:28:24', '2014-07-24 23:28:24');
 
 -- --------------------------------------------------------
 
@@ -335,7 +445,7 @@ CREATE TABLE IF NOT EXISTS `cms_template` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Contenu de la table `cms_template`
@@ -351,7 +461,9 @@ INSERT INTO `cms_template` (`id`, `name`, `file`, `description`, `image`, `block
 (7, 'Template liste d''article par categorie', 'playground-publishing/blocks/list_article_category_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\ArticleCategoryListController', 0, '2014-05-23 10:45:40', '2014-05-23 14:16:59'),
 (8, 'Template liste de tags', 'playground-publishing/blocks/list_tag_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\TagListController', 0, '2014-05-23 12:13:46', '2014-05-23 12:13:46'),
 (9, 'Template liste de categories', 'playground-publishing/blocks/list_category_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\CategoryListController', 0, '2014-05-23 12:15:26', '2014-05-23 12:15:26'),
-(10, 'Template liste de commentaire', 'playground-publishing/blocks/list_comment_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\CommentListController', 0, '2014-05-23 14:16:38', '2014-05-23 14:16:38');
+(10, 'Template liste de commentaire', 'playground-publishing/blocks/list_comment_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\CommentListController', 0, '2014-05-23 14:16:38', '2014-05-23 14:16:38'),
+(12, 'Template liste de sondages', 'playground-publishing/blocks/list_poll_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\PollListController', 0, '2014-06-01 22:15:16', '2014-06-01 22:15:16'),
+(13, 'template entity sondage', 'playground-publishing/blocks/poll_md_12.phtml', '', NULL, 'PlaygroundPublishing\\Blocks\\PollController', 0, '2014-06-01 22:15:37', '2014-06-01 22:15:37');
 
 -- --------------------------------------------------------
 
@@ -365,7 +477,7 @@ CREATE TABLE IF NOT EXISTS `cms_zone` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
 -- Contenu de la table `cms_zone`
@@ -383,7 +495,11 @@ INSERT INTO `cms_zone` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (9, 'test_header', '2014-05-23 16:24:28', '2014-05-23 16:24:28'),
 (10, 'test_content', '2014-05-23 16:24:28', '2014-05-23 16:24:28'),
 (11, 'test_right_menu', '2014-05-23 16:24:28', '2014-05-23 16:24:28'),
-(12, 'test_footer', '2014-05-23 16:24:28', '2014-05-23 16:24:28');
+(12, 'test_footer', '2014-05-23 16:24:28', '2014-05-23 16:24:28'),
+(13, 'poll_header', '2014-06-01 22:07:57', '2014-06-01 22:07:57'),
+(14, 'poll_content', '2014-06-01 22:07:57', '2014-06-01 22:07:57'),
+(15, 'poll_right_menu', '2014-06-01 22:07:57', '2014-06-01 22:07:57'),
+(16, 'poll_footer', '2014-06-01 22:07:57', '2014-06-01 22:07:57');
 
 -- --------------------------------------------------------
 
@@ -517,7 +633,7 @@ CREATE TABLE IF NOT EXISTS `publishing_article` (
 --
 
 INSERT INTO `publishing_article` (`id`, `status`, `is_web`, `is_mobile`, `author`, `start_date`, `end_date`, `created_at`, `updated_at`, `title`, `slug`, `abstract`, `content`, `title_meta`, `description_meta`, `keyword_meta`) VALUES
-(2, 1, 1, 0, 'troger', '2014-05-23 00:00:00', '2029-12-31 23:59:59', '2014-05-22 20:12:29', '2014-05-23 11:46:40', 'The French Academy finally valid "They croivent" and "Should we Voye"', 'the-french-academy-finally-valid-they-croivent-and-should-we-voye', 'It is a real thunderbolt which took place last night in the very closed circle of " Immortals" . Indeed, after a long debate of seven hours and thirty -five minutes, the Academy has finally accepted and validated definitely unusual combination of two forms yet commonly used oral " croivent they " and " we Voye " .', '<div>It is a real thunderbolt which took place last night in the very closed circle of " Immortals" . Indeed, after a long debate of seven hours and thirty -five minutes, the Academy has finally accepted and validated definitely unusual combination of two forms yet commonly used oral " croivent they " and " we Voye " .</div><div><br></div><div>" It says" They drink "when it was quite unfair to consider " They croivent "as a lack of French " rightly observes Jean d'' Ormesson . This decision of the French Academy and result from a desire to change the language to shape used daily by those who practice it . Simplify, clarify , dust the French language is an integral part of healthy missions front leads the Academy.</div><div><br></div><h4>Alain Finkielkraut implement master</h4><div><br></div><div>It is led by the latest member of the Academy in time, the philosopher Alain Finkielkraut , the feat has been achieved . Indeed, customary of these conjugations, " he fought tooth and nail and managed to mobilize a majority of members behind him ," commented Xavier Darcos admiration .</div><div><br></div><div>These forms will be accepted much the same way as the old ones, so as not to create too sudden change in teaching methods . " Should we Voye that we do the same with " As if that '' , "said a Max Gallo exhausted but satisfied at the end of the debate.</div>', 'The French Academy finally valid "They croivent" and "Should we Voye"', 'The French Academy finally valid "They croivent" and "Should we Voye"', 'The French Academy finally valid "They croivent" and "Should we Voye"'),
+(2, 1, 1, 0, 'troger', '2014-05-23 00:00:00', '2029-12-31 23:59:59', '2014-05-22 20:12:29', '2014-08-20 09:40:34', 'The French Academy finally valid "They croivent" and "Should we Voye"', 'the-french-academy-finally-valid-they-croivent-and-should-we-voye', 'It is a real thunderbolt which took place last night in the very closed circle of " Immortals" . Indeed, after a long debate of seven hours and thirty -five minutes, the Academy has finally accepted and validated definitely unusual combination of two forms yet commonly used oral " croivent they " and " we Voye " .', '<div>It is a real thunderbolt which took place last night in the very closed circle of " Immortals" . Indeed, after a long debate of seven hours and thirty -five minutes, the Academy has finally accepted and validated definitely unusual combination of two forms yet commonly used oral " croivent they " and " we Voye " .</div><div><br></div><div>" It says" They drink "when it was quite unfair to consider " They croivent "as a lack of French " rightly observes Jean d'' Ormesson . This decision of the French Academy and result from a desire to change the language to shape used daily by those who practice it . Simplify, clarify , dust the French language is an integral part of healthy missions front leads the Academy.</div><div><br></div><h4>Alain Finkielkraut implement master</h4><div><br></div><div>It is led by the latest member of the Academy in time, the philosopher Alain Finkielkraut , the feat has been achieved . Indeed, customary of these conjugations, " he fought tooth and nail and managed to mobilize a majority of members behind him ," commented Xavier Darcos admiration .</div><div><br></div><div>These forms will be accepted much the same way as the old ones, so as not to create too sudden change in teaching methods . " Should we Voye that we do the same with " As if that '' , "said a Max Gallo exhausted but satisfied at the end of the debate.</div>', 'The French Academy finally valid "They croivent" and "Should we Voye"', 'The French Academy finally valid "They croivent" and "Should we Voye"', 'The French Academy finally valid "They croivent" and "Should we Voye"'),
 (3, 1, 1, 0, 'troger', '2014-05-22 00:00:00', '2029-12-31 23:59:59', '2014-05-22 20:14:00', '2014-05-23 10:34:20', 'SNCF had ordered 2,000 TER trains too fast for network', 'sncf-had-ordered-2-000-ter-trains-too-fast-for-network', 'This information is revealed by the chained duck this morning. According to his information, the SNCF has ordered nearly 2,000 TER trains, trains that proved too fast and point to its network.', 'This information is revealed by the chained duck this morning. According to his information, the SNCF has ordered nearly 2,000 TER trains , trains that proved too fast and point to its network. "We will improve our network but then the time saved by users and travelers is far too important," said a preliminary report from the company that tested several trains on the network. One used by the SNCF options to solve the problem would be to extend the distance of stations between them, but this may burden the bill of several billion euros . In addition, the problem would impact greatly train drivers . "The effect of speed is too high, they are not at all used , we have been sickened ," says an anonymous setting. Also according to the Duck, trains do not meet the specifications requested , all being equipped with comfortable seats and an effective air conditioning.', 'SNCF had ordered 2,000 TER trains too fast for network', 'SNCF had ordered 2,000 TER trains too fast for network', 'SNCF had ordered 2,000 TER trains too fast for network'),
 (4, 1, 1, 0, 'troger', '2014-05-22 00:00:00', '2029-12-31 23:59:59', '2014-05-22 20:15:05', '2014-05-23 10:30:23', 'Drama of solitude - A Yorkshire devoured by a person', 'drama-of-solitude-a-yorkshire-devoured-by-a-person', 'Dax - Terrible discovery for the inhabitants of this village on the outskirts of Dax, in the Landes. No news of Poppy, an adorable Yorkshire 8 years, relatives went to his home. Alas, they have not found the corpse of poor dog, partly eaten by a person who lived with him for several years.', '<div>Dax - Terrible discovery for the inhabitants of this village on the outskirts of Dax, in the Landes. No news of Poppy, an adorable Yorkshire 8 years , relatives went to his home. Alas, they have not found the corpse of poor dog , partly eaten by a person who lived with him for several years.</div><div><br></div><div>"It''s terrible , really terrible," laments the village mayor Poppy who knew very well. According to firefighters, the dog would be dead for several weeks and the elderly who lived with Poppy would be nourished by his body . No trace suspect was discovered on the body of the little dog , which suggests a natural death , although further tests will be conducted to eliminate any doubt .</div><div><br></div><div>For Mayor , it is the loneliness that is responsible for this terrible tragedy . "Few people came to visit them, I think that even people outside the village, they had no real family ." Therefore, without contact with the outside , the elderly has been its survival to the regular consumption of flesh Poppy. Relief and veterinary services noted however that the elderly showed intelligence. " The flesh of Yorkshire are very thick , but the senior was able to make good use and manage the stock there was , otherwise , it would also died in a few days. " .</div>', 'Drama of solitude - A Yorkshire devoured by a person', 'Drama of solitude - A Yorkshire devoured by a person', 'Drama of solitude - A Yorkshire devoured by a person'),
 (5, 1, 1, 0, 'troger', '2014-05-22 00:00:00', '2029-12-31 23:59:59', '2014-05-22 20:16:14', '2014-05-23 10:30:39', 'Europe - The French shocked to learn that a large number of them will vote PS', 'europe-the-french-shocked-to-learn-that-a-large-number-of-them-will-vote-ps', 'Paris - Will you to a new April 21 for the Republican party ? Third place in the Socialist Party in polls remind everyone how the French are attracted by extreme and parties, even a minority can tip an election. PS is there a protest vote or a real political force in the making? Report .', '<div>Paris - Will you to a new April 21 for the Republican party ? Third place in the Socialist Party in polls remind everyone how the French are attracted by extreme and parties, even a minority can tip an election. PS is there a protest vote or a real political force in the making? Report .</div><div><br></div><div>Recent polls show that the European elections the PS vote seems to settle permanently in the country. More and more French do not hesitate to assert and claim it. It is no longer hidden . As this young man of Reims who says he will vote for European PS . "Yes PS I will vote because I do not trust either the FN or the UMP. They are left in the system , "said a young man who recently joined the PS . "At first I did not want to tell my family was a little ashamed ," he says . "But today , attitudes have changed, we can safely claim to socialist." With friends, they argue in their neighborhood , trying to unite . But it is not always easy.</div><div><br></div><div>According to them, the PS still trying to get out of this phase of demonization , demonization instigated and organized by other Republican parties . " We read so much rubbish in the press about us, it''s sad. "Says Coralie , 31, who was active in PS for over ten years. " We caricature, but our members and our voters are not fools ," she adds , noting that third place in the polls shows that the French are beginning to open their eyes. " There will be big surprises on election night ," she said with a hint of malice in casting an admiring glance at a picture of Francois Hollande.</div><div><br></div><div>But for many analysts who have thoroughly analyzed this unique and interesting position - otherwise we do not do a whole article - it is a vote that is deeply rooted and bears a strong identity. "There is a kind of rejection of established values ​​. People no longer recognize themselves in policies, then they turn to extreme and therefore , logically , socialism . "Said an official of the FIFG noting that the PS is now maintained as the potential third political force . "This is something new . There is a clear tipping and other parties should be wary . " But in the opinion of many experts, the inexperience of the PS in the management of political affairs would be a very serious obstacle to a possible arrival one day at the head of the country.</div>', 'Europe - The French shocked to learn that a large number of them will vote PS', 'Europe - The French shocked to learn that a large number of them will vote PS', 'Europe - The French shocked to learn that a large number of them will vote PS'),
@@ -616,8 +732,8 @@ INSERT INTO `publishing_article_translations` (`id`, `locale`, `object_class`, `
 (19, 'fr_FR', 'PlaygroundPublishing\\Entity\\Article', 'titleMeta', '2', 'L’Académie française valide finalement « Ils croivent » et « Faut qu’on voye » '),
 (20, 'fr_FR', 'PlaygroundPublishing\\Entity\\Article', 'keywordMeta', '2', 'L’Académie française valide finalement « Ils croivent » et « Faut qu’on voye » '),
 (21, 'fr_FR', 'PlaygroundPublishing\\Entity\\Article', 'descriptionMeta', '2', 'L’Académie française valide finalement « Ils croivent » et « Faut qu’on voye » '),
-(22, 'en_US', 'PlaygroundPublishing\\Entity\\Article', 'title', '2', 'The French Academy finally valid '),
-(23, 'en_US', 'PlaygroundPublishing\\Entity\\Article', 'slug', '2', 'the-french-academy-finally-valid'),
+(22, 'en_US', 'PlaygroundPublishing\\Entity\\Article', 'title', '2', 'The French Academy finally valid222'),
+(23, 'en_US', 'PlaygroundPublishing\\Entity\\Article', 'slug', '2', 'the-french-academy-finally-valid222'),
 (24, 'en_US', 'PlaygroundPublishing\\Entity\\Article', 'abstract', '2', 'It is a real thunderbolt which took place last night in the very closed circle of " Immortals" . Indeed, after a long debate of seven hours and thirty -five minutes, the Academy has finally accepted and validated definitely unusual combination of two forms yet commonly used oral " croivent they " and " we Voye " .'),
 (25, 'en_US', 'PlaygroundPublishing\\Entity\\Article', 'content', '2', '<div>It is a real thunderbolt which took place last night in the very closed circle of " Immortals" . Indeed, after a long debate of seven hours and thirty -five minutes, the Academy has finally accepted and validated definitely unusual combination of two forms yet commonly used oral " croivent they " and " we Voye " .</div><div><br></div><div>" It says" They drink "when it was quite unfair to consider " They croivent "as a lack of French " rightly observes Jean d'' Ormesson . This decision of the French Academy and result from a desire to change the language to shape used daily by those who practice it . Simplify, clarify , dust the French language is an integral part of healthy missions front leads the Academy.</div><div><br></div><h4>Alain Finkielkraut implement master</h4><div><br></div><div>It is led by the latest member of the Academy in time, the philosopher Alain Finkielkraut , the feat has been achieved . Indeed, customary of these conjugations, " he fought tooth and nail and managed to mobilize a majority of members behind him ," commented Xavier Darcos admiration .</div><div><br></div><div>These forms will be accepted much the same way as the old ones, so as not to create too sudden change in teaching methods . " Should we Voye that we do the same with " As if that '' , "said a Max Gallo exhausted but satisfied at the end of the debate.</div>'),
 (26, 'en_US', 'PlaygroundPublishing\\Entity\\Article', 'titleMeta', '2', 'The French Academy finally valid '),
@@ -836,6 +952,140 @@ INSERT INTO `publishing_comment` (`id`, `article_id`, `name`, `status`, `email`,
 (92, 3, 'Thomas ROGER', 1, 'thomas.roger@adfab.fr', 'en_US', 'En_US12121', '2014-05-23 16:42:25', '2014-05-23 16:42:25'),
 (93, 3, 'Thomas ROGER', 1, 'thomas.roger@adfab.fr', 'en_US', 'En_US12121', '2014-05-23 16:43:25', '2014-05-23 16:43:25'),
 (94, 3, 'Thomas ROGER', 1, 'thomas.roger@adfab.fr', 'en_US', 'En_US12121', '2014-05-23 16:43:42', '2014-05-23 16:43:42');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publishing_poll`
+--
+
+CREATE TABLE IF NOT EXISTS `publishing_poll` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` smallint(6) NOT NULL,
+  `is_web` tinyint(1) NOT NULL,
+  `is_mobile` tinyint(1) NOT NULL,
+  `author` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `question` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `title_meta` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description_meta` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `keyword_meta` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `publishing_poll`
+--
+
+INSERT INTO `publishing_poll` (`id`, `status`, `is_web`, `is_mobile`, `author`, `start_date`, `end_date`, `created_at`, `updated_at`, `title`, `slug`, `question`, `title_meta`, `description_meta`, `keyword_meta`) VALUES
+(1, 1, 1, 0, 'troger', '2014-06-01 00:00:00', '2029-12-31 23:59:59', '2014-06-01 22:07:44', '2014-07-23 00:15:32', 'Do you have a good image of the UMP?', 'do-you-have-a-good-image-of-the-ump', 'Do you have a good image of the UMP?', 'Do you have a good image of the UMP?', 'Do you have a good image of the UMP?', 'Do you have a good image of the UMP?'),
+(3, 1, 1, 0, 'troger', '2014-07-24 12:12:12', '2029-12-31 23:59:59', '2014-07-24 23:28:24', '2014-07-24 23:28:24', 'Winter snow tires required: good or bad?', 'winter-snow-tires-required-good-or-bad', 'Winter snow tires required: good or bad?', 'Winter snow tires required: good or bad?', 'Winter snow tires required: good or bad?', 'Winter snow tires required: good or bad?');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publishing_poll_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `publishing_poll_answer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `poll_id` int(11) DEFAULT NULL,
+  `answer` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `count` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_F9E0C5C13C947C0F` (`poll_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `publishing_poll_answer`
+--
+
+INSERT INTO `publishing_poll_answer` (`id`, `poll_id`, `answer`, `count`, `created_at`, `updated_at`) VALUES
+(3, 3, 'Good', 4, '2014-07-24 23:28:24', '2014-08-04 03:22:45'),
+(4, 3, 'Bad', 1, '2014-07-24 23:28:24', '2014-08-03 02:17:51');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publishing_poll_answer_translations`
+--
+
+CREATE TABLE IF NOT EXISTS `publishing_poll_answer_translations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `locale` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `object_class` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `field` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `foreign_key` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `answer_translations_lookup_unique_idx` (`locale`,`object_class`,`field`,`foreign_key`),
+  KEY `answer_translations_lookup_idx` (`locale`,`object_class`,`foreign_key`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+
+--
+-- Contenu de la table `publishing_poll_answer_translations`
+--
+
+INSERT INTO `publishing_poll_answer_translations` (`id`, `locale`, `object_class`, `field`, `foreign_key`, `content`) VALUES
+(5, 'fr_FR', 'PlaygroundPublishing\\Entity\\Answer', 'answer', '3', 'Bien'),
+(6, 'en_US', 'PlaygroundPublishing\\Entity\\Answer', 'answer', '3', 'Good'),
+(7, 'fr_FR', 'PlaygroundPublishing\\Entity\\Answer', 'answer', '4', 'Pas Bien'),
+(8, 'en_US', 'PlaygroundPublishing\\Entity\\Answer', 'answer', '4', 'Bad');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publishing_poll_translations`
+--
+
+CREATE TABLE IF NOT EXISTS `publishing_poll_translations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `locale` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `object_class` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `field` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `foreign_key` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `poll_translations_lookup_unique_idx` (`locale`,`object_class`,`field`,`foreign_key`),
+  KEY `poll_translations_lookup_idx` (`locale`,`object_class`,`foreign_key`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=37 ;
+
+--
+-- Contenu de la table `publishing_poll_translations`
+--
+
+INSERT INTO `publishing_poll_translations` (`id`, `locale`, `object_class`, `field`, `foreign_key`, `content`) VALUES
+(1, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'title', '1', 'Avez-vous une bonne image de l''UMP?'),
+(2, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'slug', '1', 'avez-vous-une-bonne-image-de-lump'),
+(3, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'question', '1', 'Avez-vous une bonne image de l''UMP?'),
+(4, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'titleMeta', '1', 'Avez-vous une bonne image de l''UMP?'),
+(5, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'keywordMeta', '1', 'Avez-vous une bonne image de l''UMP?'),
+(6, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'descriptionMeta', '1', 'Avez-vous une bonne image de l''UMP?'),
+(7, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'title', '1', 'Do you have a good image of the UMP?'),
+(8, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'slug', '1', 'do-you-have-a-good-image-of-the-ump'),
+(9, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'question', '1', 'Do you have a good image of the UMP?'),
+(10, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'titleMeta', '1', 'Do you have a good image of the UMP?'),
+(11, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'descriptionMeta', '1', 'Do you have a good image of the UMP?'),
+(12, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'keywordMeta', '1', 'Do you have a good image of the UMP?'),
+(25, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'title', '3', 'Pneus neige obligatoires en hiver: bien ou pas bien?'),
+(26, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'slug', '3', 'pneus-neige-obligatoires-en-hiver-bien-ou-pas-bien'),
+(27, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'question', '3', 'Pneus neige obligatoires en hiver: bien ou pas bien?'),
+(28, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'titleMeta', '3', 'Pneus neige obligatoires en hiver: bien ou pas bien?'),
+(29, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'keywordMeta', '3', 'Pneus neige obligatoires en hiver: bien ou pas bien?'),
+(30, 'fr_FR', 'PlaygroundPublishing\\Entity\\Poll', 'descriptionMeta', '3', 'Pneus neige obligatoires en hiver: bien ou pas bien?'),
+(31, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'title', '3', 'Winter snow tires required: good or bad?'),
+(32, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'slug', '3', 'winter-snow-tires-required-good-or-bad'),
+(33, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'question', '3', 'Winter snow tires required: good or bad?'),
+(34, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'titleMeta', '3', 'Winter snow tires required: good or bad?'),
+(35, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'descriptionMeta', '3', 'Winter snow tires required: good or bad?'),
+(36, 'en_US', 'PlaygroundPublishing\\Entity\\Poll', 'keywordMeta', '3', 'Winter snow tires required: good or bad?');
 
 -- --------------------------------------------------------
 
@@ -1268,8 +1518,14 @@ ALTER TABLE `cms_block_layout_zone`
 -- Contraintes pour la table `cms_layout_zone`
 --
 ALTER TABLE `cms_layout_zone`
-  ADD CONSTRAINT `FK_D2495D4A9F2C3FAB` FOREIGN KEY (`zone_id`) REFERENCES `cms_zone` (`id`),
-  ADD CONSTRAINT `FK_D2495D4A8C22AA1A` FOREIGN KEY (`layout_id`) REFERENCES `cms_layout` (`id`);
+  ADD CONSTRAINT `FK_D2495D4A8C22AA1A` FOREIGN KEY (`layout_id`) REFERENCES `cms_layout` (`id`),
+  ADD CONSTRAINT `FK_D2495D4A9F2C3FAB` FOREIGN KEY (`zone_id`) REFERENCES `cms_zone` (`id`);
+
+--
+-- Contraintes pour la table `cms_menu`
+--
+ALTER TABLE `cms_menu`
+  ADD CONSTRAINT `FK_BA9397EE727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `cms_menu` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `formgen`
@@ -1288,14 +1544,20 @@ ALTER TABLE `publishing_article_category`
 -- Contraintes pour la table `publishing_article_tag`
 --
 ALTER TABLE `publishing_article_tag`
-  ADD CONSTRAINT `FK_5EAE5846BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `publishing_tag` (`id`),
-  ADD CONSTRAINT `FK_5EAE58467294869C` FOREIGN KEY (`article_id`) REFERENCES `publishing_article` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_5EAE58467294869C` FOREIGN KEY (`article_id`) REFERENCES `publishing_article` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_5EAE5846BAD26311` FOREIGN KEY (`tag_id`) REFERENCES `publishing_tag` (`id`);
 
 --
 -- Contraintes pour la table `publishing_comment`
 --
 ALTER TABLE `publishing_comment`
   ADD CONSTRAINT `FK_D5035BA77294869C` FOREIGN KEY (`article_id`) REFERENCES `publishing_article` (`id`);
+
+--
+-- Contraintes pour la table `publishing_poll_answer`
+--
+ALTER TABLE `publishing_poll_answer`
+  ADD CONSTRAINT `FK_F9E0C5C13C947C0F` FOREIGN KEY (`poll_id`) REFERENCES `publishing_poll` (`id`);
 
 --
 -- Contraintes pour la table `role`
@@ -1313,16 +1575,15 @@ ALTER TABLE `user_provider`
 -- Contraintes pour la table `user_role`
 --
 ALTER TABLE `user_role`
-  ADD CONSTRAINT `FK_2DE8C6A3D60322AC` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
-  ADD CONSTRAINT `FK_2DE8C6A3A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_2DE8C6A3A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_2DE8C6A3D60322AC` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
 
 --
 -- Contraintes pour la table `website_locale`
 --
 ALTER TABLE `website_locale`
-  ADD CONSTRAINT `FK_D30522B3E559DFD1` FOREIGN KEY (`locale_id`) REFERENCES `locale` (`id`),
-  ADD CONSTRAINT `FK_D30522B318F45C82` FOREIGN KEY (`website_id`) REFERENCES `website` (`id`) ON DELETE CASCADE;
-SET FOREIGN_KEY_CHECKS=1;
+  ADD CONSTRAINT `FK_D30522B318F45C82` FOREIGN KEY (`website_id`) REFERENCES `website` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_D30522B3E559DFD1` FOREIGN KEY (`locale_id`) REFERENCES `locale` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
