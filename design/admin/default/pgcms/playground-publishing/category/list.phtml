@@ -14,11 +14,23 @@
     </header>
     <div class="clearfix"></div>
     <div class="body">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="control-group">
                 <label for="description" class="control-label">Title</label>
                 <div class="controls form-group">
                     <input type="text" id="first-name" name="filters[title]" class="form-control" value="">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="control-group">
+                <label for="description" class="control-label">Active ?</label>
+                <div class="controls form-group">
+                    <select class="selectpicker show-tick" name="filters[active]" data-live-search="true" data-size="6" data-width="100%">
+                        <option value="2" data-content="<span class='label label-default'>Yes / No</span>">Yes / No</option>
+                        <option value="1" data-content="<span class='label label-success'>Yes</span>">Yes</option>
+                        <option value="0" data-content="<span class='label label-danger'>No</span>">No</option>
+                  </select>
                 </div>
             </div>
         </div>
