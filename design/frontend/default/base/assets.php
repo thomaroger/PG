@@ -8,8 +8,24 @@ return array(
                 ),
                 # collection of assets
                 'collections' => array(
+                    /**
+                     * MAIN CSS FILES
+                     */
+                    'frontend_css' => array(
+                        'assets' => array(
+                            'style.css'                      => 'css/style.css',
+                        ),
+                        'options' => array(
+                            'output' => 'frontend/css/base'
+                        ),
+                    ),
                 ),
             ),
+        ),
+        'routes' => array(
+            'frontend.*' => array(
+                '@frontend_css',
+            ),           
         ),
     ),
 );

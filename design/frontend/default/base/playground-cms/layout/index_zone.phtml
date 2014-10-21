@@ -14,11 +14,11 @@ $translation = $this->entity->getTranslations();
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="http://getbootstrap.com/assets/css/docs.min.css">
 
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico')); ?>
+        <?php echo $this->plugin('HeadLink'); ?>
     </head>
     <body>    
         <!-- Render Entity Page  -> PlaygroundCMS\Controller\PageController : <?php echo $this->entity->getId()." - ".$translation["title"]; ?> -->
-         <?php $this->getZone('home_header'); ?>
+        <?php $this->getZone('home_header'); ?>
         <div class="clearfix">&nbsp;</div>
         <div class="clearfix">&nbsp;</div>
         <div class="clearfix">&nbsp;</div>
