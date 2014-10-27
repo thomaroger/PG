@@ -1,1 +1,28 @@
 <?php echo $this->content; ?>
+
+
+<script type="text/javascript">
+    var informations = new Array();
+    if ( ! document.createTreeWalker ) {
+        throw( new Error( "Browser does not support createTreeWalker()." ) );
+    }
+
+    function filter(node) {
+        return( NodeFilter.FILTER_ACCEPT );
+    }
+    filter.acceptNode = filter;
+    var treeWalker = document.createTreeWalker(
+        document.body,
+        NodeFilter.SHOW_COMMENT,
+        filter,
+        false
+    );
+
+    while ( treeWalker.nextNode() ) {
+        if (treeWalker.currentNode.nodeValue.substring(0, 2) != " /") {
+            informations.push(treeWalker.currentNode.nodeValue);
+        }
+    }
+
+    //console.log(informations);
+</script>
