@@ -19,12 +19,38 @@ return array(
                             'output' => 'frontend/css/base'
                         ),
                     ),
+
+                    'frontend_js' => array(
+                        'assets' => array(
+                            'debug.js'                      => 'js/debug.js',
+                        ),
+                        'options' => array(
+                            'output' => 'frontend/js/debug'
+                        ),
+                    ),
                 ),
             ),
         ),
         'routes' => array(
             'frontend.*' => array(
                 '@frontend_css',
+                '@frontend_js',
+            ),
+            'article.*' => array(
+                '@frontend_css',
+                '@frontend_js',
+            ),
+            'poll.*' => array(
+                '@frontend_css',
+                '@frontend_js',
+            ),
+            'category.*' => array(
+                '@frontend_css',
+                '@frontend_js',
+            ),
+            'tag.*' => array(
+                '@frontend_css',
+                '@frontend_js',
             ),           
         ),
     ),

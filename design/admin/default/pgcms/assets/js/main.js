@@ -1,6 +1,3 @@
-
-
-
 jQuery(function($){
     anwserCount = 1;
     $('.selectpicker').selectpicker();
