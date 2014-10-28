@@ -24,5 +24,11 @@
         }
     }
 
-    //console.log(informations);
+    var html = '<div id="debug_pgcms"><ul class="list-group">';
+    for (key in informations) {
+        html += '<li class="list-group-item">'+informations[key]+'</li>';
+    }
+    html += '</ul></div>';
+    //$("body").append(html);
+    $("#debug_pgcms").hide();
 </script>
