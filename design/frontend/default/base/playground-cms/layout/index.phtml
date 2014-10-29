@@ -20,7 +20,7 @@ $translation = $this->entity->getTranslations();
     </head>
     <body>    
 
-      <!-- Render Entity Page  -> PlaygroundCMS\Controller\PageController : <?php echo $this->entity->getId()." - ".$translation["title"]; ?> -->
+      <!-- Render Entity Page -> <?php echo get_class($this->entity); ?> : <?php echo $this->entity->getId()." - ".$translation["title"]; ?> - <?php echo $this->ressource->getLayoutContext() ;?>-->
       
       <?php $this->getBlock('block-html-header'); ?>
   

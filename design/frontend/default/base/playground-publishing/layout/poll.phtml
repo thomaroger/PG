@@ -20,7 +20,7 @@ $translation = $this->entity->getTranslations();
         <?php echo $this->plugin('HeadLink'); ?>
     </head>
     <body>    
-        <!-- Render Entity Page  -> PlaygroundPublishing\Controller\PollController : <?php echo $this->entity->getId()." - ".$translation["title"]; ?> -->
+        <!-- Render Entity Page -> <?php echo get_class($this->entity); ?> : <?php echo $this->entity->getId()." - ".$translation["title"]; ?> - <?php echo $this->ressource->getLayoutContext() ;?>-->
         <?php $this->getZone('poll_header'); ?>
         <div class="clearfix">&nbsp;</div>
         <div class="clearfix">&nbsp;</div>
