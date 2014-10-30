@@ -22,6 +22,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Layout associated</th>
                     <th>Created date</th>
                 </tr>
             </thead>
@@ -32,6 +33,13 @@
                             <a class="accordion-toggle color-white-underline" data-toggle="collapse" data-parent="#accordion<?php echo $zone->getId(); ?>" href="#collapse<?php echo $zone->getId(); ?>">
                                 <?php echo $zone->getName(); ?>
                             </a>
+                        </td>
+                        <td>
+                            <?php if(!empty($layouts[$zone->getId()])) : ?>
+                                <?php echo count($layouts[$zone->getId()]); ?> layouts associated
+                            <?php else : ?>
+                                0 layout associated
+                            <?php endif; ?>
                         </td>
                         <td>
                             <?php echo $zone->getCreatedAt()->format('d/m/Y H:i:s'); ?>
