@@ -55,36 +55,47 @@
                     <?php $k = explode('-', $k); ?>
                         <?php if (($k[0]) == 'PlaygroundUser\Entity\User') : ?>
                         <?php $type = 'user'; ?>
+                        <?php $url = ''; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundCMS\Entity\Page') : ?>
                         <?php $type = 'desktop'; ?>
+                        <?php $url = 'admin/playgroundcmsadmin/page_edit'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundCMS\Entity\Block') : ?>
                         <?php $type = 'code'; ?>
+                        <?php $url = 'admin/playgroundcmsadmin/block_edit'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundCMS\Entity\Layout') : ?>
                         <?php $type = 'windows'; ?>
+                        <?php $url = 'admin/playgroundcmsadmin/layout_edit'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundCMS\Entity\Zone') : ?>
                         <?php $type = 'th-large'; ?>
+                        <?php $url = 'admin/playgroundcmsadmin/zone_edit'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundCMS\Entity\Template') : ?>
                         <?php $type = 'align-justify'; ?>
+                        <?php $url = 'admin/playgroundcmsadmin/template_edit'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundPublishing\Entity\Tag') : ?>
                         <?php $type = 'tag'; ?>
+                        <?php $url = 'admin/playgroundpublishingadmin/tag_edit'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundPublishing\Entity\Category') : ?>
                         <?php $type = 'book'; ?>
+                        <?php $url = 'admin/playgroundpublishingadmin/category_edit'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundPublishing\Entity\Article') : ?>
                         <?php $type = 'edit'; ?>
+                        <?php $url = 'admin/playgroundpublishingadmin/article_edit'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundPublishing\Entity\Poll') : ?>
                         <?php $type = 'question'; ?>
+                        <?php $url = 'admin/playgroundpublishingadmin/poll_edit'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundCMS\Entity\Menu') : ?>
                         <?php $type = 'tree'; ?>
+                        <?php $url = 'admin/playgroundcmsadmin/menu_edit'; ?>
                     <?php endif; ?>
                         <tr>
                             <td>
@@ -140,7 +151,7 @@
                                                     <?php echo $revision->getCreatedAt()->format('d/m/Y H:i:s'); ?> 
                                                 </td>
                                                 <td class="td-actions">
-                                                <a href="<?php echo $this->url('admin/playgroundcmsadmin/layout_edit', array('id' => $revision->getId()));?>" class="btn btn-xs btn-warning">
+                                                <a href="<?php echo $this->url($url, array('id' => $revision->getObjectId()));?>" class="btn btn-xs btn-warning">
                                                     <i class="btn-icon-only fa fa-save"></i>                                       
                                                 </a>                                    
                                                 </a>
