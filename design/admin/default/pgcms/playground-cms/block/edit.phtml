@@ -156,6 +156,38 @@
                 <div class="clearfix">&nbsp;</div>
             </div>
         </section>
+
+        <section class="widget large">
+                    <header>
+                        <h4>
+                            <i class="fa fa-archives"></i>
+                            Revisions (<?php echo count($this->revisions); ?>)
+                        </h4>
+                        
+                    </header>
+                    <div class="body">
+                        <div class="" style="position: relative; overflow: hidden; width: auto; height: auto;"><div id="feed" class="feed" style="overflow: hidden; width: auto; height: auto;">
+                            <div class="wrapper">
+                                <div class="vertical-line"></div>
+                                <?php foreach ($this->revisions as $revision) : ?>
+                                    <section class="feed-item">
+                                        <div class="icon pull-left">
+                                            <i class="fa fa-code"></i>
+                                        </div>
+                                        <div class="feed-item-body">
+                                            <div class="text">
+                                                <a href="<?php echo $this->url('admin/playgroundcmsadmin/block_edit_revision', array('id' => $revision->getObjectId(), 'revisionId' => $revision->getId())) ?>">Revision <?php echo $revision->getRevision(); ?></a>
+                                            </div>
+                                            <div class="time pull-left">
+                                                Created at <?php echo $revision->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            </div>
+                                        </div>
+                                    </section>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                </section>
     </div>
 </div>
 <?php echo $this->form()->closeTag() ?>

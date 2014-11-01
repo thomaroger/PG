@@ -53,17 +53,14 @@
                 <?php $count = 0; ?>
                 <?php foreach ($this->revisionsPaginator as $k => $revisions) : ?>
                     <?php $k = explode('-', $k); ?>
-                        <?php if (($k[0]) == 'PlaygroundUser\Entity\User') : ?>
-                        <?php $type = 'user'; ?>
-                        <?php $url = ''; ?>
-                    <?php endif; ?>
+                        
                     <?php if (($k[0]) == 'PlaygroundCMS\Entity\Page') : ?>
                         <?php $type = 'desktop'; ?>
                         <?php $url = 'admin/playgroundcmsadmin/page_edit'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundCMS\Entity\Block') : ?>
                         <?php $type = 'code'; ?>
-                        <?php $url = 'admin/playgroundcmsadmin/block_edit'; ?>
+                        <?php $url = 'admin/playgroundcmsadmin/block_edit_revision'; ?>
                     <?php endif; ?>
                     <?php if (($k[0]) == 'PlaygroundCMS\Entity\Layout') : ?>
                         <?php $type = 'windows'; ?>
@@ -151,7 +148,7 @@
                                                     <?php echo $revision->getCreatedAt()->format('d/m/Y H:i:s'); ?> 
                                                 </td>
                                                 <td class="td-actions">
-                                                <a href="<?php echo $this->url($url, array('id' => $revision->getObjectId()));?>" class="btn btn-xs btn-warning">
+                                                <a href="<?php echo $this->url($url, array('id' => $revision->getObjectId(), 'revisionId' => $revision->getId()));?>" class="btn btn-xs btn-warning">
                                                     <i class="btn-icon-only fa fa-save"></i>                                       
                                                 </a>                                    
                                                 </a>
