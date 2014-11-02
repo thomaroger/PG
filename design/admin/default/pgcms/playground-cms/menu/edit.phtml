@@ -154,7 +154,10 @@
                                     Current Revision
                                 </div>
                                 <div class="time pull-left">
-                                    Online from <?php echo $revisions[0]->getCreatedAt()->format('d M Y, H:i:s'); ?>
+                                    <?php if(empty($revisions[0])) : ?>
+                                        <?php $revisions[0] = $menu; ?>
+                                    <?php endif; ?>
+                                    Online since <?php echo $revisions[0]->getCreatedAt()->format('d M Y, H:i:s'); ?>
                                 </div>
                             </div>
                         </section>

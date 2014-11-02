@@ -263,18 +263,21 @@
                     <div class="wrapper">
                         <div class="vertical-line"></div>
                         <section class="feed-item">
-                                <div class="icon pull-left">
-                                    <i class="fa fa-desktop"></i>
+                            <div class="icon pull-left">
+                                <i class="fa fa-desktop"></i>
+                            </div>
+                            <div class="feed-item-body">
+                                <div class="text">
+                                    Current Revision
                                 </div>
-                                <div class="feed-item-body">
-                                    <div class="text">
-                                        Current Revision
-                                    </div>
-                                    <div class="time pull-left">
-                                        Online from <?php echo $revisions[0]->getCreatedAt()->format('d M Y, H:i:s'); ?>
-                                    </div>
+                                <div class="time pull-left">
+                                    <?php if(empty($revisions[0])) : ?>
+                                        <?php $revisions[0] = $page; ?>
+                                    <?php endif; ?>
+                                    Online since <?php echo $revisions[0]->getCreatedAt()->format('d M Y, H:i:s'); ?>
                                 </div>
-                            </section>
+                            </div>
+                        </section>
                         <?php foreach ($this->revisions as $revision) : ?>
                             <section class="feed-item">
                                 <div class="icon pull-left">
