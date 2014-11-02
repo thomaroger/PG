@@ -262,10 +262,23 @@
                 <div class="" style="position: relative; overflow: hidden; width: auto; height: auto;"><div id="feed" class="feed" style="overflow: hidden; width: auto; height: auto;">
                     <div class="wrapper">
                         <div class="vertical-line"></div>
+                        <section class="feed-item">
+                                <div class="icon pull-left">
+                                    <i class="fa fa-desktop"></i>
+                                </div>
+                                <div class="feed-item-body">
+                                    <div class="text">
+                                        Current Revision
+                                    </div>
+                                    <div class="time pull-left">
+                                        Online from <?php echo $revisions[0]->getCreatedAt()->format('d M Y, H:i:s'); ?>
+                                    </div>
+                                </div>
+                            </section>
                         <?php foreach ($this->revisions as $revision) : ?>
                             <section class="feed-item">
                                 <div class="icon pull-left">
-                                    <i class="fa fa-code"></i>
+                                    <i class="fa fa-desktop"></i>
                                 </div>
                                 <div class="feed-item-body">
                                     <div class="text">
