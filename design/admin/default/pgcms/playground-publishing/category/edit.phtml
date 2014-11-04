@@ -256,7 +256,7 @@
                                 </div>
                                 <div class="time pull-left">
                                     <?php if(empty($revisions[0])) : ?>
-                                        <?php $revisions[0] = $page; ?>
+                                        <?php $revisions[0] = $category; ?>
                                     <?php endif; ?>
                                     Online since <?php echo $revisions[0]->getCreatedAt()->format('d M Y, H:i:s'); ?>
                                 </div>
