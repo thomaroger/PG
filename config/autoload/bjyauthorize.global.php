@@ -68,6 +68,7 @@ return array(
                 array('controller' => 'PlaygroundPublishing\Controller\Back\Article',  'roles' => array('admin')),
                 array('controller' => 'PlaygroundPublishing\Controller\Back\Comment',  'roles' => array('admin')),
                 array('controller' => 'PlaygroundPublishing\Controller\Back\Poll',     'roles' => array('admin')),
+                array('controller' => 'PlaygroundPublishing\Controller\Back\Search',     'roles' => array('admin')),
 
 
             ),
