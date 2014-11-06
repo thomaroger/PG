@@ -100,11 +100,14 @@ div.modal-content-block{
     text-align: right;
 }
 
-
 .dd .dd-item button.fa-plus:before {
     content: "\f067";
 }
 
 .dd .dd-item button.fa-minus:before {
     content: "\f068";
+}
+
+.highlight {
+    background-color: #FFFF88;
 }

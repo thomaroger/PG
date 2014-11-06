@@ -25,16 +25,16 @@
                     <header>
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#blocks" data-toggle="tab">Blocks (0)</a>
+                                <a href="#blocks" data-toggle="tab">Blocks (<?php echo count($this->blocks); ?>)</a>
                             </li>
                             <li class="">
-                                <a href="#layouts" data-toggle="tab">Layouts (0)</a>
+                                <a href="#layouts" data-toggle="tab">Layouts (<?php echo count($this->layouts); ?>)</a>
                             </li>
                             <li class="">
-                                <a href="#menus" data-toggle="tab">Menus (0)</a>
+                                <a href="#menus" data-toggle="tab">Menus (<?php echo count($this->menus); ?>)</a>
                             </li>
                             <li class="">
-                                <a href="#pages" data-toggle="tab">Pages (0)</a>
+                                <a href="#pages" data-toggle="tab">Pages (<?php echo count($this->pages); ?>)</a>
                             </li>
                             <li class="">
                                 <a href="#templates" data-toggle="tab">Templates (0)</a>
@@ -59,80 +59,146 @@
                     <div class="body tab-content">
                         <div id="blocks" class="tab-pane clearfix active">
                             <h5 class="tab-header"><i class="fa fa-code"></i> Blocks</h5>
-                                <ul class="news-list">
+                            <ul class="news-list">
+                                <?php foreach ($this->blocks as $block) : ?>
                                     <li>
+                                        <div class="icon pull-left">
+                                            <i class="fa fa-code"></i>
+                                        </div>
+                                        <div class="news-item-info">
+                                            <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/block_edit', array('id' => $block->getId())) ?>"><?php echo $block->getName(); ?></a></div>
+                                            <div class="comment">
+                                                <?php echo $block->getType(); ?>
+                                            </div>
+                                            <div class="time pull-left">
+                                                Created at <?php echo $block->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            </div>
+                                        </div>
                                     </li>
-                                </ul>
+                                <?php endforeach; ?>
+                            </ul>
                         </div>
                         <div id="layouts" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-windows"></i> Layouts</h5>
-                                <ul class="news-list">
+                            <ul class="news-list">
+                                <?php foreach ($this->layouts as $layout) : ?>
                                     <li>
+                                        <div class="icon pull-left">
+                                            <i class="fa fa-windows"></i>
+                                        </div>
+                                        <div class="news-item-info">
+                                            <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/layout_edit', array('id' => $layout->getId())) ?>"><?php echo $layout->getName(); ?></a></div>
+                                            <div class="comment">
+                                                <?php echo $layout->getFile(); ?>
+                                            </div>
+                                            <div class="time pull-left">
+                                                Created at <?php echo $layout->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            </div>
+                                        </div>
                                     </li>
-                                </ul>
+                                <?php endforeach; ?>    
+                            </ul>
                         </div>
                         <div id="menus" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-tree"></i> Menus</h5>
-                                <ul class="news-list">
+                            <ul class="news-list">
+                                <?php foreach ($this->menus as $menu) : ?>
                                     <li>
+                                        <div class="icon pull-left">
+                                            <?php $status = 'color-green'; ?>
+                                            <?php if ($menu->getStatus() == 0) :?>
+                                                <?php $status = 'color-red'; ?>
+                                            <?php endif; ?>
+                                            <i class="fa fa-tree <?php echo $status; ?>"></i>
+                                        </div>
+                                        <div class="news-item-info">
+                                            <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/menu_edit', array('id' => $menu->getId())) ?>"><?php echo $menu->getTitle(); ?></a></div>
+                                            <div class="comment">
+                                                <?php echo $menu->getUrl(); ?>
+                                            </div>
+                                            <div class="time pull-left">
+                                                Created at <?php echo $menu->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            </div>
+                                        </div>
                                     </li>
-                                </ul>
+                                <?php endforeach; ?> 
+                            </ul>
                         </div>
                         <div id="pages" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-desktop"></i> Pages</h5>
-                                <ul class="news-list">
+                            <ul class="news-list">
+                                <?php foreach ($this->pages as $page) : ?>
+                                    <?php $ressource = $page["ressource"]; ?>
+                                    <?php $page = $page["page"]; ?>
                                     <li>
+                                        <div class="icon pull-left">
+                                            <?php $status = 'color-green'; ?>
+                                            <?php if ($page->getStatus() == 0) :?>
+                                                <?php $status = 'color-red'; ?>
+                                            <?php endif; ?>
+                                            <i class="fa fa-desktop <?php echo $status; ?>"></i>
+                                        </div>
+                                        <div class="news-item-info">
+                                            <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page_edit', array('id' => $page->getId())) ?>"><?php echo $page->getTitle(); ?></a></div>
+                                            <div class="comment">
+                                                <?php echo $ressource->getUrl(); ?>
+                                            </div>
+                                            <div class="time pull-left">
+                                                Created at <?php echo $page->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            </div>
+                                        </div>
                                     </li>
-                                </ul>
+                                <?php endforeach; ?> 
+                            </ul>
                         </div>
                         <div id="templates" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-align-justify"></i> Templates</h5>
-                                <ul class="news-list">
-                                    <li>
-                                    </li>
-                                </ul>
+                            <ul class="news-list">
+                                <li>
+                                </li>
+                            </ul>
                         </div>
                         <div id="zones" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-th-large"></i> Zones</h5>
-                                <ul class="news-list">
-                                    <li>
-                                    </li>
-                                </ul>
+                            <ul class="news-list">
+                                <li>
+                                </li>
+                            </ul>
                         </div>
                         <div id="articles" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-edit"></i> Articles</h5>
-                                <ul class="news-list">
-                                    <li>
-                                    </li>
-                                </ul>
+                            <ul class="news-list">
+                                <li>
+                                </li>
+                            </ul>
                         </div>
                         <div id="categories" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-book"></i> Categories</h5>
-                                <ul class="news-list">
-                                    <li>
-                                    </li>
-                                </ul>
+                            <ul class="news-list">
+                                <li>
+                                </li>
+                            </ul>
                         </div>
                         <div id="polls" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-question"></i> Polls</h5>
-                                <ul class="news-list">
-                                    <li>
-                                    </li>
-                                </ul>
+                            <ul class="news-list">
+                                <li>
+                                </li>
+                            </ul>
                         </div>
                         <div id="tags" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-tag"></i> Tags</h5>
-                                <ul class="news-list">
-                                    <li>
-                                    </li>
-                                </ul>
+                            <ul class="news-list">
+                                <li>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </section>
-                
-
             </div>
         </div>
     </div>
     <div class="clearfix">&nbsp;</div>
 </section>
+
+<div id="searchHightlight" class="hide"><?php echo $this->search ?></div>

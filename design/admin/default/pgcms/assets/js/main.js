@@ -90,4 +90,8 @@ jQuery(function($){
         $(this).hide();
         $(this).parent().next().show();     
     })
+
+    if($('#searchHightlight').length > 0){
+        $(".tab-content").highlight($('#searchHightlight').html());
+    }
 });
