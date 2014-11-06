@@ -1,12 +1,15 @@
 <?php echo $this->content; ?>
 
 <?php $isAdmin = false; ?>
-<?php $roles = $this->zfcUserIdentity()->getRoles(); ?>
-<?php foreach ($roles as $role) : ?>
-  <?php if($role->getRoleId() == "admin") : ?>
-    <?php $isAdmin = true; ?>
-  <?php endif; ?>  
-<?php endforeach ; ?>
+<?php $user =  $this->zfcUserIdentity(); ?>
+<?php if(!empty($user)) : ?>
+    <?php $roles = $user->getRoles(); ?>
+    <?php foreach ($roles as $role) : ?>
+      <?php if($role->getRoleId() == "admin") : ?>
+        <?php $isAdmin = true; ?>
+      <?php endif; ?>  
+    <?php endforeach ; ?>
+<?php endif; ?>  
 
 <?php if($isAdmin) : ?>
     <div id="debug"><i class="fa fa-bug"></i></div>
