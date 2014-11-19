@@ -37,22 +37,22 @@
                                 <a href="#pages" data-toggle="tab">Pages (<?php echo count($this->pages); ?>)</a>
                             </li>
                             <li class="">
-                                <a href="#templates" data-toggle="tab">Templates (0)</a>
+                                <a href="#templates" data-toggle="tab">Templates (<?php echo count($this->templates); ?>)</a>
                             </li>
                             <li class="">
-                                <a href="#zones" data-toggle="tab">Zones (0)</a>
+                                <a href="#zones" data-toggle="tab">Zones (<?php echo count($this->zones); ?>)</a>
                             </li>
                             <li class="">
-                                <a href="#articles" data-toggle="tab">Articles (0)</a>
+                                <a href="#articles" data-toggle="tab">Articles (<?php echo count($this->articles); ?>)</a>
                             </li>
                             <li class="">
-                                <a href="#categories" data-toggle="tab">Categories (0)</a>
+                                <a href="#categories" data-toggle="tab">Categories (<?php echo count($this->categories); ?>)</a>
                             </li>
                             <li class="">
-                                <a href="#polls" data-toggle="tab">Polls (0)</a>
+                                <a href="#polls" data-toggle="tab">Polls (<?php echo count($this->polls); ?>)</a>
                             </li>
                             <li class="">
-                                <a href="#tags" data-toggle="tab">Tags (0)</a>
+                                <a href="#tags" data-toggle="tab">Tags (<?php echo count($this->tags); ?>)</a>
                             </li>
                         </ul>
                     </header>
@@ -154,43 +154,155 @@
                         <div id="templates" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-align-justify"></i> Templates</h5>
                             <ul class="news-list">
+                                <?php foreach ($this->templates as $template) : ?>
                                 <li>
+                                    <div class="icon pull-left">
+                                        <i class="fa fa-align-justify"></i>
+                                    </div>
+                                    <div class="news-item-info">
+                                        <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/template_edit', array('id' => $template->getId())) ?>"><?php echo $template->getName(); ?></a></div>
+                                        <div class="comment">
+                                            <?php echo $template->getFile(); ?>
+                                        </div>
+                                        <div class="time pull-left">
+                                            Created at <?php echo $template->getCreatedAt()->format('d M Y, H:i'); ?>
+                                        </div>
+                                    </div>
                                 </li>
+                                <?php endforeach; ?>    
                             </ul>
                         </div>
                         <div id="zones" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-th-large"></i> Zones</h5>
                             <ul class="news-list">
+                                <?php foreach ($this->zones as $zone) : ?>
                                 <li>
+                                    <div class="icon pull-left">
+                                        <i class="fa fa-th-large"></i>
+                                    </div>
+                                    <div class="news-item-info">
+                                        <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/zone')?>"><?php echo $zone->getName(); ?></a></div>
+                                        <div class="comment">
+                                            <?php if(!empty($this->layoutsPerZone[$zone->getId()])) : ?>
+                                                <?php echo count($this->layoutsPerZone[$zone->getId()]); ?> layouts associated
+                                            <?php else : ?>
+                                                0 layout associated
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="time pull-left">
+                                            Created at <?php echo $zone->getCreatedAt()->format('d M Y, H:i'); ?>
+                                        </div>
+                                    </div>
                                 </li>
+                                <?php endforeach; ?>  
                             </ul>
                         </div>
                         <div id="articles" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-edit"></i> Articles</h5>
                             <ul class="news-list">
-                                <li>
-                                </li>
+                                <?php foreach ($this->articles as $article) : ?>
+                                    <?php $ressource = $article["ressource"]; ?>
+                                    <?php $article = $article["article"]; ?>
+                                    <li>
+                                        <div class="icon pull-left">
+                                            <?php $status = 'color-green'; ?>
+                                            <?php if ($article->getStatus() == 0) :?>
+                                                <?php $status = 'color-red'; ?>
+                                            <?php endif; ?>
+                                            <i class="fa fa-edit <?php echo $status; ?>"></i>
+                                        </div>
+                                        <div class="news-item-info">
+                                            <div class="name"><a href="<?php echo $this->url('admin/playgroundpublishingadmin/article_edit', array('id' => $article->getId())) ?>"><?php echo $article->getTitle(); ?></a></div>
+                                            <div class="comment">
+                                                <?php echo $ressource->getUrl(); ?>
+                                            </div>
+                                            <div class="time pull-left">
+                                                Created at <?php echo $article->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                         <div id="categories" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-book"></i> Categories</h5>
                             <ul class="news-list">
-                                <li>
-                                </li>
-                            </ul>
+                                <?php foreach ($this->categories as $category) : ?>
+                                    <?php $ressource = $category["ressource"]; ?>
+                                    <?php $category = $category["category"]; ?>
+                                    <li>
+                                        <div class="icon pull-left">
+                                            <?php $status = 'color-green'; ?>
+                                            <?php if ($category->getStatus() == 0) :?>
+                                                <?php $status = 'color-red'; ?>
+                                            <?php endif; ?>
+                                            <i class="fa fa-book <?php echo $status; ?>"></i>
+                                        </div>
+                                        <div class="news-item-info">
+                                            <div class="name"><a href="<?php echo $this->url('admin/playgroundpublishingadmin/category_edit', array('id' => $category->getId())) ?>"><?php echo $category->getTitle(); ?></a></div>
+                                            <div class="comment">
+                                                <?php echo $ressource->getUrl(); ?>
+                                            </div>
+                                            <div class="time pull-left">
+                                                Created at <?php echo $category->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <?php endforeach; ?>
+                             </ul>
                         </div>
                         <div id="polls" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-question"></i> Polls</h5>
                             <ul class="news-list">
+                                <?php foreach ($this->polls as $poll) : ?>
+                                <?php $ressource = $poll["ressource"]; ?>
+                                <?php $poll = $poll["poll"]; ?>
                                 <li>
+                                    <div class="icon pull-left">
+                                        <?php $status = 'color-green'; ?>
+                                        <?php if ($poll->getStatus() == 0) :?>
+                                            <?php $status = 'color-red'; ?>
+                                        <?php endif; ?>
+                                        <i class="fa fa-question <?php echo $status; ?>"></i>
+                                    </div>
+                                    <div class="news-item-info">
+                                        <div class="name"><a href="<?php echo $this->url('admin/playgroundpublishingadmin/poll_edit', array('id' => $poll->getId())) ?>"><?php echo $poll->getTitle(); ?></a></div>
+                                        <div class="comment">
+                                            <?php echo $ressource->getUrl(); ?>
+                                        </div>
+                                        <div class="time pull-left">
+                                            Created at <?php echo $poll->getCreatedAt()->format('d M Y, H:i'); ?>
+                                        </div>
+                                    </div>
                                 </li>
+                            <?php endforeach; ?>
                             </ul>
                         </div>
                         <div id="tags" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-tag"></i> Tags</h5>
                             <ul class="news-list">
+                                 <?php foreach ($this->tags as $tag) : ?>
+                                <?php $ressource = $tag["ressource"]; ?>
+                                <?php $tag = $tag["tag"]; ?>
                                 <li>
+                                    <div class="icon pull-left">
+                                        <?php $status = 'color-green'; ?>
+                                        <?php if ($tag->getStatus() == 0) :?>
+                                            <?php $status = 'color-red'; ?>
+                                        <?php endif; ?>
+                                        <i class="fa fa-tag <?php echo $status; ?>"></i>
+                                    </div>
+                                    <div class="news-item-info">
+                                        <div class="name"><a href="<?php echo $this->url('admin/playgroundpublishingadmin/tag_edit', array('id' => $tag->getId())) ?>"><?php echo $tag->getTitle(); ?></a></div>
+                                        <div class="comment">
+                                            <?php echo $ressource->getUrl(); ?>
+                                        </div>
+                                        <div class="time pull-left">
+                                            Created at <?php echo $tag->getCreatedAt()->format('d M Y, H:i'); ?>
+                                        </div>
+                                    </div>
                                 </li>
+                            <?php endforeach; ?>
                             </ul>
                         </div>
                     </div>
