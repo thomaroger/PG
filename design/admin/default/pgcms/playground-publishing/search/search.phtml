@@ -60,95 +60,103 @@
                         <div id="blocks" class="tab-pane clearfix active">
                             <h5 class="tab-header"><i class="fa fa-code"></i> Blocks</h5>
                             <ul class="news-list">
-                                <?php foreach ($this->blocks as $block) : ?>
-                                    <li>
-                                        <div class="icon pull-left">
-                                            <i class="fa fa-code"></i>
-                                        </div>
-                                        <div class="news-item-info">
-                                            <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/block_edit', array('id' => $block->getId())) ?>"><?php echo $block->getName(); ?></a></div>
-                                            <div class="comment">
-                                                <?php echo $block->getType(); ?>
+                                <?php if(count($this->blocks) > 0): ?>
+                                    <?php foreach ($this->blocks as $block) : ?>
+                                        <li>
+                                            <div class="icon pull-left">
+                                                <i class="fa fa-code"></i>
                                             </div>
-                                            <div class="time pull-left">
-                                                Created at <?php echo $block->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            <div class="news-item-info">
+                                                <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/block_edit', array('id' => $block->getId())) ?>"><?php echo $block->getName(); ?></a></div>
+                                                <div class="comment">
+                                                    <?php echo $block->getType(); ?>
+                                                </div>
+                                                <div class="time pull-left">
+                                                    Created at <?php echo $block->getCreatedAt()->format('d M Y, H:i'); ?>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                <?php endforeach; ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </ul>
                         </div>
                         <div id="layouts" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-windows"></i> Layouts</h5>
                             <ul class="news-list">
-                                <?php foreach ($this->layouts as $layout) : ?>
-                                    <li>
-                                        <div class="icon pull-left">
-                                            <i class="fa fa-windows"></i>
-                                        </div>
-                                        <div class="news-item-info">
-                                            <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/layout_edit', array('id' => $layout->getId())) ?>"><?php echo $layout->getName(); ?></a></div>
-                                            <div class="comment">
-                                                <?php echo $layout->getFile(); ?>
+                                <?php if(count($this->layouts) > 0): ?>
+                                    <?php foreach ($this->layouts as $layout) : ?>
+                                        <li>
+                                            <div class="icon pull-left">
+                                                <i class="fa fa-windows"></i>
                                             </div>
-                                            <div class="time pull-left">
-                                                Created at <?php echo $layout->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            <div class="news-item-info">
+                                                <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/layout_edit', array('id' => $layout->getId())) ?>"><?php echo $layout->getName(); ?></a></div>
+                                                <div class="comment">
+                                                    <?php echo $layout->getFile(); ?>
+                                                </div>
+                                                <div class="time pull-left">
+                                                    Created at <?php echo $layout->getCreatedAt()->format('d M Y, H:i'); ?>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                <?php endforeach; ?>    
+                                        </li>
+                                    <?php endforeach; ?>  
+                                <?php endif; ?>  
                             </ul>
                         </div>
                         <div id="menus" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-tree"></i> Menus</h5>
                             <ul class="news-list">
-                                <?php foreach ($this->menus as $menu) : ?>
-                                    <li>
-                                        <div class="icon pull-left">
-                                            <?php $status = 'color-green'; ?>
-                                            <?php if ($menu->getStatus() == 0) :?>
-                                                <?php $status = 'color-red'; ?>
-                                            <?php endif; ?>
-                                            <i class="fa fa-tree <?php echo $status; ?>"></i>
-                                        </div>
-                                        <div class="news-item-info">
-                                            <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/menu_edit', array('id' => $menu->getId())) ?>"><?php echo $menu->getTitle(); ?></a></div>
-                                            <div class="comment">
-                                                <?php echo $menu->getUrl(); ?>
+                                <?php if(count($this->menus) > 0): ?>
+                                    <?php foreach ($this->menus as $menu) : ?>
+                                        <li>
+                                            <div class="icon pull-left">
+                                                <?php $status = 'color-green'; ?>
+                                                <?php if ($menu->getStatus() == 0) :?>
+                                                    <?php $status = 'color-red'; ?>
+                                                <?php endif; ?>
+                                                <i class="fa fa-tree <?php echo $status; ?>"></i>
                                             </div>
-                                            <div class="time pull-left">
-                                                Created at <?php echo $menu->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            <div class="news-item-info">
+                                                <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/menu_edit', array('id' => $menu->getId())) ?>"><?php echo $menu->getTitle(); ?></a></div>
+                                                <div class="comment">
+                                                    <?php echo $menu->getUrl(); ?>
+                                                </div>
+                                                <div class="time pull-left">
+                                                    Created at <?php echo $menu->getCreatedAt()->format('d M Y, H:i'); ?>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                <?php endforeach; ?> 
+                                        </li>
+                                    <?php endforeach; ?>
+                                <?php endif; ?> 
                             </ul>
                         </div>
                         <div id="pages" class="tab-pane">
                             <h5 class="tab-header"><i class="fa fa-desktop"></i> Pages</h5>
                             <ul class="news-list">
-                                <?php foreach ($this->pages as $page) : ?>
-                                    <?php $ressource = $page["ressource"]; ?>
-                                    <?php $page = $page["page"]; ?>
-                                    <li>
-                                        <div class="icon pull-left">
-                                            <?php $status = 'color-green'; ?>
-                                            <?php if ($page->getStatus() == 0) :?>
-                                                <?php $status = 'color-red'; ?>
-                                            <?php endif; ?>
-                                            <i class="fa fa-desktop <?php echo $status; ?>"></i>
-                                        </div>
-                                        <div class="news-item-info">
-                                            <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page_edit', array('id' => $page->getId())) ?>"><?php echo $page->getTitle(); ?></a></div>
-                                            <div class="comment">
-                                                <?php echo $ressource->getUrl(); ?>
+                                <?php if(count($this->pages) > 0): ?>
+                                    <?php foreach ($this->pages as $page) : ?>
+                                        <?php $ressource = $page["ressource"]; ?>
+                                        <?php $page = $page["page"]; ?>
+                                        <li>
+                                            <div class="icon pull-left">
+                                                <?php $status = 'color-green'; ?>
+                                                <?php if ($page->getStatus() == 0) :?>
+                                                    <?php $status = 'color-red'; ?>
+                                                <?php endif; ?>
+                                                <i class="fa fa-desktop <?php echo $status; ?>"></i>
                                             </div>
-                                            <div class="time pull-left">
-                                                Created at <?php echo $page->getCreatedAt()->format('d M Y, H:i'); ?>
+                                            <div class="news-item-info">
+                                                <div class="name"><a href="<?php echo $this->url('admin/playgroundcmsadmin/page_edit', array('id' => $page->getId())) ?>"><?php echo $page->getTitle(); ?></a></div>
+                                                <div class="comment">
+                                                    <?php echo $ressource->getUrl(); ?>
+                                                </div>
+                                                <div class="time pull-left">
+                                                    Created at <?php echo $page->getCreatedAt()->format('d M Y, H:i'); ?>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                <?php endforeach; ?> 
+                                        </li>
+                                    <?php endforeach; ?> 
+                                <?php endif; ?>
                             </ul>
                         </div>
                         <div id="templates" class="tab-pane">
