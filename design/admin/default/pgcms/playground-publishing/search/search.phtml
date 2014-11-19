@@ -1,3 +1,6 @@
+<?php 
+$nbResults = count($this->blocks) + count($this->layouts) + count($this->menus) + count($this->pages) + count($this->templates) + count($this->zones) + count($this->articles) + count($this->categories) + count($this->polls) + count($this->tags); 
+?>
 <div class="row">
     <div class="col-md-12">
         <section class="widget">
@@ -13,7 +16,7 @@
     <header>
         <h4>
             <i class="fa fa-search"></i>
-            Result of the search : <?php echo $this->search ?>  (<?php echo count(array('0'));?>)
+            Result of the search : <?php echo $this->search ?>  (<?php echo $nbResults;?>)
         </h4>
     </header>
     <div class="clearfix">&nbsp;</div>
