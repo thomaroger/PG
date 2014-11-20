@@ -24,15 +24,15 @@
                 <?php foreach ($feedsPaginator as $feed) : ?>
                     <?php if ($feed->getModel() == 'PlaygroundCMS\Entity\Page') : ?>
                         <?php $type = 'desktop'; ?>
-                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundcmsadmin/page_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
+                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundcmsadmin/page_edit', array('id' => $feed->getRecordId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
                     <?php endif; ?>
                     <?php if ($feed->getModel() == 'PlaygroundCMS\Entity\Block') : ?>
                         <?php $type = 'code'; ?>
-                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundcmsadmin/block_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
+                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundcmsadmin/block_edit', array('id' => $feed->getRecordId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
                     <?php endif; ?>
                     <?php if ($feed->getModel() == 'PlaygroundCMS\Entity\Layout') : ?>
                         <?php $type = 'windows'; ?>
-                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundcmsadmin/layout_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
+                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundcmsadmin/layout_edit', array('id' => $feed->getRecordId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
                     <?php endif; ?>
                     <?php if ($feed->getModel() == 'PlaygroundCMS\Entity\Zone') : ?>
                         <?php $type = 'th-large'; ?>
@@ -40,27 +40,27 @@
                     <?php endif; ?>
                     <?php if ($feed->getModel() == 'PlaygroundCMS\Entity\Template') : ?>
                         <?php $type = 'align-justify'; ?>
-                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundcmsadmin/template_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
+                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundcmsadmin/template_edit', array('id' => $feed->getRecordId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
                     <?php endif; ?>
                     <?php if ($feed->getModel() == 'PlaygroundPublishing\Entity\Tag') : ?>
                         <?php $type = 'tag'; ?>
-                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundpublishingadmin/tag_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
+                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundpublishingadmin/tag_edit', array('id' => $feed->getRecordId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
                     <?php endif; ?>
                     <?php if ($feed->getModel() == 'PlaygroundPublishing\Entity\Category') : ?>
                         <?php $type = 'book'; ?>
-                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundpublishingadmin/category_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
+                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundpublishingadmin/category_edit', array('id' => $feed->getRecordId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
                     <?php endif; ?>
                     <?php if ($feed->getModel() == 'PlaygroundPublishing\Entity\Article') : ?>
                         <?php $type = 'edit'; ?>
-                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundpublishingadmin/article_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
+                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundpublishingadmin/article_edit', array('id' => $feed->getRecordId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
                     <?php endif; ?>
                     <?php if ($feed->getModel() == 'PlaygroundPublishing\Entity\Poll') : ?>
                         <?php $type = 'question'; ?>
-                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundpublishingadmin/poll_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
+                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundpublishingadmin/poll_edit', array('id' => $feed->getRecordId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
                     <?php endif; ?>
                     <?php if ($feed->getModel() == 'PlaygroundCMS\Entity\Menu') : ?>
                         <?php $type = 'tree'; ?>
-                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundcmsadmin/menu_edit', array('id' => $feed->getId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
+                        <?php $message = $feed->getText().' <a href="'.$this->url('admin/playgroundcmsadmin/menu_edit', array('id' => $feed->getRecordId())).'">'.$feed->getName().'</a> by '.$feed->getUser()->getFirstname().' '.$feed->getUser()->getLastname().'.'; ?>
                     <?php endif; ?>
                     <?php if ($feed->getModel() == 'PlaygroundPublishing\Entity\Comment') : ?>
                         <?php $type = 'comments'; ?>
