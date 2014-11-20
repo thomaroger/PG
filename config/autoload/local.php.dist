@@ -1,7 +1,7 @@
 <?php
 
 $dbParams = array(
-    'database'  => 'playground',
+    'database'  => 'pgcms',
     'username'  => 'root',
     'password'  => 'root',
     'hostname'  => 'localhost',
