@@ -14,9 +14,11 @@ jQuery(function($){
         placeholder: 'list-group-item list-group-item-placeholder',
         forcePlaceholderSize: true,
         update : function(event, ui){
-            var item = $(ui.item);
-            var url = '/admin/playgroundcms/blocklayoutzone/update/'+$('#layoutId').attr('value')+'/'+item.attr("data-block-layout-zone")+'/'+item.index();
-            $.get(url);
+            var sortables = $('.sortable').children();
+            sortables.each(function(key, sortable){
+                var url = '/admin/playgroundcms/blocklayoutzone/update/'+$('#layoutId').attr('value')+'/'+$(sortable).attr("data-block-layout-zone")+'/'+key;
+                $.get(url);
+            });
         }
     });
     
